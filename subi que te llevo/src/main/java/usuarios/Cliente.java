@@ -3,7 +3,7 @@ package usuarios;
 /**
  * La clase Cliente representa a un cliente en el sistema. Extiende la clase Usuario.
  */
-public class Cliente extends Usuario {
+public class Cliente extends Usuario{
 	private int puntos;
 	
 	/**
@@ -51,4 +51,11 @@ public class Cliente extends Usuario {
 		return "\nNOMBRE DE USUARIO: " + nombreUsuario + 
 				"\nNOMBRE REAL: " + nombreReal;
 	}
+	
+	public Cliente clone() {
+        Cliente cloned = (Cliente) super.clone();
+        // No es necesario clonar atributos primitivos 
+        ///pero Leonel quiere clonacion profunda a toda costa
+        return cloned;
+    }
 }

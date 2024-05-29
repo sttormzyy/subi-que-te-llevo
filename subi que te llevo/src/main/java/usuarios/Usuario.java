@@ -3,7 +3,7 @@ package usuarios;
 /**
  * La clase Usuario es una clase abstracta de la cual se extienden Cliente y Administrador.
  */
-public abstract class Usuario {
+public abstract class Usuario implements Cloneable{
 	protected String nombreUsuario;
 	protected String nombreReal;
 	protected String contrasena;
@@ -73,4 +73,14 @@ public abstract class Usuario {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+
+	public Usuario clone() {
+        try {
+            return (Usuario) super.clone();
+        } 
+        catch (CloneNotSupportedException e) {
+        	// No salta nunca ya que estamos implementando Cloneable
+            throw new AssertionError(); 
+        }
+    }
 }
