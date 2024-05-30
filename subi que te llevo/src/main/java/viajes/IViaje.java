@@ -1,5 +1,6 @@
 package viajes;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import choferes.Chofer;
@@ -9,7 +10,7 @@ import vehiculos.Vehiculo;
 /**
  * Interfaz que define los metodos de los Viajes.
  */
-public interface IViaje extends Comparable<IViaje>, Cloneable {
+public interface IViaje extends Comparable<IViaje>, Cloneable, Serializable {
 
     /**
      * Vector de Estados que representa los posibles estados de un viaje.

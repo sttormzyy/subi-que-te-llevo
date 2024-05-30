@@ -1,14 +1,14 @@
 package vehiculos;
 
-import viajes.Pedido;
+import java.io.Serializable;
+
 import viajes.Pedido;
 
 /**
  * La clase abstracta Vehiculo representa un tipo generico de vehiculo que se puede utilizar en los viajes.
  * Es una clase base para las subclases concretas de vehiculos como Auto, Combi y Moto.
  */
-public abstract class Vehiculo implements Cloneable
-{
+public abstract class Vehiculo implements Cloneable, Serializable{
 	protected String patente;
 	protected int cantMaxPas;
 	protected boolean ocupado=false;

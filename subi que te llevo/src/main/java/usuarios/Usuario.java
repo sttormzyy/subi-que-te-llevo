@@ -1,9 +1,11 @@
 package usuarios;
 
+import java.io.Serializable;
+
 /**
  * La clase Usuario es una clase abstracta de la cual se extienden Cliente y Administrador.
  */
-public abstract class Usuario implements Cloneable{
+public abstract class Usuario implements Cloneable, Serializable{
 	protected String nombreUsuario;
 	protected String nombreReal;
 	protected String contrasena;

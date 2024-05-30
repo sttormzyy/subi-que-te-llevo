@@ -1,13 +1,12 @@
 package choferes;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
-
-import vehiculos.Vehiculo;
 
 /**
  * Clase abstracta que representa a un Chofer.
  */
-public abstract class Chofer implements Cloneable {
+public abstract class Chofer implements Cloneable, Serializable  {
     protected String dni;
     protected String nombre;
     protected int puntos;

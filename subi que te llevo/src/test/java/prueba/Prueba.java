@@ -1,28 +1,16 @@
 package prueba;
 
-import java.time.LocalDateTime;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
-import choferes.Chofer;
-import choferes.ChoferContratado;
-import choferes.ChoferPermanente;
-import choferes.ChoferTemporario;
-import controladores.Controlador;
 import controladores.ControladorCliente;
 import controladores.ControladorMenuSimulacion;
-import excepciones.chofer.ExceptionChofer;
-import excepciones.pedido.ExceptionFecha;
-import excepciones.pedido.ExceptionPedido;
-import excepciones.pedido.ExceptionVehiculoDisp;
-import excepciones.usuario.ExceptionUsuario;
 import excepciones.vehiculo.ExceptionVehiculo;
-import excepciones.viaje.ExceptionChoferDisp;
-import excepciones.viaje.ExceptionChoferSinViajesPagos;
 import sistema.Empresa;
-import usuarios.Administrador;
-import usuarios.Cliente;
+import sistema.Serializacion;
+import vehiculos.Vehiculo;
 import vehiculos.VehiculoFactory;
-import javax.swing.*;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import vista.MainFrameCliente;
 import vista.VentanaSimulacion;
 
@@ -242,17 +230,33 @@ public class Prueba {
 
 		//Muestra listado de choferes con los puntos actualizados
 		System.out.println(empresa.solicitudListadoChoferes());		
-*/
+		 */
                 VentanaSimulacion menuSimulacion = new VentanaSimulacion();
                 ControladorMenuSimulacion c = new ControladorMenuSimulacion();
                 menuSimulacion.setControlador(c);
                 c.setVista(menuSimulacion);
+
+                MainFrameCliente vistaCliente = new MainFrameCliente();
+                vistaCliente.setPanel();
+                ControladorCliente controlador = new ControladorCliente(empresa,vistaCliente);
+                vistaCliente.setControlador(controlador);
+
+               /* 
                 
-                  MainFrameCliente vistaCliente = new MainFrameCliente();
-                  vistaCliente.setPanel();
-                  ControladorCliente controlador = new ControladorCliente(empresa,vistaCliente);
-                  vistaCliente.setControlador(controlador);
-        
+                try {
+                	empresa.addVehiculo(vehFact.getVehiculo("moto","AA345AA"));
+                	Vehiculo v1 = empresa.getVehiculo("AA345AA");
+        		}
+                catch(ExceptionVehiculo e)
+        		{
+        			System.out.println("\nError:" +e.getMessage());
+        		}
+                
+                Serializacion.serializarVehiculoBinario( v1 , "vehiculo.ser");
+                Vehiculo vehiculoDeserializado = Serializacion.deserializarVehiculoBinario("vehiculo.ser");
+
+                */  
+                  
         
 	}
 
