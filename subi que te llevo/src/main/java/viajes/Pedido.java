@@ -91,7 +91,7 @@ public class Pedido implements Cloneable {
      * Realiza una copia superficial del objeto Pedido.<br>
      * @return Una copia superficial del objeto Pedido.
      */
-    public Object clone() {
+    public Object clone() throws CloneNotSupportedException {
         Pedido clonado = null;
         try {
             clonado = (Pedido) super.clone();

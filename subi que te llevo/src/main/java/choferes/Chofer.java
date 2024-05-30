@@ -2,10 +2,12 @@ package choferes;
 
 import java.time.LocalDateTime;
 
+import vehiculos.Vehiculo;
+
 /**
  * Clase abstracta que representa a un Chofer.
  */
-public abstract class Chofer {
+public abstract class Chofer implements Cloneable {
     protected String dni;
     protected String nombre;
     protected int puntos;
@@ -155,6 +157,23 @@ public abstract class Chofer {
 				"\nPuntos: " + puntos + 
 				"\nOcupado: " + ocupado + "]";
 	}
-    
+
+	/**
+	 * Clona profundamente de forma forzada segun lo especificado.<br>
+	 */
+	public Chofer clone() throws CloneNotSupportedException {  
+		Chofer clonado = null;
+		try {
+			clonado = (Chofer) super.clone();			//CONSULTAR SI ES NECESARIO ESTO
+			clonado.dni = (String) this.dni;            //tamb se puede hacer clonado.nombre = new String(this.nombre); 
+			clonado.nombre = (String) this.nombre;      //pero no me gusta el new, ya no entiendo nada!
+		}
+		catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+
+		return clonado;
+	}
+
     
 }

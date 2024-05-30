@@ -71,5 +71,16 @@ public class ChoferContratado extends Chofer{
 	    assert gananciaViaje >= 0 : "La ganancia por viaje no puede ser negativa.";
 		ChoferContratado.gananciaViaje = gananciaViaje;
 	}
+	
+	public ChoferContratado clone() {
+        try {
+        	//En este caso para mi ya es innecesario, hereda clone de Choferes
+            ChoferContratado clonado = (ChoferContratado) super.clone();
+            return clonado;
+        } catch (CloneNotSupportedException e) {
+        	//Nunca va a entrar
+            throw new RuntimeException("Clone not supported", e);
+        }
+    }
     
 }

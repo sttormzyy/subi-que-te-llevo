@@ -228,17 +228,17 @@ public abstract class ViajeAbstracto implements IViaje {
 	}
 
 	/**
-	 * Clona superficialmente los atributos de tipo objeto con los que un viaje mantiene 
-	 * relacion de agregacion (Vehiculo, Chofer) y profundamente aquellos que mantienen una 
-	 * relacion de composicion (Pedido)<br>
+	 * Clona profundamente de forma forzada segun lo especificado<br>
 	 * @return Una copia de este objeto.
 	 */
-    public Object clone()
+	public Object clone()
     {
     	ViajeAbstracto clonado = null;
     	try {
-		    clonado = (ViajeAbstracto) super.clone();
-		    clonado.pedido = (Pedido)this.pedido.clone();
+            clonado = (ViajeAbstracto) super.clone();
+            clonado.chofer = (Chofer) this.chofer.clone();
+            clonado.vehiculo = (Vehiculo) this.vehiculo.clone();
+            clonado.pedido = (Pedido) this.pedido.clone();
 		} 
     	catch (CloneNotSupportedException e) {
 			e.printStackTrace();

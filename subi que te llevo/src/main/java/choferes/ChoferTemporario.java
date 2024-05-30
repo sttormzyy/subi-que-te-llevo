@@ -156,4 +156,15 @@ public class ChoferTemporario  extends Asalariado{
 		ChoferTemporario.cantidadViajesParaPlus = cantidadViajesParaPlus;
 	}
     
+	public ChoferTemporario clone() {
+        try {
+        	//En este caso para mi ya es innecesario, hereda clone de Choferes
+            ChoferTemporario clonado = (ChoferTemporario) super.clone();
+            return clonado;
+        } 
+        catch (CloneNotSupportedException e) {
+        	//Nunca va a entrar
+        	throw new RuntimeException("Clone not supported", e);
+        }
+    }
 }

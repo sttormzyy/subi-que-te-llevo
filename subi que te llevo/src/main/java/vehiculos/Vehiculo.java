@@ -7,7 +7,7 @@ import viajes.Pedido;
  * La clase abstracta Vehiculo representa un tipo generico de vehiculo que se puede utilizar en los viajes.
  * Es una clase base para las subclases concretas de vehiculos como Auto, Combi y Moto.
  */
-public abstract class Vehiculo
+public abstract class Vehiculo implements Cloneable
 {
 	protected String patente;
 	protected int cantMaxPas;
@@ -198,5 +198,17 @@ public abstract class Vehiculo
 		
 		return "\\nPATENTE: "+this.patente+"\n TIPO: "+this.getClass().getName()+"\nCANT PASAJEROS MAX:"+this.cantMaxPas+"\nPET FRIENDLY:"+petfriendly+"\n EQUIPAJE:"+equipaje;
 	}
-	
+
+	public Vehiculo clone() throws CloneNotSupportedException {
+		Vehiculo clonado = null;
+		try {
+			clonado = (Vehiculo) super.clone();
+			clonado.patente = new String(this.patente);    //CHEQUEAR, se supone que no esta bien usar new pero cast esta mal
+		}
+		catch (CloneNotSupportedException e) {
+			 e.printStackTrace();
+		}
+		
+		return clonado;
+	}
 }
