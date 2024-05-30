@@ -76,6 +76,7 @@ public abstract class Usuario implements Cloneable, Serializable{
 		this.contrasena = contrasena;
 	}
 
+        @Override
 	public Usuario clone() {
         try {
             return (Usuario) super.clone();

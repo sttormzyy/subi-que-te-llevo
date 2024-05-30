@@ -232,10 +232,10 @@ public class ChoferPermanente extends Asalariado{
 		this.cantidadHijos = cantidadHijos;
 	}
 	
+        @Override
 	public ChoferPermanente clone() {
         try {
             ChoferPermanente clonado = (ChoferPermanente) super.clone();
-            clonado.cantidadHijos = this.cantidadHijos;
             clonado.fechaIngreso = LocalDateTime.of(this.fechaIngreso.toLocalDate(), this.fechaIngreso.toLocalTime());
             return clonado;
         } 

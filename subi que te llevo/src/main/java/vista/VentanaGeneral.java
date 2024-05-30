@@ -5,6 +5,7 @@
 package vista;
 
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -13,13 +14,15 @@ import javax.swing.ImageIcon;
 public class VentanaGeneral extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaGeneral
+     * Creates new form NewJFrame1
      */
     public VentanaGeneral() {
         initComponents();
-        this.setTitle("Subi que te llevo - Simulacion");
-        this.setLocationRelativeTo(null);
-        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
+        panelTitulos.setSize(400,100);
+       // textGeneral.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+       this.setTitle("Subi que te llevo - Simulacion");
+       this.setLocationRelativeTo(null);
+       this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
     }
 
     /**
@@ -31,98 +34,105 @@ public class VentanaGeneral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        panelTitulos = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        panelTextos = new javax.swing.JPanel();
+        scrollPanelGeneral = new javax.swing.JScrollPane();
+        textGeneral = new javax.swing.JTextArea();
+        scrollPanelChofer = new javax.swing.JScrollPane();
+        textChofer = new javax.swing.JTextArea();
+        scrollPanelCliente = new javax.swing.JScrollPane();
+        textCliente = new javax.swing.JTextArea();
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(195, 168, 227));
+        setMinimumSize(new java.awt.Dimension(620, 378));
 
-        jPanel1.setBackground(new java.awt.Color(195, 168, 227));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jPanel1.setLayout(new java.awt.GridLayout(1, 3, 10, 0));
+        panelTitulos.setBackground(new java.awt.Color(22, 14, 37));
+        panelTitulos.setPreferredSize(new java.awt.Dimension(720, 50));
+        panelTitulos.setLayout(new java.awt.GridLayout(1, 3));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1);
-
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setFocusable(false);
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jPanel1.add(jScrollPane3);
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setFocusable(false);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jPanel1.add(jScrollPane2);
-
-        jPanel2.setBackground(new java.awt.Color(199, 179, 211));
-
-        jLabel2.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Palatino Linotype", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VENTANA GENERAL");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        panelTitulos.add(jLabel2);
 
-        jLabel1.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 3, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("VENTANA CHOFER");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        panelTitulos.add(jLabel1);
 
-        jLabel3.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Palatino Linotype", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("VENTANA CLIENTE");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel3.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        panelTitulos.add(jLabel3);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
-                .addGap(118, 118, 118)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(35, 35, 35))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(0, 0, 0))
-        );
+        getContentPane().add(panelTitulos, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        panelTextos.setBackground(new java.awt.Color(122, 110, 137));
+        panelTextos.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
+        panelTextos.setMinimumSize(new java.awt.Dimension(720, 228));
+        panelTextos.setLayout(new java.awt.GridLayout(1, 3, 10, 0));
+
+        scrollPanelGeneral.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        scrollPanelGeneral.setPreferredSize(new java.awt.Dimension(234, 290));
+
+        textGeneral.setEditable(false);
+        textGeneral.setBackground(new java.awt.Color(234, 234, 234));
+        textGeneral.setColumns(20);
+        textGeneral.setRows(5);
+        textGeneral.setFocusable(false);
+        scrollPanelGeneral.setViewportView(textGeneral);
+
+        panelTextos.add(scrollPanelGeneral);
+
+        scrollPanelChofer.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        textChofer.setEditable(false);
+        textChofer.setBackground(new java.awt.Color(234, 234, 234));
+        textChofer.setColumns(20);
+        textChofer.setRows(5);
+        textChofer.setFocusable(false);
+        textChofer.setPreferredSize(new java.awt.Dimension(232, 290));
+        scrollPanelChofer.setViewportView(textChofer);
+
+        panelTextos.add(scrollPanelChofer);
+
+        scrollPanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        textCliente.setEditable(false);
+        textCliente.setBackground(new java.awt.Color(234, 234, 234));
+        textCliente.setColumns(20);
+        textCliente.setRows(5);
+        textCliente.setFocusable(false);
+        textCliente.setPreferredSize(new java.awt.Dimension(232, 290));
+        scrollPanelCliente.setViewportView(textCliente);
+
+        panelTextos.add(scrollPanelCliente);
+
+        getContentPane().add(panelTextos, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,6 +163,7 @@ public class VentanaGeneral extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaGeneral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -166,13 +177,14 @@ public class VentanaGeneral extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel panelTextos;
+    private javax.swing.JPanel panelTitulos;
+    private javax.swing.JScrollPane scrollPanelChofer;
+    private javax.swing.JScrollPane scrollPanelCliente;
+    private javax.swing.JScrollPane scrollPanelGeneral;
+    private javax.swing.JTextArea textChofer;
+    private javax.swing.JTextArea textCliente;
+    private javax.swing.JTextArea textGeneral;
     // End of variables declaration//GEN-END:variables
 }

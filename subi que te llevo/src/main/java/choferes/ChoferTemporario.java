@@ -10,8 +10,8 @@ import viajes.IViaje;
  * Clase que representa a un chofer temporario.
  */
 public class ChoferTemporario  extends Asalariado{
-	private static double sueldoBasico=2000;
-	private static int cantidadViajesParaPlus = 40;
+    private static double sueldoBasico=2000;
+    private static int cantidadViajesParaPlus = 40;
     private static double plusXCantidadViajes = 10;       
     private static double aportes;						
 

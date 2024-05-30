@@ -55,6 +55,7 @@ public class DialogCliente extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(231, 216, 248));
         jPanel1.setLayout(null);
 
+        label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label.setText("jLabel1");
         jPanel1.add(label);
@@ -74,7 +75,7 @@ public class DialogCliente extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

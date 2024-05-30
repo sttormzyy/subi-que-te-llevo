@@ -72,6 +72,7 @@ public class ChoferContratado extends Chofer{
 		ChoferContratado.gananciaViaje = gananciaViaje;
 	}
 	
+        @Override
 	public ChoferContratado clone() {
         try {
         	//En este caso para mi ya es innecesario, hereda clone de Choferes

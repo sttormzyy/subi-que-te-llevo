@@ -54,8 +54,6 @@ public class Cliente extends Usuario{
 	
 	public Cliente clone() {
         Cliente cloned = (Cliente) super.clone();
-        // No es necesario clonar atributos primitivos 
-        ///pero Leonel quiere clonacion profunda a toda costa
         return cloned;
     }
 }

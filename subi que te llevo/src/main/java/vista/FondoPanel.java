@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author Usuario
  */
-public class FondoPanel extends JPanel {
+public  class FondoPanel extends JPanel {
      private Image imagen;
      private String ruta;
     
