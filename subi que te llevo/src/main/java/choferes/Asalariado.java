@@ -17,8 +17,14 @@ public abstract class Asalariado extends Chofer {
      * @param nombre El nombre del chofer.
      */
     protected Asalariado(String dni, String nombre) {
-        super(dni, nombre); 
+    	super(dni, nombre); 
     }
+
+    public Asalariado(String dni, String nombre, int puntos, Boolean ocupado) {
+    	super(dni, nombre, puntos, ocupado);
+    }
+
+
 
 // Metodos abstractos
     

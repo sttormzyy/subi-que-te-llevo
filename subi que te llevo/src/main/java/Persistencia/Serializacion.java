@@ -1,4 +1,4 @@
-package sistema;
+package Persistencia;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -18,7 +18,7 @@ import usuarios.Cliente;
 import vehiculos.Vehiculo;
 import viajes.IViaje;
 
-public class Serializacion {
+public class Serializacion { //DE MOMENTO NO BORRAR
 
 	/*TEORIA IMPORTANTE!
 	 * 

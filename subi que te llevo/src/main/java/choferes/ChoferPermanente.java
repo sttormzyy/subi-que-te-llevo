@@ -31,6 +31,13 @@ public class ChoferPermanente extends Asalariado{
 		this.fechaIngreso = fechaIngreso;
 	}
 
+	public ChoferPermanente(String dni, String nombre, int puntos, Boolean ocupado, int cantidadHijos, LocalDateTime fechaIngreso) {
+		super(dni, nombre, puntos, ocupado);
+		this.cantidadHijos = cantidadHijos;
+		this.fechaIngreso = fechaIngreso;
+	}
+
+
 // Metodos
 	
     /**

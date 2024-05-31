@@ -21,9 +21,16 @@ public abstract class Chofer implements Cloneable, Serializable  {
      * @param nombre El nombre del Chofer.
      */
     protected Chofer(String dni, String nombre) {
-        assert dni != null && nombre != null : "El DNI y el nombre no pueden ser nulos.";
-        this.dni = dni;
-        this.nombre = nombre;
+    	assert dni != null && nombre != null : "El DNI y el nombre no pueden ser nulos.";
+    	this.dni = dni;
+    	this.nombre = nombre;
+    }
+
+    public Chofer(String dni, String nombre, int puntos, Boolean ocupado) {
+    	this.dni = dni;
+    	this.nombre = nombre;
+    	this.puntos = puntos;
+    	this.ocupado = ocupado;
     }
 
 // Metodos abstractos
@@ -158,14 +165,14 @@ public abstract class Chofer implements Cloneable, Serializable  {
 	}
 
 	/**
-	 * Clona profundamente de forma forzada segun lo especificado.<br>
-	 */
-	public Chofer clone() throws CloneNotSupportedException {  
+     * Realiza una copia superficial del objeto Pedido.<br>
+     * @return Una copia superficial del objeto Pedido.
+     */
+	public Chofer clone() throws CloneNotSupportedException 
+	{  
 		Chofer clonado = null;
 		try {
-			clonado = (Chofer) super.clone();			//CONSULTAR SI ES NECESARIO ESTO
-			clonado.dni = (String) this.dni;            //tamb se puede hacer clonado.nombre = new String(this.nombre); 
-			clonado.nombre = (String) this.nombre;      //pero no me gusta el new, ya no entiendo nada!
+			clonado = (Chofer) super.clone();
 		}
 		catch (CloneNotSupportedException e) {
 			e.printStackTrace();

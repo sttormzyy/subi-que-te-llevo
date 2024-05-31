@@ -17,14 +17,18 @@ public class ChoferContratado extends Chofer{
      * Constructor de la clase ChoferContratado.<br>
 	 * <b>PRE:</b> Los parámetros dni y nombre no pueden ser nulos.<br>
 	 * <b>POST:</b> Se crea un nuevo objeto ChoferContratado con el DNI y nombre especificados.<br>
-     * @param dni El DNI del chofer contratado.
-     * @param nombre El nombre del chofer contratado.
-     */
-    public ChoferContratado(String dni, String nombre) {
-    	super(dni, nombre);
-    }
+	 * @param dni El DNI del chofer contratado.
+	 * @param nombre El nombre del chofer contratado.
+	 */
+	public ChoferContratado(String dni, String nombre) {
+		super(dni, nombre);
+	}
 	
-// Metodos
+	public ChoferContratado(String dni, String nombre, int puntos, boolean ocupado) {
+		super(dni, nombre, puntos, ocupado);
+	}
+
+	// Metodos
     
     /**
      * Obtiene el sueldo del chofer contratado para el mes especificado.<br>

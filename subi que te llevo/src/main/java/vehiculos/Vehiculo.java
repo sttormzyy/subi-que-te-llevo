@@ -198,12 +198,16 @@ public abstract class Vehiculo implements Cloneable, Serializable{
 		
 		return "\\nPATENTE: "+this.patente+"\n TIPO: "+this.getClass().getName()+"\nCANT PASAJEROS MAX:"+this.cantMaxPas+"\nPET FRIENDLY:"+petfriendly+"\n EQUIPAJE:"+equipaje;
 	}
-
-	public Vehiculo clone() throws CloneNotSupportedException {
+	
+	/**
+     * Realiza una copia superficial del objeto Pedido.<br>
+     * @return Una copia superficial del objeto Pedido.
+     */
+	public Vehiculo clone() throws CloneNotSupportedException 
+	{
 		Vehiculo clonado = null;
 		try {
 			clonado = (Vehiculo) super.clone();
-			clonado.patente = new String(this.patente);    //CHEQUEAR, se supone que no esta bien usar new pero cast esta mal
 		}
 		catch (CloneNotSupportedException e) {
 			 e.printStackTrace();
