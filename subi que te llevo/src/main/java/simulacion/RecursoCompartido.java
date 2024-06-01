@@ -52,11 +52,17 @@ public class RecursoCompartido extends Observable{
             evento = new EventoSimulacion("solicito viaje y espera",cliente,null,null,TipoEvento.CLIENTE);         
         }
         catch(ExceptionVehiculoDisp e){
-            evento = new EventoSimulacion("realizo pedido pero no habia auto disponible",cliente,null,null,TipoEvento.CLIENTE);
+            evento = new EventoSimulacion("realizo pedido pero no habia auto que cumpla las especificaciones",cliente,null,null,TipoEvento.CLIENTE);
+            setChanged();
+            notifyObservers(evento);
+            notifyAll();
             throw  e;
         }
         catch(ExceptionPedido e){
-           evento = new EventoSimulacion("realizo pedido pero fue rechazado",cliente,null,null,TipoEvento.CLIENTE);
+           evento = new EventoSimulacion("realizo pedido pero fue rechazado "+e.getMessage().toLowerCase(),cliente,null,null,TipoEvento.CLIENTE);
+           setChanged();
+           notifyObservers(evento);
+           notifyAll();
            throw  e;
         } catch (ExceptionUsuario ex) {
             
@@ -68,37 +74,52 @@ public class RecursoCompartido extends Observable{
     
     public synchronized void asignarVehiculo()
     {
-        System.out.println("ASIGNAR AUTO \n");
        IViaje viajeSolicitado = getViajeSolicitado();
+       boolean pudoAsignar;
        
        while(viajeSolicitado == null && simulacionIsActiva())
        {
            try {
+               evento = new EventoSimulacion("El sistema intento asignar auto pero no hay viajes solicitados",null,null,null,TipoEvento.SISTEMA);
+               setChanged();
+                notifyObservers(evento);
                wait();
+              
                viajeSolicitado = getViajeSolicitado();
                        } catch (InterruptedException ex) {
                Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
            }
        }
-       System.out.println("ASIGNANDO \n");
-       if(viajeSolicitado != null)
-       {
+      
+     
         if(simulacionIsActiva())
-            {
-               empresa.asignarVehiculo(viajeSolicitado);
-            evento = new EventoSimulacion("El sistema asignó "+viajeSolicitado.getVehiculo().getTipo()+" al viaje del cliente " + evento.getCliente().getNombreUsuario(), 
+        {
+               while(!empresa.asignarVehiculo(viajeSolicitado))
+               {
+                   evento = new EventoSimulacion("El sistema intento asignar vehiculo al viaje del cliente " + viajeSolicitado.getCliente().getNombreUsuario()+" pero no encontro uno libre, sigue en espera", 
                                            null, null, null, TipoEvento.SISTEMA);
-         }else
+                   setChanged();
+                   notifyObservers(evento);
+                   notifyAll();
+                   viajeSolicitado = getViajeSolicitado();
+                   try {
+                       wait();
+                   } catch (InterruptedException ex) {
+                       Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               }
+                 evento = new EventoSimulacion("El sistema asignó "+viajeSolicitado.getVehiculo().getTipo()+" al viaje del cliente " + viajeSolicitado.getCliente().getNombreUsuario(), 
+                                           null, null, null, TipoEvento.SISTEMA);
+        }else
             evento = new EventoSimulacion("El sistema se apaga",null,null,null,TipoEvento.SISTEMA);
+        
         setChanged();
         notifyObservers(evento);
         notifyAll();
-       }
     }
     
     public synchronized void tomarViaje(Chofer chofer)
     {
-        System.out.println("TOMAR VIAJE \n");
         while(!hayViajeConVehiculo() && simulacionIsActiva())
         {
             try {
@@ -127,7 +148,6 @@ public class RecursoCompartido extends Observable{
     
     public synchronized void pagarViaje(Cliente cliente)
     {
-        System.out.println("PAGAR VIAJE \n");
         while(!viajeIniciado(cliente) &&  simulacionIsActiva())
         {
             try {
@@ -138,7 +158,7 @@ public class RecursoCompartido extends Observable{
         }
         
 
-        if(viajeIniciado(cliente))
+        if(simulacionVive)
         {
             try {
                  empresa.pagarViaje(cliente);
@@ -149,8 +169,10 @@ public class RecursoCompartido extends Observable{
                     Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
              }
         }else
+            if(cantChoferes==0)
                evento = new EventoSimulacion("cancela el viaje porque no hay choferes disponibles",cliente,null,null,TipoEvento.CLIENTE);
-        
+            else
+               evento = new EventoSimulacion("se cayo la app",cliente,null,null,TipoEvento.CLIENTE); 
       
         setChanged();
         notifyObservers(evento);
@@ -161,7 +183,6 @@ public class RecursoCompartido extends Observable{
     
     public synchronized void finalizarViaje(Chofer chofer)
     {
-        System.out.println("FINALIZAR VIAJE \n");
         
         while(!viajePago(chofer) && simulacionIsActiva())
             try {
@@ -174,10 +195,11 @@ public class RecursoCompartido extends Observable{
             empresa.finalizarViaje(chofer);
             evento = new EventoSimulacion("finalizo el viaje y devolvio el vehiculo",null,chofer,null,TipoEvento.CHOFER);
         } catch (ExceptionChofer ex) {
-            Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
+         
         } catch (ExceptionChoferSinViajesPagos ex) {
-            Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
+         
         }
+        
         setChanged();
         notifyObservers(evento);
         notifyAll();
@@ -199,13 +221,14 @@ public class RecursoCompartido extends Observable{
     
     private IViaje getViajeSolicitado()
     {
-        int i=0;
+        int i=viajeLista.size()-1;
         
-        while(i<viajeLista.size() && viajeLista.get(i).getEstado() != EstadosViajes.SOLICITADO){
-            i++;
+        while(i>=0 && viajeLista.get(i).getEstado() != EstadosViajes.SOLICITADO){
+            System.out.println(viajeLista.get(i).getEstado());
+            i--;
         }        
         
-        if(i<viajeLista.size())
+        if(i>=0)
             return viajeLista.get(i);
         else
             return null;      
@@ -215,7 +238,7 @@ public class RecursoCompartido extends Observable{
     {
         int i=0;
         
-        while(viajeLista.get(i).getChofer() != chofer){
+        while(viajeLista.get(i).getChofer() != chofer || viajeLista.get(i).getEstado() != EstadosViajes.INICIADO){
             i++;
         }        
         return viajeLista.get(i);   
@@ -235,13 +258,13 @@ public class RecursoCompartido extends Observable{
     
     
     private boolean viajePago(Chofer chofer){
-        int i= 0;
+        int i = viajeLista.size()-1;
         
-        while((i<viajeLista.size()) && !(viajeLista.get(i).getChofer() == chofer && viajeLista.get(i).getEstado() == EstadosViajes.PAGO)){
-            i++;
-        }        
-        
-        return i<viajeLista.size();
+        while((i>=0) && !(viajeLista.get(i).getChofer() == chofer && viajeLista.get(i).getEstado() == EstadosViajes.PAGO)){
+            i--;
+        }
+  
+        return i>=0;
     }
     
     public void matarSimulacion()
@@ -249,13 +272,12 @@ public class RecursoCompartido extends Observable{
         this.simulacionVive = false;
     }
     
-    public void subChofer()
+    public synchronized void subChofer()
     {
-        System.out.println("SUb chofer");
         cantChoferes--;
     }
     
-    public void subCliente()
+    public synchronized void subCliente()
     {
         cantClientes--;
     }

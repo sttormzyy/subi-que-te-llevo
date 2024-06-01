@@ -269,8 +269,8 @@ public class Prueba {
                 empresa.addVehiculo(vehFact.getVehiculo("auto","BB345BB"));
 		empresa.addVehiculo(vehFact.getVehiculo("auto","CC345CC"));
 		empresa.addVehiculo(vehFact.getVehiculo("combi","DD345DD"));
-		empresa.addVehiculo(vehFact.getVehiculo("combi","AA345AA"));
-                empresa.addVehiculo(vehFact.getVehiculo("combi","AA325AA"));
+		//empresa.addVehiculo(vehFact.getVehiculo("combi","AA345AA"));
+              //  empresa.addVehiculo(vehFact.getVehiculo("combi","AA325AA"));
             } catch (ExceptionVehiculo ex) {
                 Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -318,18 +318,18 @@ public class Prueba {
                 
                 ChoferThread ch1 = new ChoferThread(chof1,rc,4);
                 ChoferThread ch2 = new ChoferThread(chof2,rc,4);
-                ChoferThread ch3 = new ChoferThread( chof3,rc,4);
+                ChoferThread ch3 = new ChoferThread(chof3,rc,4);
                 ChoferThread ch4 = new ChoferThread(chof4,rc,4);
                 
                 SistemaThread sistema = new SistemaThread(rc);
                 
-              
-                c1.start();
-                c3.start();
-                ch3.start();
+                
                 sistema.start();
+               // c1.start();
+               // c3.start();
                 c2.start();
               //c4.start();
+               // ch3.start();
                 ch2.start();
                 
 

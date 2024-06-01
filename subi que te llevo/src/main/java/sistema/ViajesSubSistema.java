@@ -126,7 +126,7 @@ public class ViajesSubSistema {
 			throw new ExceptionTipodeServicio();
 		}	
 		
-		if(!hayVehiculo(mascota,equipaje,cantPax))
+		if(!cumplePrestaciones(mascota,equipaje,cantPax))
 			throw new ExceptionVehiculoDisp();
 				
 		return new Pedido(cliente, fecha, zona, mascota, equipaje, cantPax);
@@ -142,7 +142,7 @@ public class ViajesSubSistema {
      * @param cantPax  La cantidad de pasajeros en el pedido.
      * @return true si hay un vehiculo disponible, false de lo contrario.
      */
-    private boolean hayVehiculo(int mascota, int equipaje, int cantPax)
+    private boolean cumplePrestaciones(int mascota, int equipaje, int cantPax)
     {
         assert mascota >= 0 : "Fallo pre: La cantidad de mascotas debe ser no negativa.";
         assert equipaje >= 0 : "Fallo pre: La cantidad de equipaje debe ser no negativa.";
@@ -156,7 +156,7 @@ public class ViajesSubSistema {
     	while(i<vehiculoLista.size() && !autoDisp)
     	{
     		vehiculo = vehiculoLista.get(i);
-    		if(!vehiculo.isOcupado() && vehiculo.getMascota()>=mascota && vehiculo.getEquipaje()>=equipaje && vehiculo.getCantMaxPas()>=cantPax)
+    		if(vehiculo.getMascota()>=mascota && vehiculo.getEquipaje()>=equipaje && vehiculo.getCantMaxPas()>=cantPax)
     			autoDisp = true;
     		i++;
     	}
@@ -262,7 +262,7 @@ public class ViajesSubSistema {
      * Busca el vehículo con mayor prioridad para el pedido especificado, cuyos atributos estan todos validados.<br>
      * <b>PRE: </b> El viaje es distinto de null<br>
      */
-	public void asignarVehiculo(IViaje viaje) 
+	public boolean asignarVehiculo(IViaje viaje) 
 	{
 		assert viaje!=null:"Fallo pre: El pedido no puede ser null";
 		
@@ -284,9 +284,14 @@ public class ViajesSubSistema {
 				}
 		}
 
+                if(vehiculoElegido != null)
+                {
 		viaje.setVehiculo(vehiculoElegido);
                 viaje.setEstado(EstadosViajes.CONVEHICULO);
                 vehiculoElegido.setOcupado(true);
+                return true;
+                }else
+                    return false;
              
 	}
 

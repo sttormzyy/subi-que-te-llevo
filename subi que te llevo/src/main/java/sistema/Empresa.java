@@ -686,8 +686,8 @@ public class Empresa {
         
  // SIMULACION AGREGADOS
         
- public void asignarVehiculo(IViaje viaje){
-     viajesSubSistema.asignarVehiculo(viaje);
+ public boolean asignarVehiculo(IViaje viaje){
+     return viajesSubSistema.asignarVehiculo(viaje);
  }
  
  public void asignarChofer(Chofer chofer){
