@@ -19,6 +19,7 @@ import excepciones.viaje.ExceptionChoferDisp;
 import excepciones.viaje.ExceptionChoferSinViajesPagos;
 import java.awt.event.ActionListener;
 import static java.lang.Thread.sleep;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sistema.Empresa;
@@ -27,7 +28,14 @@ import usuarios.Cliente;
 import vehiculos.VehiculoFactory;
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import simulacion.ChoferThread;
+import simulacion.ClienteThread;
+import simulacion.OjoGeneral;
+import simulacion.RecursoCompartido;
+import simulacion.SistemaThread;
+import viajes.IViaje;
 import vista.VentanaCliente;
+import vista.VentanaGeneral;
 import vista.VentanaSimulacion;
 
 public class Prueba {
@@ -256,13 +264,75 @@ public class Prueba {
                 vistaCliente.setPanel();
                 ControladorCliente controlador = new ControladorCliente(empresa,vistaCliente);
                 vistaCliente.setControlador(controlador);*/
-                
-                
-                VentanaCliente vista= new VentanaCliente();
-                ControladorCliente c= new ControladorCliente(empresa,vista);
-                vista.setActionListener(c);
+            try {                
+                empresa.addVehiculo(vehFact.getVehiculo("moto","AF345AA"));
+                empresa.addVehiculo(vehFact.getVehiculo("auto","BB345BB"));
+		empresa.addVehiculo(vehFact.getVehiculo("auto","CC345CC"));
+		empresa.addVehiculo(vehFact.getVehiculo("combi","DD345DD"));
+		empresa.addVehiculo(vehFact.getVehiculo("combi","AA345AA"));
+                empresa.addVehiculo(vehFact.getVehiculo("combi","AA325AA"));
+            } catch (ExceptionVehiculo ex) {
+                Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               
+            Cliente cl1 = new Cliente("Gian","Gian","322");
+            Cliente cl2  = new Cliente("Juan","Juan","322");
+            Cliente cl3 =new Cliente("Martin","Martin","322");
+             Cliente cl4 = new Cliente("Lucas","Lucas","322");
+                     
+                     
+            try {
+                empresa.addCliente(cl1);
+                empresa.addCliente(cl2);
+                empresa.addCliente(cl3);
+                empresa.addCliente(cl4);
+            } catch (ExceptionUsuario ex) {
+                Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+   
+            Chofer chof1 = new ChoferContratado("44555777","Carlos");
+	    Chofer chof2 = new ChoferPermanente("11999888","Pitagoras",20,LocalDateTime.now());
+	    Chofer chof3 = new ChoferTemporario("33777444","Einstein");
+	    Chofer chof4 = new ChoferPermanente("99888777","Raul",20,LocalDateTime.now());
+            
+            try {
+                empresa.addChofer(chof1);
+                empresa.addChofer(chof2);
+                empresa.addChofer(chof3);
+                empresa.addChofer(chof4);
+            } catch (ExceptionChofer ex) {
+                Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
- 
+                VentanaGeneral vista = new VentanaGeneral();
+                vista.setVisible(true);
+                RecursoCompartido rc = new RecursoCompartido(empresa,2,2);
+                
+                OjoGeneral ojo = new OjoGeneral(vista, rc);
+                rc.addObserver(ojo);
+                
+                ClienteThread c1 = new ClienteThread(cl1, rc,5);
+                ClienteThread c2 = new ClienteThread(cl2, rc,10);
+                ClienteThread c3 = new ClienteThread(cl3, rc,3);
+                ClienteThread c4 = new ClienteThread(cl4, rc,1);
+                
+                ChoferThread ch1 = new ChoferThread(chof1,rc,4);
+                ChoferThread ch2 = new ChoferThread(chof2,rc,4);
+                ChoferThread ch3 = new ChoferThread( chof3,rc,4);
+                ChoferThread ch4 = new ChoferThread(chof4,rc,4);
+                
+                SistemaThread sistema = new SistemaThread(rc);
+                
+              
+                c1.start();
+                c3.start();
+                ch3.start();
+                sistema.start();
+                c2.start();
+              //c4.start();
+                ch2.start();
+                
+
 	}
 
        

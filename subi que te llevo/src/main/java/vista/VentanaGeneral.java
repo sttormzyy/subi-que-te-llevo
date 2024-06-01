@@ -6,6 +6,7 @@ package vista;
 
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -25,6 +26,23 @@ public class VentanaGeneral extends javax.swing.JFrame {
        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
     }
 
+    
+    public void appendGeneral(String mensaje) {
+            textGeneral.append(mensaje);
+    }
+
+    
+     public void appendChofer(String mensaje)
+    {
+        this.textChofer.append(mensaje);
+    }
+     
+     public void appendCliente(String mensaje)
+    {
+        System.out.println("\n mensaje cliente\n");
+        this.textCliente.append(mensaje);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,10 +114,8 @@ public class VentanaGeneral extends javax.swing.JFrame {
         panelTextos.setMinimumSize(new java.awt.Dimension(720, 228));
         panelTextos.setLayout(new java.awt.GridLayout(1, 3, 10, 0));
 
-        scrollPanelGeneral.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         scrollPanelGeneral.setPreferredSize(new java.awt.Dimension(234, 290));
 
-        textGeneral.setEditable(false);
         textGeneral.setBackground(new java.awt.Color(234, 234, 234));
         textGeneral.setColumns(20);
         textGeneral.setRows(5);
@@ -110,7 +126,6 @@ public class VentanaGeneral extends javax.swing.JFrame {
 
         scrollPanelChofer.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        textChofer.setEditable(false);
         textChofer.setBackground(new java.awt.Color(234, 234, 234));
         textChofer.setColumns(20);
         textChofer.setRows(5);
@@ -122,7 +137,6 @@ public class VentanaGeneral extends javax.swing.JFrame {
 
         scrollPanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        textCliente.setEditable(false);
         textCliente.setBackground(new java.awt.Color(234, 234, 234));
         textCliente.setColumns(20);
         textCliente.setRows(5);

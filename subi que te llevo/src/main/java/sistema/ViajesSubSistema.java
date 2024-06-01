@@ -117,10 +117,10 @@ public class ViajesSubSistema {
 		{
 			throw new ExceptionCantPax(cantPax);
 		} 
-		if (fecha.isBefore(LocalDateTime.now())) 
+		/*if (fecha.compareTo(LocalDateTime.now())<0) 
 		{
 			throw new ExceptionFecha(fecha);
-		} 
+		} */
 		if ( (!tipoServicio.equalsIgnoreCase("mensajeria") && !tipoServicio.equalsIgnoreCase("transporte")) ) 
 		{
 			throw new ExceptionTipodeServicio();
@@ -203,10 +203,9 @@ public class ViajesSubSistema {
      * @param fecha        La fecha del viaje.
      * @throws ExceptionPedido    Si algun parametro del pedido es invalido.
      * @throws ExceptionVehiculoDisp Si no hay vehiculos disponibles para el pedido.
-     * @throws ExceptionChoferDisp   Si no hay Choferes disponibles para conducir el viaje.
      */
     public void pedirViaje(Cliente cliente, String zona, int mascota, String tipoServicio, int equipaje, int cantPax, double distancia, LocalDateTime fecha)
-    		throws ExceptionPedido,ExceptionVehiculoDisp,ExceptionChoferDisp
+    		throws ExceptionPedido,ExceptionVehiculoDisp
     {
         assert cliente != null : "Fallo pre: El cliente no puede ser nulo";
         assert zona != null && !zona.isEmpty() : "Fallo pre: La zona no puede ser nula o vacía";
@@ -217,10 +216,14 @@ public class ViajesSubSistema {
     	
     	Pedido pedidoNuevo;
 
+        
     	pedidoNuevo = this.generarPedido(cliente, zona, mascota, tipoServicio, equipaje, cantPax, fecha);
-    	this.generarViaje(pedidoNuevo, distancia);	 
+    	IViaje viajeNuevo = viajeFactory.getViaje(pedidoNuevo, distancia);
+	addViaje(viajeNuevo);	 
     }
     
+   
+
     /**
      * Genera un viaje a partir de un pedido y una distancia especificados (Random).<br>
      * <b>PRE:</b> El parametro pedido no deber ser nulo, y distancia debe ser mayor a cero.<br>
@@ -228,6 +231,7 @@ public class ViajesSubSistema {
      * @param distancia  La distancia del viaje.
      * @throws ExceptionChoferDisp Si no hay Choferes disponibles para conducir el viaje.
      */
+    /*ESTA ES LA VERSION VIEJA
     private void generarViaje(Pedido pedido, double distancia) throws ExceptionChoferDisp
 	{
     	assert pedido!=null:"Fallo pre: El pedido no puede ser null";
@@ -249,16 +253,18 @@ public class ViajesSubSistema {
 		viajeNuevo.setVehiculo(vehiculo);
 		viajeNuevo.setEstado(EstadosViajes.INICIADO);   
 	}
+    */
+    
+    
+    
     
     /**
      * Busca el vehículo con mayor prioridad para el pedido especificado, cuyos atributos estan todos validados.<br>
-     * <b>PRE: </b> El pedido es distinto de null<br>
-     * @param pedido El pedido del viaje.
-     * @return El vehiculo a ser utilizado para el pedido, o null si no hay vehículos disponibles.
+     * <b>PRE: </b> El viaje es distinto de null<br>
      */
-	private Vehiculo buscarVehiculo(Pedido pedido) 
+	public void asignarVehiculo(IViaje viaje) 
 	{
-		assert pedido!=null:"Fallo pre: El pedido no puede ser null";
+		assert viaje!=null:"Fallo pre: El pedido no puede ser null";
 		
 		Vehiculo vehiculoElegido = null;
 		Vehiculo vehiculo = null;
@@ -268,7 +274,7 @@ public class ViajesSubSistema {
 		for (int i = 0; i < vehiculoLista.size(); i++)
 		{
 			vehiculo = vehiculoLista.get(i);
-			prioridad = vehiculo.getPrioridad(pedido);
+			prioridad = vehiculo.getPrioridad(viaje.getPedido());
 			
 			if(prioridad != null && !vehiculo.isOcupado())
 				if (Integer.compare(maxPrioridad, prioridad) < 0) 
@@ -278,27 +284,27 @@ public class ViajesSubSistema {
 				}
 		}
 
-		return vehiculoElegido;
+		viaje.setVehiculo(vehiculoElegido);
+                viaje.setEstado(EstadosViajes.CONVEHICULO);
+                vehiculoElegido.setOcupado(true);
+             
 	}
 
 	/**
-     * Busca un Chofer disponible para conducir un viaje en estado solicitado que ya tiene vehiculo asignado.<br>
-     * @return El Chofer disponible.
-     * @throws ExceptionChoferDisp Si no hay Choferes disponibles para conducir el viaje.
+     * Busca un Chofer disponible para conducir un viaje en estado solicitado que ya tie
+     * @param chofer vehiculo asignado.<br>
      */
-	private Chofer buscarChofer() throws ExceptionChoferDisp
+	public void asignarChofer(Chofer chofer)
 	{
 		int i = 0;
-		ArrayList<Chofer> choferLista = empresa.getChoferLista();
 		
-		while(i < choferLista.size() && choferLista.get(i).isOcupado()) {
-			i++;
-		}
-
-		if (i == choferLista.size())
-			throw new ExceptionChoferDisp();
-		else
-			return choferLista.get(i);
+                while(viajeLista.get(i).getEstado() != EstadosViajes.CONVEHICULO)
+                    i++;
+                
+                viajeLista.get(i).setChofer(chofer);
+                viajeLista.get(i).setEstado(EstadosViajes.INICIADO);
+                chofer.setOcupado(true);
+                
 	}
 	
 	/**
@@ -388,12 +394,6 @@ public class ViajesSubSistema {
 			
 			chofer.setOcupado(false);
 			vehiculo.setOcupado(false);
-			
-			choferLista.remove(chofer);
-			choferLista.add(chofer);
-			
-			vehiculoLista.remove(vehiculo);
-			vehiculoLista.add(vehiculo);
 			
 			assert viaje.getEstado()==EstadosViajes.FINALIZADO:"Fallo post: El viaje no fue finalizado";
 		}

@@ -33,6 +33,11 @@ public abstract class ViajeDecorator implements IViaje{
         return encapsulado;
     }
 	
+    
+    public Pedido getPedido(){
+            return this.encapsulado.getPedido();
+    }
+    
     /**
      * Obtiene el costo del Viaje encapsulado por este Decorador.<br>
      * @return El costo del Viaje encapsulado.

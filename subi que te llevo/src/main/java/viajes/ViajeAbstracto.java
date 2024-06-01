@@ -54,6 +54,9 @@ public abstract class ViajeAbstracto implements IViaje {
          this.vehiculo = vehiculo;
      }
 	
+     public Pedido getPedido(){
+         return this.pedido;
+     }
      /**
       * Obtiene el costo del Viaje.
       * @return El costo del Viaje.

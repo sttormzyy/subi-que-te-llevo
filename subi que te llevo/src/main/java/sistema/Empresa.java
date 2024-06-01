@@ -531,24 +531,35 @@ public class Empresa {
      * @throws ExceptionUsuario       Si el cliente que solicita el viaje no existe.
      */
 	public void pedirViaje(String nombreUsuario,String zona, int mascota, String tipoServicio, int equipaje, int cantPax, double distancia, LocalDateTime fecha)
-			throws ExceptionPedido,ExceptionVehiculoDisp,ExceptionChoferDisp,ExceptionUsuario
+			throws ExceptionPedido,ExceptionVehiculoDisp,ExceptionUsuario
 	{
 		Cliente cliente = getCliente(nombreUsuario);
 		
 		if(cantPax<0 || distancia <0)
+                {System.out.println("dist"); 
 			if(cantPax<0)
 				throw new IllegalArgumentException("La cantidad de pasajeros debe ser positiva");
 			else
 				throw new IllegalArgumentException("La distancia debe ser positiva");
+                     
+                }
 		
-		if(fecha == null)
+		if(fecha == null){
+                    System.out.println("fecha");
 			throw new ExceptionFecha();
+                }
+   
 		
-		if(nombreUsuario == null)
+		if(nombreUsuario == null){
+                    System.out.println("usuariop");
 			throw new ExceptionUsuarioNull();
+                }
 		
 		if(zona == null)
+                {
+                    System.out.println("zona");
 			throw new ExceptionZona(zona);
+                }
 		
 		viajesSubSistema.pedirViaje(cliente,zona, mascota, tipoServicio, equipaje, cantPax, distancia, fecha);	
 	}
@@ -556,16 +567,13 @@ public class Empresa {
 	/**
      * Realiza el pago de un viaje en el Subsistema de Viajes.<br>
      * <b>POST: </b> Si el cliente tenia un viaje iniciado, este cambia su estado a pago<br>
-     * @param nombreUsuario  El nombre de usuario del cliente que realiza el pago.
+     * @param cliente
      * @throws ExceptionSinViajeaPagar Si no hay ningun viaje pendiente de pago para el cliente.
      * @throws ExceptionUsuario        Si el cliente que realiza el pago no existe.
      */
-	public void pagarViaje(String nombreUsuario) throws ExceptionSinViajeaPagar,ExceptionUsuario
+	public void pagarViaje(Cliente cliente) throws ExceptionSinViajeaPagar,ExceptionUsuario
 	{
-		Cliente cliente = getCliente(nombreUsuario);
-
 		viajesSubSistema.pagarViaje(cliente);
-
 	}
 	
 	/**
@@ -593,19 +601,11 @@ public class Empresa {
      * @throws ExceptionChofer               Si el chofer no existe.
      * @throws ExceptionChoferSinViajesPagos Si el chofer no tiene viajes pagados para finalizar.
      */
-    public void finalizarViaje(String dni) throws ExceptionChofer, ExceptionChoferSinViajesPagos
+    public void finalizarViaje(Chofer chofer) throws ExceptionChofer, ExceptionChoferSinViajesPagos
     {
-    	if(dni!=null && dni!="")
-    	{
-    		Chofer chofer = buscarChofer(dni);
-
-    		if(chofer!=null)
-    			viajesSubSistema.finalizarViaje(chofer);
-    		else
-    			throw new  ExceptionChoferInexistente(dni);
-    	}
-    	else
-    		throw new ExceptionChoferNull();
+    
+    	viajesSubSistema.finalizarViaje(chofer);
+   
 	}
     
 // FIN funcionalidades subsistema de viajes
@@ -681,4 +681,16 @@ public class Empresa {
     {
         return  viajesSubSistema.invarianteListaViajes();
     }
+        
+        
+        
+ // SIMULACION AGREGADOS
+        
+ public void asignarVehiculo(IViaje viaje){
+     viajesSubSistema.asignarVehiculo(viaje);
+ }
+ 
+ public void asignarChofer(Chofer chofer){
+     viajesSubSistema.asignarChofer(chofer);
+ }
 }

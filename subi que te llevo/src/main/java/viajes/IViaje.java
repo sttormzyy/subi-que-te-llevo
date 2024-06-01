@@ -16,9 +16,10 @@ public interface IViaje extends Comparable<IViaje>, Cloneable, Serializable {
      * Vector de Estados que representa los posibles estados de un viaje.
      */
     static enum EstadosViajes {
-        SOLICITADO, INICIADO, PAGO, FINALIZADO
+        SOLICITADO, CONVEHICULO, INICIADO, PAGO, FINALIZADO
     };
 
+    Pedido getPedido();
     /**
      * Obtiene el costo del Viaje.<br>
      * @return El costo del Viaje.

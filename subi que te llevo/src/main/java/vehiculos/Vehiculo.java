@@ -198,6 +198,11 @@ public abstract class Vehiculo implements Cloneable, Serializable{
 		
 		return "\\nPATENTE: "+this.patente+"\n TIPO: "+this.getClass().getName()+"\nCANT PASAJEROS MAX:"+this.cantMaxPas+"\nPET FRIENDLY:"+petfriendly+"\n EQUIPAJE:"+equipaje;
 	}
+        
+        public String getTipo()
+        {
+            return getClass().getSimpleName().toLowerCase();
+        }
 	
 	/**
      * Realiza una copia superficial del objeto Pedido.<br>
