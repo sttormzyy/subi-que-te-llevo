@@ -61,6 +61,7 @@ vehiculos\Combi.class
 sistema\Empresa.class
 vista\DialogFinViaje.class
 vehiculos\Vehiculo.class
+controladores\ControladorSimulacion.class
 choferes\Chofer.class
 vista\DialogFinViaje$1.class
 excepciones\pedido\ExceptionVehiculoDisp.class

@@ -347,25 +347,15 @@ public class ViajesSubSistema {
 		IViaje viajePendiente;
 		int i = viajeLista.size() - 1;
 		
-		while (i >= 0 && viajeLista.get(i).getCliente() != cliente)
-		{
-			i--;
-		}
-
-		if (i == -1) 
-		{
-			return null;
-		} 
-		
-		viajePendiente = viajeLista.get(i);
-		if (viajePendiente.getEstado() != estado)
-		{
-		  return null;
-			
-		} else {
-			return viajePendiente;
-		}
-
+		while(i>=0 && !(viajeLista.get(i).getCliente() == cliente && viajeLista.get(i).getEstado() == EstadosViajes.INICIADO))
+                    i--;
+                 
+                
+                if(i>=0)
+                {
+                    return viajeLista.get(i);
+                }else
+                    return null;
 	}
 	
 	/**
@@ -384,14 +374,14 @@ public class ViajesSubSistema {
 		Vehiculo vehiculo = null;		
 		IViaje viaje = null;
 		
-		int i=0;
+		int i=viajeLista.size()-1;
 		
-		while(i<viajeLista.size() && viajeLista.get(i).getChofer() != chofer)
+		while(i>=0 && !(viajeLista.get(i).getChofer() == chofer && viajeLista.get(i).getEstado() == EstadosViajes.PAGO))
 		{
-			i++;
+			i--;
 		}
 		
-		if(i<viajeLista.size())
+		if(i>=0)
 		{
 			viaje = viajeLista.get(i);
 			viaje.setEstado(EstadosViajes.FINALIZADO);

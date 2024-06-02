@@ -22,6 +22,10 @@ public void run()
 {
     while(rc.simulacionIsActiva())
     {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+        }
         rc.asignarVehiculo();
     }
 }

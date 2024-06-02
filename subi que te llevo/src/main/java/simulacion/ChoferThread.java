@@ -5,6 +5,8 @@
 package simulacion;
 
 import choferes.Chofer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,9 +31,16 @@ public void run()
     while(rc.simulacionIsActiva() && cantViajes>0)
     {
         rc.tomarViaje(chofer);
+    
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ChoferThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
         rc.finalizarViaje(chofer);
         cantViajes--;
     }
-    rc.subChofer();
+    rc.subChofer(chofer);
 }
 }

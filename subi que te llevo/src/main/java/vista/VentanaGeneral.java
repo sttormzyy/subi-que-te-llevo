@@ -4,6 +4,7 @@
  */
 package vista;
 
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
@@ -26,6 +27,10 @@ public class VentanaGeneral extends javax.swing.JFrame {
        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
     }
 
+    public void setActionListener(ActionListener c)
+    {
+        this.botonFinalizarSimulacion.addActionListener(c);
+    }
     
     public void appendGeneral(String mensaje) {
             textGeneral.append(mensaje);
@@ -52,7 +57,6 @@ public class VentanaGeneral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
         panelTitulos = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,17 +68,7 @@ public class VentanaGeneral extends javax.swing.JFrame {
         textChofer = new javax.swing.JTextArea();
         scrollPanelCliente = new javax.swing.JScrollPane();
         textCliente = new javax.swing.JTextArea();
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        botonFinalizarSimulacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(620, 378));
@@ -124,8 +118,6 @@ public class VentanaGeneral extends javax.swing.JFrame {
 
         panelTextos.add(scrollPanelGeneral);
 
-        scrollPanelChofer.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
         textChofer.setBackground(new java.awt.Color(234, 234, 234));
         textChofer.setColumns(20);
         textChofer.setRows(5);
@@ -134,8 +126,6 @@ public class VentanaGeneral extends javax.swing.JFrame {
         scrollPanelChofer.setViewportView(textChofer);
 
         panelTextos.add(scrollPanelChofer);
-
-        scrollPanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         textCliente.setBackground(new java.awt.Color(234, 234, 234));
         textCliente.setColumns(20);
@@ -147,6 +137,12 @@ public class VentanaGeneral extends javax.swing.JFrame {
         panelTextos.add(scrollPanelCliente);
 
         getContentPane().add(panelTextos, java.awt.BorderLayout.CENTER);
+
+        botonFinalizarSimulacion.setBackground(new java.awt.Color(22, 14, 37));
+        botonFinalizarSimulacion.setForeground(new java.awt.Color(255, 255, 255));
+        botonFinalizarSimulacion.setText("MATAR SIMULACION");
+        botonFinalizarSimulacion.setActionCommand("FINALIZAR SIMULACION");
+        getContentPane().add(botonFinalizarSimulacion, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,10 +184,10 @@ public class VentanaGeneral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonFinalizarSimulacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelTextos;
     private javax.swing.JPanel panelTitulos;
     private javax.swing.JScrollPane scrollPanelChofer;

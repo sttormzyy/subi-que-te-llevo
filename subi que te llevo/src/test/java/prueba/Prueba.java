@@ -9,6 +9,7 @@ import choferes.ChoferTemporario;
 import controladores.Controlador;
 import controladores.ControladorCliente;
 import controladores.ControladorMenuSimulacion;
+import controladores.ControladorSimulacion;
 import excepciones.chofer.ExceptionChofer;
 import excepciones.pedido.ExceptionFecha;
 import excepciones.pedido.ExceptionPedido;
@@ -306,30 +307,34 @@ public class Prueba {
 
                 VentanaGeneral vista = new VentanaGeneral();
                 vista.setVisible(true);
-                RecursoCompartido rc = new RecursoCompartido(empresa,2,2);
+                
+                RecursoCompartido rc = new RecursoCompartido(empresa,2,1);
+                
+                ControladorSimulacion controladorSimulacion = new ControladorSimulacion(vista, rc);
+                vista.setActionListener(controladorSimulacion );
                 
                 OjoGeneral ojo = new OjoGeneral(vista, rc);
                 rc.addObserver(ojo);
                 
                 ClienteThread c1 = new ClienteThread(cl1, rc,5);
-                ClienteThread c2 = new ClienteThread(cl2, rc,10);
+                ClienteThread c2 = new ClienteThread(cl2, rc,5);
                 ClienteThread c3 = new ClienteThread(cl3, rc,3);
                 ClienteThread c4 = new ClienteThread(cl4, rc,1);
                 
                 ChoferThread ch1 = new ChoferThread(chof1,rc,4);
-                ChoferThread ch2 = new ChoferThread(chof2,rc,4);
-                ChoferThread ch3 = new ChoferThread(chof3,rc,4);
+                ChoferThread ch2 = new ChoferThread(chof2,rc,2);
+                ChoferThread ch3 = new ChoferThread(chof3,rc,2);
                 ChoferThread ch4 = new ChoferThread(chof4,rc,4);
                 
                 SistemaThread sistema = new SistemaThread(rc);
                 
                 
                 sistema.start();
-               // c1.start();
-               // c3.start();
+                c1.start();
+                c3.start();
                 c2.start();
-              //c4.start();
-               // ch3.start();
+                c4.start();
+                ch3.start();
                 ch2.start();
                 
 

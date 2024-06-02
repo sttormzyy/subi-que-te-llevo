@@ -6,6 +6,7 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import simulacion.RecursoCompartido;
 import vista.VentanaSimulacion;
 
 /**
@@ -13,12 +14,20 @@ import vista.VentanaSimulacion;
  * @author Usuario
  */
 public class ControladorMenuSimulacion implements Controlador,ActionListener{
-private VentanaSimulacion vista;
-    @Override
+    private VentanaSimulacion vista;
+
+   public ControladorMenuSimulacion(VentanaSimulacion vista)
+   {
+       this.vista = vista;
+   }
+
+
+   @Override
     public void actionPerformed(ActionEvent evento) {
-        if(evento.getActionCommand().equals("COMENZAR"))
+        
+        switch(evento.getActionCommand())
         {
-            vista.setVisible(false);
+            case "COMENZAR": vista.setVisible(false);
         }
     }
     

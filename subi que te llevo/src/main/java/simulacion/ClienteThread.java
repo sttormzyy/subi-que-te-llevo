@@ -34,18 +34,19 @@ public class ClienteThread extends Thread{
        {
           
           try{
-                //Thread.sleep(random.nextInt(3000));
+                Thread.sleep(2000);
                 rc.pedirViaje(cliente, zonas[random.nextInt(4)], random.nextInt(0,1), "Transporte", 
                          random.nextInt(0,1),random.nextInt(1,10),random.nextDouble(2000), LocalDateTime.now());
-                
-         
+
+                Thread.sleep(2000);
                 rc.pagarViaje(cliente);
                 this.cantViajes--;
+                
           }catch(Exception e){
               System.out.println(e.getClass().getName());
             }
         }
-       rc.subCliente();
+       rc.subCliente(cliente);
    }
     
 }
