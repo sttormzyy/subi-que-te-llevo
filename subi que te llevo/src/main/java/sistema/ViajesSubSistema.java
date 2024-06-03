@@ -286,10 +286,10 @@ public class ViajesSubSistema {
 
                 if(vehiculoElegido != null)
                 {
-		viaje.setVehiculo(vehiculoElegido);
-                viaje.setEstado(EstadosViajes.CONVEHICULO);
-                vehiculoElegido.setOcupado(true);
-                return true;
+                    viaje.setVehiculo(vehiculoElegido);
+                    viaje.setEstado(EstadosViajes.CONVEHICULO);
+                    vehiculoElegido.setOcupado(true);
+                    return true;
                 }else
                     return false;
              

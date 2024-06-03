@@ -44,10 +44,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ScrollPaneInfoViaje" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <Component id="ScrollPaneInfoViaje" min="-2" pref="270" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
@@ -121,7 +121,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Component id="labelInfoViaje" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="158" max="32767" attributes="0"/>
               <Component id="labelFormulario" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
           </Group>

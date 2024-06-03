@@ -23,6 +23,8 @@ simulacion\ChoferThread.class
 vista\VentanaGeneral$1.class
 vista\DialogFinViaje$2.class
 excepciones\chofer\ExceptionChoferNull.class
+simulacion\OjoChoferSimulacion$1.class
+simulacion\OjoClienteSimulacion$1.class
 simulacion\ClienteThread.class
 simulacion\Util.class
 vehiculos\Auto.class
@@ -30,6 +32,7 @@ controladores\ControladorMenuSimulacion.class
 excepciones\pedido\ExceptionCantPax.class
 simulacion\OjoAbstracto.class
 Persistencia\DTO_Moto.class
+simulacion\OjoClienteSimulacion.class
 Persistencia\Serializacion.class
 vista\PanelApp.class
 Persistencia\DTO_AdmSubSistema.class
@@ -80,6 +83,7 @@ viajes\ZonaSinAsfaltar.class
 vista\VentanaSimulacion.class
 vista\VentanaSimulacion$1.class
 excepciones\usuario\package-info.class
+simulacion\OjoChoferSimulacion.class
 viajes\Equipaje.class
 Persistencia\PersistenciaXML.class
 Persistencia\DTO_Auto.class

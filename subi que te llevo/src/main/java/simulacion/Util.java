@@ -29,7 +29,7 @@ public class Util {
 
     public static void espera()
     {
-	Util.espera(r.nextInt(3000));
+	Util.espera(1000+r.nextInt(6000));
     }
  
 }

@@ -28,8 +28,8 @@ public class ControladorCliente implements Controlador,ActionListener {
     private VentanaCliente  vista;
     private String nombreUsuario;
     private String nombre;
-    private String contrasena;
-
+    private String contrasena;          
+            
     public ControladorCliente(RecursoCompartido recursoCompartido, VentanaCliente vista)
     {
         super();
@@ -103,13 +103,14 @@ public class ControladorCliente implements Controlador,ActionListener {
                     String zona = vista.getZona();
                     Cliente cliente = recursoCompartido.getCliente(nombreUsuario);
                     
+           
                     try {
                         recursoCompartido.pedirViaje(cliente,zona,mascota,"transporte",equipaje,cantPax,distancia,fecha);
                     } catch (ExceptionPedido ex) {
                         vista.setDialogPedidoRechazado(ex.getMessage());
                     }
                 } catch (ExceptionUsuario ex) {
-                    Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                 
                 }
             }
             

@@ -34,7 +34,6 @@ public void run()
         rc.tomarViaje(chofer);
     
         Util.espera();
- 
         rc.finalizarViaje(chofer);
         cantViajes--;
     }

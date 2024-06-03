@@ -32,7 +32,9 @@ import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import simulacion.ChoferThread;
 import simulacion.ClienteThread;
+import simulacion.OjoChoferSimulacion;
 import simulacion.OjoCliente;
+import simulacion.OjoClienteSimulacion;
 import simulacion.OjoGeneral;
 import simulacion.RecursoCompartido;
 import simulacion.SistemaThread;
@@ -317,7 +319,9 @@ public class Prueba {
         vistaGeneral.setActionListener(controladorSimulacion);
 
         OjoGeneral ojoGeneral = new OjoGeneral(vistaGeneral, rc);
-
+        OjoClienteSimulacion ojoClienteSimulacion = new OjoClienteSimulacion(vistaGeneral, rc, cl3);
+        OjoChoferSimulacion ojoChoferSimulacion = new OjoChoferSimulacion(vistaGeneral, rc, chof3);
+        
         VentanaCliente vistaCliente = new VentanaCliente();
         ControladorCliente controladorCliente = new ControladorCliente(rc, vistaCliente);
         vistaCliente.setActionListener(controladorCliente);
@@ -337,14 +341,16 @@ public class Prueba {
         SistemaThread sistema = new SistemaThread(rc);
 
         sistema.start();
-        //c1.start();
-       // c3.start();
+        c1.start();
+        c3.start();
         ch3.start();
         ch2.start();
-       // c2.start();
+        c2.start();
         c4.start();
         ch4.start();
         ch1.start();
+        
+
     }
 
 }
