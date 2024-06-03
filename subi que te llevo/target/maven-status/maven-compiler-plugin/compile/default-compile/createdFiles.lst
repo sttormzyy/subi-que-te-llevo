@@ -24,9 +24,9 @@ vista\VentanaGeneral$1.class
 vista\DialogFinViaje$2.class
 excepciones\chofer\ExceptionChoferNull.class
 simulacion\ClienteThread.class
+simulacion\Util.class
 vehiculos\Auto.class
 controladores\ControladorMenuSimulacion.class
-vista\IVentanaCliente.class
 excepciones\pedido\ExceptionCantPax.class
 simulacion\OjoAbstracto.class
 Persistencia\DTO_Moto.class
@@ -43,7 +43,9 @@ choferes\Asalariado.class
 simulacion\EventoSimulacion$TipoEvento.class
 viajes\IViaje$EstadosViajes.class
 Persistencia\DTO_ChoferPermanente.class
+simulacion\OjoCliente$1.class
 vehiculos\Moto.class
+vista\VentanaClienteAbstract.class
 vista\PanelLogin.class
 Persistencia\DTO_Vehiculo.class
 Persistencia\DTO_Administrador.class
@@ -71,6 +73,7 @@ vista\FondoPanel.class
 excepciones\chofer\ExceptionDNIrepetido.class
 choferes\ChoferTemporario.class
 simulacion\RecursoCompartido.class
+simulacion\OjoCliente.class
 excepciones\chofer\package-info.class
 vehiculos\VehiculoFactory.class
 viajes\ZonaSinAsfaltar.class

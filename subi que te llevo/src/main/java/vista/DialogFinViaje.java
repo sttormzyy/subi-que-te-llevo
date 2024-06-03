@@ -11,12 +11,13 @@ import javax.swing.ImageIcon;
  * @author Usuario
  */
 public class DialogFinViaje extends javax.swing.JDialog {
-
+   VentanaCliente vista;
     /**
      * Creates new form DialogFinViaje
      */
     public DialogFinViaje(java.awt.Frame parent,String titulo, boolean modal) {
         super(parent, titulo, modal);
+        this.vista = (VentanaCliente) parent;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
@@ -34,7 +35,7 @@ public class DialogFinViaje extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botonContinuar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonAbandonar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(231, 216, 248));
@@ -53,11 +54,11 @@ public class DialogFinViaje extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("abandonar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonAbandonar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonAbandonar.setText("abandonar");
+        botonAbandonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonAbandonarActionPerformed(evt);
             }
         });
 
@@ -73,7 +74,7 @@ public class DialogFinViaje extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addComponent(botonContinuar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(botonAbandonar)
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +85,7 @@ public class DialogFinViaje extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonContinuar)
-                    .addComponent(jButton2))
+                    .addComponent(botonAbandonar))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -104,11 +105,13 @@ public class DialogFinViaje extends javax.swing.JDialog {
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         dispose();
+        vista.disablePagar();
     }//GEN-LAST:event_botonContinuarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       //getParent.setLogin();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botonAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbandonarActionPerformed
+        dispose();
+        vista.setLogin();
+    }//GEN-LAST:event_botonAbandonarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,8 +120,8 @@ public class DialogFinViaje extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAbandonar;
     private javax.swing.JButton botonContinuar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

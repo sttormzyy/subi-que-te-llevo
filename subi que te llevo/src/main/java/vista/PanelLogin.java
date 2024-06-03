@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -13,7 +14,7 @@ import javax.swing.JButton;
  *
  * @author Usuario
  */
-public class PanelLogin extends javax.swing.JPanel implements IVentanaCliente{
+public class PanelLogin extends VentanaClienteAbstract{
 
     /**
      * Creates new form PanelLogin
@@ -131,4 +132,6 @@ public class PanelLogin extends javax.swing.JPanel implements IVentanaCliente{
     {
         return botonRegistro;
     }
+
+ 
 }

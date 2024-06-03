@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -14,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author Usuario
  */
-public class PanelRegistro extends JPanel implements IVentanaCliente{
+public class PanelRegistro extends VentanaClienteAbstract{
 
     /**
      * Creates new form NewJPanel
@@ -24,13 +25,6 @@ public class PanelRegistro extends JPanel implements IVentanaCliente{
         initComponents();
     }
     
-@Override
-     public void paint(Graphics g){
-         Image imagen = new ImageIcon(getClass().getResource("/imagenes/fondo1violeta.jpg")).getImage();
-         g.drawImage(imagen, 0, 0, getWidth(), getHeight(),this);
-         setOpaque(false);
-         super.paint(g);
-     }
      
      public JButton getButtonRegistro()
     {
@@ -165,4 +159,6 @@ public class PanelRegistro extends JPanel implements IVentanaCliente{
     private javax.swing.JTextField textNombre;
     private javax.swing.JTextField textNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+   
 }

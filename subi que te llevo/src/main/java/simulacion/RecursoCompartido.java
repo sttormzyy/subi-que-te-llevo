@@ -105,7 +105,7 @@ public class RecursoCompartido extends Observable{
         while(!empresa.asignarVehiculo(viajeSolicitado) && simulacionIsActiva())
         {
             evento = new EventoSimulacion("El sistema intento asignar vehiculo al viaje del cliente " + viajeSolicitado.getCliente().getNombreUsuario()+" pero no encontro uno libre, sigue en espera", 
-                                           null, null, null, TipoEvento.SISTEMA);
+                                           viajeSolicitado.getCliente(), null, null, TipoEvento.SISTEMA);
             setChanged();
             notifyObservers(evento);
             notifyAll();
@@ -116,7 +116,7 @@ public class RecursoCompartido extends Observable{
         }
         if(simulacionIsActiva())
             evento = new EventoSimulacion("El sistema asignó "+viajeSolicitado.getVehiculo().getTipo()+" al viaje del cliente " + viajeSolicitado.getCliente().getNombreUsuario(), 
-                                           null, null, null, TipoEvento.SISTEMA);
+                                           viajeSolicitado.getCliente(), null, null, TipoEvento.SISTEMA);
         else
             evento = new EventoSimulacion("El sistema se apaga",null,null,null,TipoEvento.SISTEMA);
         
@@ -139,7 +139,7 @@ public class RecursoCompartido extends Observable{
             if(cantClientes>0)
             {
                  empresa.asignarChofer(chofer);
-                 evento =  new EventoSimulacion("tomo el viaje del cliente "+getViaje(chofer).getCliente().getNombreUsuario(),null,chofer,null,TipoEvento.CHOFER);
+                 evento =  new EventoSimulacion("tomo el viaje del cliente "+getViaje(chofer).getCliente().getNombreUsuario(),getViaje(chofer).getCliente(),chofer,null,TipoEvento.CHOFER);
             }else
                 evento =  new EventoSimulacion("no hay mas clientes se retira de la empresa",null,chofer,null,TipoEvento.CHOFER); 
         }
@@ -179,7 +179,7 @@ public class RecursoCompartido extends Observable{
             if(cantChoferes==0)
                evento = new EventoSimulacion("cancela el viaje porque no hay choferes disponibles",cliente,null,null,TipoEvento.CLIENTE);
             else
-               evento = new EventoSimulacion("se cayo la app, apaga el celular",cliente,null,null,TipoEvento.CLIENTE); 
+               evento = new EventoSimulacion("se le cayo la app, apaga el celular",cliente,null,null,TipoEvento.CLIENTE); 
       
         setChanged();
         notifyObservers(evento);
@@ -308,5 +308,23 @@ public class RecursoCompartido extends Observable{
     public boolean simulacionIsActiva()
     {
         return this.simulacionVive && this.cantChoferes>0 && this.cantClientes>0;
+    }
+    
+    
+    
+    public void addCliente(Cliente cliente)
+            throws ExceptionUsuario
+    {
+        
+            empresa.addCliente(cliente);
+       
+    }
+    
+    public Cliente getCliente(String nombreUsuario)
+            throws ExceptionUsuario
+    {
+        
+           return  empresa.getCliente(nombreUsuario);
+       
     }
 }

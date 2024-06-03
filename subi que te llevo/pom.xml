@@ -11,4 +11,13 @@
         <maven.compiler.target>22</maven.compiler.target>
     </properties> <!-- Asegúrate de que esta etiqueta esté presente -->
     <name>subi que te llevo</name>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+    </dependencies>
 </project>

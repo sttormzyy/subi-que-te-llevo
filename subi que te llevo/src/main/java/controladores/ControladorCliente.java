@@ -4,12 +4,15 @@
  */
 package controladores;
 
+import excepciones.pedido.ExceptionPedido;
 import excepciones.usuario.ExceptionUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import simulacion.RecursoCompartido;
 import sistema.Empresa;
 import usuarios.Cliente;
 import vista.VentanaCliente;
@@ -21,16 +24,16 @@ import vista.VentanaCliente;
  * @author Usuario
  */
 public class ControladorCliente implements Controlador,ActionListener {
-    private Empresa modelo;
+    private RecursoCompartido recursoCompartido;
     private VentanaCliente  vista;
     private String nombreUsuario;
     private String nombre;
     private String contrasena;
 
-    public ControladorCliente(Empresa modelo, VentanaCliente vista)
+    public ControladorCliente(RecursoCompartido recursoCompartido, VentanaCliente vista)
     {
         super();
-        this.modelo = modelo;
+        this.recursoCompartido = recursoCompartido;
         this.vista = vista;
     }
     
@@ -54,7 +57,7 @@ public class ControladorCliente implements Controlador,ActionListener {
                 {
                     
                     try {
-                        modelo.addCliente(new Cliente( nombreUsuario,nombre, contrasena));
+                        recursoCompartido.addCliente(new Cliente( nombreUsuario,nombre, contrasena));
                         vista.setDialogExito("Registro exitoso");
                         vista.setApp();
                     } catch (ExceptionUsuario ex) {
@@ -72,7 +75,7 @@ public class ControladorCliente implements Controlador,ActionListener {
                 if(validoParametrosSesion(nombreUsuario, contrasena))
                 {
                     try {
-                        if(modelo.getCliente(nombreUsuario)!= null)
+                        if(recursoCompartido.getCliente(nombreUsuario)!= null)
                         {
                             vista.setDialogExito("Inicio sesion exitoso");
                             vista.setApp();
@@ -87,6 +90,42 @@ public class ControladorCliente implements Controlador,ActionListener {
             }
             
             case "PAGAR" -> vista.setDialogFinViaje();
+            
+            case "PEDIR VIAJE" ->
+            {
+                System.out.println("PIDO VIAJE");
+                try {
+                    double distancia = vista.getDistancia();
+                    LocalDateTime fecha = vista.getFecha();
+                    int mascota = vista.getMascota();
+                    int equipaje = vista.getEquipaje();
+                    int cantPax = vista.getCantPax();
+                    String zona = vista.getZona();
+                    Cliente cliente = recursoCompartido.getCliente(nombreUsuario);
+                    
+                    try {
+                        recursoCompartido.pedirViaje(cliente,zona,mascota,"transporte",equipaje,cantPax,distancia,fecha);
+                    } catch (ExceptionPedido ex) {
+                        vista.setDialogPedidoRechazado(ex.getMessage());
+                    }
+                } catch (ExceptionUsuario ex) {
+                    Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            case "PAGAR VIAJE" ->
+            {
+                try {
+                    Cliente cliente = recursoCompartido.getCliente(nombreUsuario);
+                    
+                    recursoCompartido.pagarViaje(cliente);
+                    vista.setDialogFinViaje();
+                } catch (ExceptionUsuario ex) {
+                    
+                }
+            }
+
+
             
         }
     }

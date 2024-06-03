@@ -30,13 +30,10 @@ public void run()
 {
     while(rc.simulacionIsActiva() && cantViajes>0)
     {
+        Util.espera();
         rc.tomarViaje(chofer);
     
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ChoferThread.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Util.espera();
  
         rc.finalizarViaje(chofer);
         cantViajes--;

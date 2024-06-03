@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -22,7 +23,7 @@ public class VentanaCliente extends javax.swing.JFrame {
     private PanelRegistro panelRegistro = new PanelRegistro();
     private PanelApp panelApp = new PanelApp();
     private JPanel fondo = new JPanel();
-    private  IVentanaCliente currentVentana;
+    private VentanaClienteAbstract currentVentana;
 
     /**
      * Creates new form NewJFrame
@@ -78,19 +79,25 @@ public class VentanaCliente extends javax.swing.JFrame {
    
    public void setDialogError(String mensaje)
     {
-        DialogCliente dialog = new DialogCliente(null, true, "Error", mensaje);
+        DialogCliente dialog = new DialogCliente(this, true, "Error", mensaje);
         dialog.setVisible(true);
     }
     
     public void setDialogExito(String mensaje)
     {
-        DialogCliente dialog = new DialogCliente(null, true, "Exito", mensaje);
+        DialogCliente dialog = new DialogCliente(this, true, "Exito", mensaje);
         dialog.setVisible(true);
     }
     
     public void setDialogAdv(String mensaje)
     {
-        DialogCliente dialog = new DialogCliente(null, true, "Advertencia", mensaje);
+        DialogCliente dialog = new DialogCliente(this, true, "Advertencia", mensaje);
+        dialog.setVisible(true);
+    }
+    
+    public void setDialogPedidoRechazado(String mensaje)
+    {
+        DialogCliente dialog = new DialogCliente(this, true, "Advertencia", mensaje);
         dialog.setVisible(true);
     }
     
@@ -117,10 +124,55 @@ public class VentanaCliente extends javax.swing.JFrame {
     private void switchPanel(JPanel ventana) {
         getContentPane().removeAll();
         getContentPane().add(ventana);
-        currentVentana= (IVentanaCliente) ventana; 
+        currentVentana= (VentanaClienteAbstract) ventana; 
         revalidate();
         repaint();
     }
+    
+    
+    public String getZona()
+    {
+       return currentVentana.getZona();
+    }
+    
+    public LocalDateTime getFecha()
+    {
+       return currentVentana.getFecha(); 
+    }
+    
+    public int getMascota()
+    {
+       return currentVentana.getMascota();  
+    }
+    
+    public int getEquipaje()
+    {
+       return currentVentana.getEquipaje();
+    }
+    
+    public double getDistancia()
+    {
+       return currentVentana.getDistancia(); 
+    }
+    
+    public int getCantPax()
+    {
+       return currentVentana.getCantPax(); 
+    }
+    
+    public void appendDisplay(String mensaje) {
+            currentVentana.appendDisplay(mensaje);
+    }
+    
+  
+    public void enablePagar(){
+      currentVentana.enablePagar();
+    }
+    
+     public void disablePagar(){
+      currentVentana.disablePagar();
+    }
+    ;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
