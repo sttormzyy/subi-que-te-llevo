@@ -23,15 +23,17 @@ public class ChoferThread extends Thread{
     }
     
      
-@Override
-public void run()
-{
-    while(rc.simulacionIsActiva() && cantViajes>0)
+    @Override
+    public void run()
     {
-        rc.tomarViaje(chofer);
-        rc.finalizarViaje(chofer);
-        cantViajes--;
+        EventoSimulacion evento;
+        while(rc.simulacionIsActiva() && cantViajes>0)
+        {
+            rc.tomarViaje(chofer);
+            rc.finalizarViaje(chofer);
+            cantViajes--;
+        }
+        rc.subChofer();
+
     }
-    rc.subChofer();
-}
 }

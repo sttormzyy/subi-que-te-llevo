@@ -306,7 +306,7 @@ public class Prueba {
 
                 VentanaGeneral vista = new VentanaGeneral();
                 vista.setVisible(true);
-                RecursoCompartido rc = new RecursoCompartido(empresa,2,2);
+                RecursoCompartido rc = new RecursoCompartido(empresa,1,1);
                 
                 OjoGeneral ojo = new OjoGeneral(vista, rc);
                 rc.addObserver(ojo);

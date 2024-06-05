@@ -76,14 +76,15 @@ public abstract class Usuario implements Cloneable, Serializable{
 		this.contrasena = contrasena;
 	}
 
-        @Override
+	@Override
 	public Usuario clone() {
+		Usuario clonado = null;
         try {
-            return (Usuario) super.clone();
-        } 
+			clonado = (Usuario) super.clone();
+        }
         catch (CloneNotSupportedException e) {
         	// No salta nunca ya que estamos implementando Cloneable
-            throw new AssertionError(); 
         }
+		return clonado;
     }
 }

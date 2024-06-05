@@ -22,9 +22,9 @@ public class Serializacion { //DE MOMENTO NO BORRAR
 
 	/*TEORIA IMPORTANTE!
 	 * 
-	 * La serialización XML, es importante que las clases tengan un constructor predeterminado (DEBEN TENER UN VACIO si o si)
-	 * y que implementen correctamente el método clone(). Es una alternativa a la serialización binaria ya que 
-	 * no requiere que las clases implementen Serializable,
+	 * La serialización XML, es importante que las clases tengan un constructor predeterminado (DEBEN TENER UN VACIO si o si).
+	 * Es una alternativa a la serialización binaria ya que no requiere que las clases implementen Serializable
+	 *
 	 * 
 	 * Para la serialización binaria, es necesario que las clases implementen la interfaz Serializable.
 	 */

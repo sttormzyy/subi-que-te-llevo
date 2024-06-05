@@ -32,10 +32,12 @@ public class ViajesSubSistema {
      * Coleccion de viajes de la empresa
      */
     private ArrayList<IViaje> viajeLista = new ArrayList<IViaje>();
-    
-    
-    
-    /**
+
+	public void setViajeLista(ArrayList<IViaje> viajeLista) {
+		this.viajeLista = viajeLista;
+	}
+
+	/**
      * Obtiene la lista de viajes (viajeLista).<br>
      * <b>POST: </b> Se devuelve la lista de viajes.
      * @return La lista de viajes.
@@ -219,7 +221,7 @@ public class ViajesSubSistema {
         
     	pedidoNuevo = this.generarPedido(cliente, zona, mascota, tipoServicio, equipaje, cantPax, fecha);
     	IViaje viajeNuevo = viajeFactory.getViaje(pedidoNuevo, distancia);
-	addViaje(viajeNuevo);	 
+		addViaje(viajeNuevo);
     }
     
    
@@ -284,14 +286,15 @@ public class ViajesSubSistema {
 				}
 		}
 
-                if(vehiculoElegido != null)
-                {
-		viaje.setVehiculo(vehiculoElegido);
-                viaje.setEstado(EstadosViajes.CONVEHICULO);
-                vehiculoElegido.setOcupado(true);
-                return true;
-                }else
-                    return false;
+		if(vehiculoElegido != null)
+		{
+			viaje.setVehiculo(vehiculoElegido);
+			viaje.setEstado(EstadosViajes.CONVEHICULO);
+			vehiculoElegido.setOcupado(true);
+			return true;
+		}
+		else
+			return false;
              
 	}
 
@@ -301,14 +304,14 @@ public class ViajesSubSistema {
      */
 	public void asignarChofer(Chofer chofer)
 	{
-		int i = 0;
-		
-                while(viajeLista.get(i).getEstado() != EstadosViajes.CONVEHICULO)
-                    i++;
-                
-                viajeLista.get(i).setChofer(chofer);
-                viajeLista.get(i).setEstado(EstadosViajes.INICIADO);
-                chofer.setOcupado(true);
+		int i = viajeLista.size() - 1;
+
+		while(viajeLista.get(i).getEstado() != EstadosViajes.CONVEHICULO)
+			i--;
+
+		viajeLista.get(i).setChofer(chofer);
+		viajeLista.get(i).setEstado(EstadosViajes.INICIADO);
+		chofer.setOcupado(true);
                 
 	}
 	
@@ -384,11 +387,11 @@ public class ViajesSubSistema {
 		Vehiculo vehiculo = null;		
 		IViaje viaje = null;
 		
-		int i=0;
+		int i=viajeLista.size()-1;
 		
-		while(i<viajeLista.size() && viajeLista.get(i).getChofer() != chofer)
+		while(i>=0 && viajeLista.get(i).getChofer() != chofer)
 		{
-			i++;
+			i--;
 		}
 		
 		if(i<viajeLista.size())

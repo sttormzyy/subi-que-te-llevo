@@ -21,6 +21,7 @@ import excepciones.viaje.ExceptionChoferDisp;
 import excepciones.viaje.ExceptionChoferSinViajesPagos;
 import excepciones.viaje.ExceptionClienteSinViajesPagos;
 import excepciones.viaje.ExceptionSinViajeaPagar;
+import usuarios.Administrador;
 import usuarios.Cliente;
 import usuarios.Usuario;
 import vehiculos.Vehiculo;
@@ -32,15 +33,15 @@ import viajes.IViaje;
  */
 public class Empresa {
 	private static Empresa empresa;
-	private Usuario admin = null;
+	private Administrador admin = null;
 	/**
 	 * Atributo al cual Empresa delega las funcionalidades tipicas del administrador
 	 */
-	private static AdmSubSistema admSubSistema = new AdmSubSistema();
+	private AdmSubSistema admSubSistema = null;
 	/**
 	 * Atributo al cual Empresa delega las funcionalidades referidas al tratamiento de viajes y funcionalidades del cliente
 	 */
-	private static ViajesSubSistema viajesSubSistema = new ViajesSubSistema();
+	private ViajesSubSistema viajesSubSistema = null;
 	
 	private Empresa() {
 		
@@ -54,7 +55,10 @@ public class Empresa {
 	{
 		if (empresa == null) {
 			empresa = new Empresa();
+			empresa.viajesSubSistema = new ViajesSubSistema();
+			empresa.admSubSistema = new AdmSubSistema();
 		}
+
 		return empresa;
 	}
 
@@ -66,7 +70,7 @@ public class Empresa {
      * @param admin  El Administrador a agregar.
      * @throws ExceptionUsuario Si el Administrador ya ha sido definido anteriormente.
      */
-	public void addAdmin(Usuario admin) throws ExceptionUsuario
+	public void addAdmin(Administrador admin) throws ExceptionUsuario
 	{
 		if(admin!=null)
 		{
@@ -79,10 +83,11 @@ public class Empresa {
 	}
 
 	/**
-     * Obtiene el Administrador de la Empresa.<br>
-     * @return El Administrador de la Empresa.
-     */
-	public Usuario getAdmin()
+	 * Obtiene el Administrador de la Empresa.<br>
+	 *
+	 * @return El Administrador de la Empresa.
+	 */
+	public Administrador getAdmin()
 	{
 		return this.admin;
 	}
@@ -91,11 +96,23 @@ public class Empresa {
      * Obtiene el Subsistema de Administracion.<br>
      * @return El Subsistema de Administracion.
      */
-	public static AdmSubSistema getAdmSubSys() {
+	public AdmSubSistema getAdmSubSys() {
 		return admSubSistema;
 	}
-	
-//Altas:
+
+	public void setAdmSubSistema(AdmSubSistema admSubSistema) {
+		this.admSubSistema = admSubSistema;
+	}
+
+	public void setViajesSubSistema(ViajesSubSistema viajesSubSistema) {
+		this.viajesSubSistema = viajesSubSistema;
+	}
+
+	public ViajesSubSistema getViajesSubSistema() {
+		return viajesSubSistema;
+	}
+
+	//Altas:
 	
 	/**
      * Solicita al SubSistema Administrador agregar un chofer a la Empresa.<br>
@@ -593,11 +610,11 @@ public class Empresa {
 		else
 			throw new IllegalArgumentException("La calificacion no puede ser negativa ni mayor a 10");
 	}
-	
+
 	/**
      * Finaliza los viajes de un chofer en el Subsistema de Viajes.<br>
      * <b>POST: </b> Si el chofer tenia un viaje pago, este cambia su estado a finalizado y se liberan el chofer y el vehiculo asociados a ese viaje<br>
-     * @param dni  El DNI del chofer.
+     * @param chofer  una referencia al chofer.
      * @throws ExceptionChofer               Si el chofer no existe.
      * @throws ExceptionChoferSinViajesPagos Si el chofer no tiene viajes pagados para finalizar.
      */

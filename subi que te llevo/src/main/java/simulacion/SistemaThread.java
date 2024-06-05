@@ -17,15 +17,12 @@ public class SistemaThread extends Thread{
         this.rc = rc;
     }
     
-@Override
-public void run()
-{
-    while(rc.simulacionIsActiva())
+    @Override
+    public void run()
     {
-        rc.asignarVehiculo();
+        while(rc.simulacionIsActiva())
+        {
+            rc.asignarVehiculo();
+        }
     }
-}
-
-
-          
 }

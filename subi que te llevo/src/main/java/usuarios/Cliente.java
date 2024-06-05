@@ -53,7 +53,9 @@ public class Cliente extends Usuario{
 	}
 	
 	public Cliente clone() {
-        Cliente cloned = (Cliente) super.clone();
+
+		Cliente cloned = (Cliente) super.clone();
+
         return cloned;
     }
 }

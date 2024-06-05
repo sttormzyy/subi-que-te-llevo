@@ -15,11 +15,6 @@ import usuarios.Cliente;
 import vista.VentanaCliente;
 
 
-
-/**
- *
- * @author Usuario
- */
 public class ControladorCliente implements Controlador,ActionListener {
     private Empresa modelo;
     private VentanaCliente  vista;
@@ -91,14 +86,11 @@ public class ControladorCliente implements Controlador,ActionListener {
         }
     }
     
-private boolean validoParametrosRegistro(String nombre, String usuario, String contrasena)
-{
- return (nombre != null && !nombre.equals("") && usuario != null && !usuario.equals("") &&  contrasena != null && !contrasena.equals(""));
-}
+    private boolean validoParametrosRegistro(String nombre, String usuario, String contrasena) {
+        return (nombre != null && !nombre.equals("") && usuario != null && !usuario.equals("") &&  contrasena != null && !contrasena.equals(""));
+    }
 
-private boolean validoParametrosSesion(String usuario, String contrasena)
-{
- return (usuario !=null && !usuario.equals("") && contrasena !=null && !contrasena.equals(""));
+    private boolean validoParametrosSesion(String usuario, String contrasena) {
+        return (usuario !=null && !usuario.equals("") && contrasena !=null && !contrasena.equals(""));
+    }
 }
-}
-

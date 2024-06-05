@@ -35,7 +35,7 @@ public class ClienteThread extends Thread{
           
           try{
                 //Thread.sleep(random.nextInt(3000));
-                rc.pedirViaje(cliente, zonas[random.nextInt(4)], random.nextInt(0,1), "Transporte", 
+              rc.pedirViaje(cliente, zonas[random.nextInt(4)], random.nextInt(0,1), "Transporte",
                          random.nextInt(0,1),random.nextInt(1,10),random.nextDouble(2000), LocalDateTime.now());
                 
          

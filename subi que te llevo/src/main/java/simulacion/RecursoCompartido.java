@@ -14,6 +14,7 @@ import excepciones.viaje.ExceptionSinViajeaPagar;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import simulacion.EventoSimulacion.TipoEvento;
@@ -45,31 +46,35 @@ public class RecursoCompartido extends Observable{
     public synchronized void pedirViaje(Cliente cliente,String zona, int mascota, String tipoServicio, int equipaje, int cantPax, double distancia, LocalDateTime fecha)
             throws ExceptionPedido, ExceptionVehiculoDisp
     {
-       System.out.println("PEDIR VIAJE " + cliente.getNombreUsuario() + " " + zona + " " + mascota + " " + tipoServicio + " " + equipaje + " " + cantPax + " " + distancia + "\n");
+        System.out.println("PEDIR VIAJE " + cliente.getNombreUsuario() + " " + zona + " " + mascota + " " + tipoServicio + " " + equipaje + " " + cantPax + " " + distancia + "\n");
+        System.out.println("Cant Choferes: " + cantChoferes);
+        if (cantChoferes != 0) {
+            try{
+                empresa.pedirViaje(cliente.getNombreUsuario(), zona, mascota, tipoServicio, equipaje, cantPax, distancia, fecha);
+                evento = new EventoSimulacion("solicito viaje y espera",cliente,null,null,TipoEvento.CLIENTE);
+            }
+            catch(ExceptionVehiculoDisp e){
+                evento = new EventoSimulacion("realizo pedido pero no habia auto que cumpla las especificaciones",cliente,null,null,TipoEvento.CLIENTE);
+                setChanged();
+                notifyObservers(evento);
+                notifyAll();
+                throw  e;
+            }
+            catch(ExceptionPedido e){
+                evento = new EventoSimulacion("realizo pedido pero fue rechazado "+e.getMessage().toLowerCase(),cliente,null,null,TipoEvento.CLIENTE);
+                setChanged();
+                notifyObservers(evento);
+                notifyAll();
+                throw  e;
+            }
+            catch (ExceptionUsuario ex) {}
+        } else {
+            evento = new EventoSimulacion("no pudo realizar pedido porque no hay choferes disponibles ",cliente,null,null,TipoEvento.CLIENTE);
+        }
 
-        try{
-            empresa.pedirViaje(cliente.getNombreUsuario(), zona, mascota, tipoServicio, equipaje, cantPax, distancia, fecha);
-            evento = new EventoSimulacion("solicito viaje y espera",cliente,null,null,TipoEvento.CLIENTE);         
-        }
-        catch(ExceptionVehiculoDisp e){
-            evento = new EventoSimulacion("realizo pedido pero no habia auto que cumpla las especificaciones",cliente,null,null,TipoEvento.CLIENTE);
-            setChanged();
-            notifyObservers(evento);
-            notifyAll();
-            throw  e;
-        }
-        catch(ExceptionPedido e){
-           evento = new EventoSimulacion("realizo pedido pero fue rechazado "+e.getMessage().toLowerCase(),cliente,null,null,TipoEvento.CLIENTE);
-           setChanged();
-           notifyObservers(evento);
-           notifyAll();
-           throw  e;
-        } catch (ExceptionUsuario ex) {
-            
-        }
-          setChanged();
-          notifyObservers(evento);
-          notifyAll();
+        setChanged();
+        notifyObservers(evento);
+        notifyAll();
     }
     
     public synchronized void asignarVehiculo()
@@ -82,11 +87,10 @@ public class RecursoCompartido extends Observable{
            try {
                evento = new EventoSimulacion("El sistema intento asignar auto pero no hay viajes solicitados",null,null,null,TipoEvento.SISTEMA);
                setChanged();
-                notifyObservers(evento);
+               notifyObservers(evento);
                wait();
-              
                viajeSolicitado = getViajeSolicitado();
-                       } catch (InterruptedException ex) {
+           } catch (InterruptedException ex) {
                Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
            }
        }
@@ -100,8 +104,8 @@ public class RecursoCompartido extends Observable{
                                            null, null, null, TipoEvento.SISTEMA);
                    setChanged();
                    notifyObservers(evento);
-                   notifyAll();
                    viajeSolicitado = getViajeSolicitado();
+                   notifyAll();
                    try {
                        wait();
                    } catch (InterruptedException ex) {
@@ -124,7 +128,7 @@ public class RecursoCompartido extends Observable{
         {
             try {
                 wait();
-                        } catch (InterruptedException ex) {
+            } catch (InterruptedException ex) {
                 Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -141,9 +145,9 @@ public class RecursoCompartido extends Observable{
         else
           evento =  new EventoSimulacion("se retira de la empresa porque cierra",null,chofer,null,TipoEvento.CHOFER); 
         
-         setChanged();
-         notifyObservers(evento);
-         notifyAll();
+        setChanged();
+        notifyObservers(evento);
+        notifyAll();
     }
     
     public synchronized void pagarViaje(Cliente cliente)
@@ -164,10 +168,10 @@ public class RecursoCompartido extends Observable{
                  empresa.pagarViaje(cliente);
                  evento = new EventoSimulacion("pago el viaje y se retiro del auto",cliente,null,null,TipoEvento.CLIENTE);
             } catch (ExceptionSinViajeaPagar ex) {
-                    Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExceptionUsuario ex) {
-                    Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
-             }
+                 Logger.getLogger(RecursoCompartido.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else
             if(cantChoferes==0)
                evento = new EventoSimulacion("cancela el viaje porque no hay choferes disponibles",cliente,null,null,TipoEvento.CLIENTE);

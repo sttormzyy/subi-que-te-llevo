@@ -96,6 +96,7 @@ public class Pedido implements Cloneable {
         Pedido clonado = null;
         try {
             clonado = (Pedido) super.clone();
+            clonado.cliente = (Cliente) cliente.clone();
         } 
         catch (CloneNotSupportedException e) {
             e.printStackTrace();

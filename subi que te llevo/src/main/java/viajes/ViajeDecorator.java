@@ -203,8 +203,8 @@ public abstract class ViajeDecorator implements IViaje{
     {
         ViajeDecorator clonado = null;
         try {
-             clonado = (ViajeDecorator)super.clone();
-             clonado.encapsulado =(IViaje) this.encapsulado.clone();
+             clonado = (ViajeDecorator) super.clone();
+             clonado.encapsulado = (IViaje) this.encapsulado.clone();
         } 
         catch (CloneNotSupportedException e) {
         	e.printStackTrace();

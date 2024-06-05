@@ -24,7 +24,7 @@ import viajes.IViaje;
  * El subsistema Administrador de la empresa, responsable de la gestion de clientes, choferes y vehiculos, así como la solicitud de listados y reportes, 
  * el calculo de salarios y otros metodos auxiliares.
  */
-public class AdmSubSistema implements Serializable{
+public class AdmSubSistema {
     private Empresa empresa = Empresa.getInstance(); 
     /**
      * Coleccion de Usuarios de la empresa, se utiliza HashMap cuyas claves son los nombre de usuario debido a que estos no pueden repetirse
