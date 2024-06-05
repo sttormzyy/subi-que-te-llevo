@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
@@ -14,7 +15,7 @@ import javax.swing.JToggleButton;
  *
  * @author Usuario
  */
-public class PanelInicioSesion extends javax.swing.JPanel implements IVentanaCliente{
+public class PanelInicioSesion extends VentanaClienteAbstract{
 
     /**
      * Creates new form NewJPanel
@@ -23,13 +24,6 @@ public class PanelInicioSesion extends javax.swing.JPanel implements IVentanaCli
         initComponents();
     }
     
-    @Override
-     public void paint(Graphics g){
-         Image imagen = new ImageIcon(getClass().getResource("/imagenes/fondo1violeta.jpg")).getImage();
-         g.drawImage(imagen, 0, 0, getWidth(), getHeight(),this);
-         setOpaque(false);
-         super.paint(g);
-     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,4 +136,6 @@ public class PanelInicioSesion extends javax.swing.JPanel implements IVentanaCli
     private javax.swing.JTextField textContrasena;
     private javax.swing.JTextField textNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+   
 }

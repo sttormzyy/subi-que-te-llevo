@@ -8,7 +8,9 @@ import choferes.ChoferPermanente;
 import choferes.ChoferTemporario;
 import controladores.Controlador;
 import controladores.ControladorCliente;
+
 import controladores.ControladorMenuSimulacion;
+import controladores.ControladorSimulacion;
 import excepciones.chofer.ExceptionChofer;
 import excepciones.pedido.ExceptionFecha;
 import excepciones.pedido.ExceptionPedido;
@@ -30,26 +32,31 @@ import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import simulacion.ChoferThread;
 import simulacion.ClienteThread;
+import simulacion.OjoChoferSimulacion;
+import simulacion.OjoCliente;
+import simulacion.OjoClienteSimulacion;
 import simulacion.OjoGeneral;
 import simulacion.RecursoCompartido;
 import simulacion.SistemaThread;
 import viajes.IViaje;
-import vista.VentanaCliente;
-import vista.VentanaGeneral;
+
+
+
+import vista.*;
 import vista.VentanaSimulacion;
 
 public class Prueba {
 
-	public static void main(String[] args) {
-		VehiculoFactory vehFact = new VehiculoFactory();
-		Empresa empresa = Empresa.getInstance();
+    public static void main(String[] args) {
+        VehiculoFactory vehFact = new VehiculoFactory();
+        Empresa empresa = Empresa.getInstance();
 
-                try {
+        try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
         } catch (UnsupportedLookAndFeelException e) {
-            System.err.println("No se pudo configurar el look and feel Nimbus.");
         }
-		/*//Agrego admin
+
+        /*//Agrego admin
 		try {
 			empresa.addAdmin(new Administrador("admin","admin","1234"));
 		}
@@ -254,8 +261,8 @@ public class Prueba {
 
 		//Muestra listado de choferes con los puntos actualizados
 		System.out.println(empresa.solicitudListadoChoferes());		
-*/
-                /*VentanaSimulacion menuSimulacion = new VentanaSimulacion();
+         */
+ /*VentanaSimulacion menuSimulacion = new VentanaSimulacion();
                 ControladorMenuSimulacion c = new ControladorMenuSimulacion();
                 menuSimulacion.setControlador(c);
                 c.setVista(menuSimulacion);
@@ -264,77 +271,86 @@ public class Prueba {
                 vistaCliente.setPanel();
                 ControladorCliente controlador = new ControladorCliente(empresa,vistaCliente);
                 vistaCliente.setControlador(controlador);*/
-            try {                
-                empresa.addVehiculo(vehFact.getVehiculo("moto","AF345AA"));
-                empresa.addVehiculo(vehFact.getVehiculo("auto","BB345BB"));
-		empresa.addVehiculo(vehFact.getVehiculo("auto","CC345CC"));
-		empresa.addVehiculo(vehFact.getVehiculo("combi","DD345DD"));
-		//empresa.addVehiculo(vehFact.getVehiculo("combi","AA345AA"));
-              //  empresa.addVehiculo(vehFact.getVehiculo("combi","AA325AA"));
-            } catch (ExceptionVehiculo ex) {
-                Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
-            }
-               
-            Cliente cl1 = new Cliente("Gian","Gian","322");
-            Cliente cl2  = new Cliente("Juan","Juan","322");
-            Cliente cl3 =new Cliente("Martin","Martin","322");
-             Cliente cl4 = new Cliente("Lucas","Lucas","322");
-                     
-                     
-            try {
-                empresa.addCliente(cl1);
-                empresa.addCliente(cl2);
-                empresa.addCliente(cl3);
-                empresa.addCliente(cl4);
-            } catch (ExceptionUsuario ex) {
-                Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
-            }
-   
-            Chofer chof1 = new ChoferContratado("44555777","Carlos");
-	    Chofer chof2 = new ChoferPermanente("11999888","Pitagoras",20,LocalDateTime.now());
-	    Chofer chof3 = new ChoferTemporario("33777444","Einstein");
-	    Chofer chof4 = new ChoferPermanente("99888777","Raul",20,LocalDateTime.now());
-            
-            try {
-                empresa.addChofer(chof1);
-                empresa.addChofer(chof2);
-                empresa.addChofer(chof3);
-                empresa.addChofer(chof4);
-            } catch (ExceptionChofer ex) {
-                Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            empresa.addVehiculo(vehFact.getVehiculo("moto", "AF345AA"));
+            empresa.addVehiculo(vehFact.getVehiculo("auto", "BB345BB"));
+            empresa.addVehiculo(vehFact.getVehiculo("auto", "CC345CC"));
+            empresa.addVehiculo(vehFact.getVehiculo("combi", "DD345DD"));
+            empresa.addVehiculo(vehFact.getVehiculo("combi","AA345AA"));
+             empresa.addVehiculo(vehFact.getVehiculo("combi","AA325AA"));
+        } catch (ExceptionVehiculo ex) {
+        }
 
-                VentanaGeneral vista = new VentanaGeneral();
-                vista.setVisible(true);
-                RecursoCompartido rc = new RecursoCompartido(empresa,1,1);
-                
-                OjoGeneral ojo = new OjoGeneral(vista, rc);
-                rc.addObserver(ojo);
-                
-                ClienteThread c1 = new ClienteThread(cl1, rc,5);
-                ClienteThread c2 = new ClienteThread(cl2, rc,10);
-                ClienteThread c3 = new ClienteThread(cl3, rc,3);
-                ClienteThread c4 = new ClienteThread(cl4, rc,1);
-                
-                ChoferThread ch1 = new ChoferThread(chof1,rc,4);
-                ChoferThread ch2 = new ChoferThread(chof2,rc,4);
-                ChoferThread ch3 = new ChoferThread(chof3,rc,4);
-                ChoferThread ch4 = new ChoferThread(chof4,rc,4);
-                
-                SistemaThread sistema = new SistemaThread(rc);
-                
-                
-                sistema.start();
-               // c1.start();
-               // c3.start();
-                c2.start();
-              //c4.start();
-               // ch3.start();
-                ch2.start();
-                
+        Cliente cl1 = new Cliente("Gian", "Gian", "322");
+        Cliente cl2 = new Cliente("Juan", "Juan", "322");
+        Cliente cl3 = new Cliente("Martin", "Martin", "322");
+        Cliente cl4 = new Cliente("Lucas", "Lucas", "322");
+        Cliente cl5 = new Cliente("Company", "Company", "322");
 
-	}
+        try {
+            empresa.addCliente(cl1);
+            empresa.addCliente(cl2);
+            empresa.addCliente(cl3);
+            empresa.addCliente(cl4);
+            empresa.addCliente(cl5);
+        } catch (ExceptionUsuario ex) {
+        }
 
-       
+        Chofer chof1 = new ChoferContratado("44555777", "Carlos");
+        Chofer chof2 = new ChoferPermanente("11999888", "Pitagoras", 20, LocalDateTime.now());
+        Chofer chof3 = new ChoferTemporario("33777444", "Einstein");
+        Chofer chof4 = new ChoferPermanente("99888777", "Raul", 20, LocalDateTime.now());
+
+        try {
+            empresa.addChofer(chof1);
+            empresa.addChofer(chof2);
+            empresa.addChofer(chof3);
+            empresa.addChofer(chof4);
+        } catch (ExceptionChofer ex) {
+            Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        RecursoCompartido rc = new RecursoCompartido(empresa, 4, 4);
+
+        VentanaGeneral vistaGeneral = new VentanaGeneral();
+        vistaGeneral.setVisible(true);
+
+        ControladorSimulacion controladorSimulacion = new ControladorSimulacion(vistaGeneral, rc);
+        vistaGeneral.setActionListener(controladorSimulacion);
+
+        OjoGeneral ojoGeneral = new OjoGeneral(vistaGeneral, rc);
+        OjoClienteSimulacion ojoClienteSimulacion = new OjoClienteSimulacion(vistaGeneral, rc, cl3);
+        OjoChoferSimulacion ojoChoferSimulacion = new OjoChoferSimulacion(vistaGeneral, rc, chof3);
         
+        VentanaCliente vistaCliente = new VentanaCliente();
+        ControladorCliente controladorCliente = new ControladorCliente(rc, vistaCliente);
+        vistaCliente.setActionListener(controladorCliente);
+
+        OjoCliente ojoCliente = new OjoCliente(vistaCliente, rc, cl5);
+
+        ClienteThread c1 = new ClienteThread(cl1, rc, 15);
+        ClienteThread c2 = new ClienteThread(cl2, rc, 15);
+        ClienteThread c3 = new ClienteThread(cl3, rc, 13);
+        ClienteThread c4 = new ClienteThread(cl4, rc, 11);
+
+        ChoferThread ch1 = new ChoferThread(chof1, rc, 14);
+        ChoferThread ch2 = new ChoferThread(chof2, rc, 12);
+        ChoferThread ch3 = new ChoferThread(chof3, rc, 12);
+        ChoferThread ch4 = new ChoferThread(chof4, rc, 14);
+
+        SistemaThread sistema = new SistemaThread(rc);
+
+        sistema.start();
+        c1.start();
+        c3.start();
+        ch3.start();
+        ch2.start();
+        c2.start();
+        c4.start();
+        ch4.start();
+        ch1.start();
+        
+
+    }
+
 }

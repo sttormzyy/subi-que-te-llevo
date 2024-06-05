@@ -5,6 +5,8 @@
 package simulacion;
 
 import choferes.Chofer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,17 +25,18 @@ public class ChoferThread extends Thread{
     }
     
      
-    @Override
-    public void run()
+@Override
+public void run()
+{
+    while(rc.simulacionIsActiva() && cantViajes>0)
     {
-        EventoSimulacion evento;
-        while(rc.simulacionIsActiva() && cantViajes>0)
-        {
-            rc.tomarViaje(chofer);
-            rc.finalizarViaje(chofer);
-            cantViajes--;
-        }
-        rc.subChofer();
-
+        Util.espera();
+        rc.tomarViaje(chofer);
+    
+        Util.espera();
+        rc.finalizarViaje(chofer);
+        cantViajes--;
     }
+    rc.subChofer(chofer);
+}
 }

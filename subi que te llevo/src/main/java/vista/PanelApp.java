@@ -5,18 +5,21 @@
 package vista;
 
 import javax.swing.JButton;
-
+import java.util.Date;
+import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 /**
  *
  * @author Usuario
  */
-public class PanelApp extends FondoPanel implements IVentanaCliente{
+public class PanelApp extends VentanaClienteAbstract{
 
     /**
      * Creates new form PanelApp
      */
     public PanelApp() {
-        super("fondo1violeta.jpg");
         initComponents();
     }
 
@@ -29,90 +32,124 @@ public class PanelApp extends FondoPanel implements IVentanaCliente{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        botonPedirViaje = new javax.swing.JButton();
+        grupoBotonesMascota = new javax.swing.ButtonGroup();
+        grupoBotonEquipaje = new javax.swing.ButtonGroup();
+        grupoBotonesZona = new javax.swing.ButtonGroup();
+        ScrollPaneInfoViaje = new javax.swing.JScrollPane();
+        textAreaInfoViaje = new javax.swing.JTextArea();
+        labelInfoViaje = new javax.swing.JLabel();
+        labelFormulario = new javax.swing.JLabel();
+        botonSIequipaje = new javax.swing.JRadioButton();
+        labelMascota = new javax.swing.JLabel();
+        labelDistancia = new javax.swing.JLabel();
+        labelFecha = new javax.swing.JLabel();
+        labelCantPasajeros = new javax.swing.JLabel();
+        botonNOequipaje = new javax.swing.JRadioButton();
+        labelEquipaje = new javax.swing.JLabel();
+        textDistancia = new javax.swing.JTextField();
+        botonSImascota = new javax.swing.JRadioButton();
+        botonNOmascota = new javax.swing.JRadioButton();
+        selectorFecha = new com.toedter.calendar.JDateChooser();
+        labelFecha1 = new javax.swing.JLabel();
+        botonPeligrosa = new javax.swing.JRadioButton();
+        botonSinAsfaltar = new javax.swing.JRadioButton();
+        botonEstandar = new javax.swing.JRadioButton();
+        ComboBoxCantPax = new javax.swing.JComboBox<>();
         botonPagar = new javax.swing.JButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
+        botonPedirViaje = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
         setMinimumSize(new java.awt.Dimension(580, 420));
         setPreferredSize(new java.awt.Dimension(580, 420));
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
+        ScrollPaneInfoViaje.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaInfoViaje.setColumns(20);
+        textAreaInfoViaje.setRows(5);
+        textAreaInfoViaje.setFocusable(false);
+        ScrollPaneInfoViaje.setViewportView(textAreaInfoViaje);
 
-        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("INFORMACION VIAJE");
+        labelInfoViaje.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
+        labelInfoViaje.setForeground(new java.awt.Color(255, 255, 255));
+        labelInfoViaje.setText("INFORMACION VIAJE");
 
-        jLabel7.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("FORMULARIO VIAJE");
+        labelFormulario.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
+        labelFormulario.setForeground(new java.awt.Color(255, 255, 255));
+        labelFormulario.setText("FORMULARIO VIAJE");
 
-        botonPedirViaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        botonPedirViaje.setText("PEDIR VIAJE");
+        grupoBotonEquipaje.add(botonSIequipaje);
+        botonSIequipaje.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonSIequipaje.setForeground(new java.awt.Color(255, 255, 255));
+        botonSIequipaje.setText("Si");
+
+        labelMascota.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelMascota.setForeground(new java.awt.Color(255, 255, 255));
+        labelMascota.setText("Mascota");
+
+        labelDistancia.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelDistancia.setForeground(new java.awt.Color(255, 255, 255));
+        labelDistancia.setText("Distancia");
+
+        labelFecha.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setText("Fecha");
+
+        labelCantPasajeros.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelCantPasajeros.setForeground(new java.awt.Color(255, 255, 255));
+        labelCantPasajeros.setText("Cantidad de pasajeros");
+
+        grupoBotonEquipaje.add(botonNOequipaje);
+        botonNOequipaje.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonNOequipaje.setForeground(new java.awt.Color(255, 255, 255));
+        botonNOequipaje.setText("No");
+
+        labelEquipaje.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelEquipaje.setForeground(new java.awt.Color(255, 255, 255));
+        labelEquipaje.setText("Equipaje");
+
+        textDistancia.setMinimumSize(new java.awt.Dimension(65, 22));
+        textDistancia.setPreferredSize(new java.awt.Dimension(65, 22));
+
+        grupoBotonesMascota.add(botonSImascota);
+        botonSImascota.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonSImascota.setForeground(new java.awt.Color(255, 255, 255));
+        botonSImascota.setText("Si");
+
+        grupoBotonesMascota.add(botonNOmascota);
+        botonNOmascota.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonNOmascota.setForeground(new java.awt.Color(255, 255, 255));
+        botonNOmascota.setText("No");
+
+        selectorFecha.setDateFormatString("d/M/YYYY");
+
+        labelFecha1.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelFecha1.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha1.setText("Zona");
+
+        grupoBotonesZona.add(botonPeligrosa);
+        botonPeligrosa.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        botonPeligrosa.setForeground(new java.awt.Color(255, 255, 255));
+        botonPeligrosa.setText("peligrosa");
+
+        grupoBotonesZona.add(botonSinAsfaltar);
+        botonSinAsfaltar.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        botonSinAsfaltar.setForeground(new java.awt.Color(255, 255, 255));
+        botonSinAsfaltar.setText("sin asfaltar");
+
+        grupoBotonesZona.add(botonEstandar);
+        botonEstandar.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        botonEstandar.setForeground(new java.awt.Color(255, 255, 255));
+        botonEstandar.setText("estandar");
+
+        ComboBoxCantPax.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         botonPagar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonPagar.setText("PAGAR");
+        botonPagar.setActionCommand("PAGAR VIAJE");
+        botonPagar.setEnabled(false);
 
-        jRadioButton3.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Si");
-
-        jTextField1.setMinimumSize(new java.awt.Dimension(65, 22));
-        jTextField1.setPreferredSize(new java.awt.Dimension(65, 22));
-
-        jLabel5.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Mascota");
-
-        jLabel3.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Distancia");
-
-        jLabel4.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Fecha");
-
-        jLabel2.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cantidad de pasajeros");
-
-        jRadioButton2.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("No");
-
-        jLabel6.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Equipaje");
-
-        jTextField2.setMinimumSize(new java.awt.Dimension(65, 22));
-        jTextField2.setPreferredSize(new java.awt.Dimension(65, 22));
-
-        jRadioButton6.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        jRadioButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton6.setText("Si");
-
-        jRadioButton7.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        jRadioButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton7.setText("No");
+        botonPedirViaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonPedirViaje.setText("PEDIR VIAJE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,119 +157,164 @@ public class PanelApp extends FondoPanel implements IVentanaCliente{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(botonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(botonPedirViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(ScrollPaneInfoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelFecha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelDistancia)
+                                    .addComponent(labelCantPasajeros))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(textDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ComboBoxCantPax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap())))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelFecha1)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonEstandar)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(botonPeligrosa)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(botonSinAsfaltar)))
+                                .addGap(41, 41, 41)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(botonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(botonPedirViaje)
+                            .addContainerGap()))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
+                            .addComponent(labelMascota, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelEquipaje, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton7))))
+                                .addComponent(botonSIequipaje)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonNOequipaje))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(42, 42, 42))))
+                                .addComponent(botonSImascota)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonNOmascota)))
+                        .addGap(76, 76, 76))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(74, 74, 74))
+                .addComponent(labelInfoViaje)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addComponent(labelFormulario)
+                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 48, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFormulario, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelInfoViaje, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ScrollPaneInfoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCantPasajeros)
+                            .addComponent(ComboBoxCantPax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(labelDistancia)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelFecha))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonPedirViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFecha1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonPeligrosa)
+                            .addComponent(botonSinAsfaltar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonEstandar)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonPedirViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelMascota)
+                            .addComponent(botonNOmascota)
+                            .addComponent(botonSImascota))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelEquipaje)
+                            .addComponent(botonNOequipaje)
+                            .addComponent(botonSIequipaje))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxCantPax;
+    private javax.swing.JScrollPane ScrollPaneInfoViaje;
+    private javax.swing.JRadioButton botonEstandar;
+    private javax.swing.JRadioButton botonNOequipaje;
+    private javax.swing.JRadioButton botonNOmascota;
     private javax.swing.JButton botonPagar;
     private javax.swing.JButton botonPedirViaje;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton botonPeligrosa;
+    private javax.swing.JRadioButton botonSIequipaje;
+    private javax.swing.JRadioButton botonSImascota;
+    private javax.swing.JRadioButton botonSinAsfaltar;
+    private javax.swing.ButtonGroup grupoBotonEquipaje;
+    private javax.swing.ButtonGroup grupoBotonesMascota;
+    private javax.swing.ButtonGroup grupoBotonesZona;
+    private javax.swing.JLabel labelCantPasajeros;
+    private javax.swing.JLabel labelDistancia;
+    private javax.swing.JLabel labelEquipaje;
+    private javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelFecha1;
+    private javax.swing.JLabel labelFormulario;
+    private javax.swing.JLabel labelInfoViaje;
+    private javax.swing.JLabel labelMascota;
+    private com.toedter.calendar.JDateChooser selectorFecha;
+    private javax.swing.JTextArea textAreaInfoViaje;
+    private javax.swing.JTextField textDistancia;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public String getContrasena() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public String getNombreUsuario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
     
@@ -245,4 +327,84 @@ public class PanelApp extends FondoPanel implements IVentanaCliente{
     {
         return botonPedirViaje;
     }
+
+    @Override
+    public String getZona() {
+        if(botonPeligrosa.isSelected())
+            return "Peligrosa";
+        else
+            if(botonEstandar.isSelected())
+                return "Estandar";
+            else
+                if(botonSinAsfaltar.isSelected())
+                    return "Sin asfaltar";
+                else
+                    return null;
+    }
+
+    @Override
+    public int getEquipaje() {
+        if(botonSIequipaje.isSelected())
+            return 1;
+        else
+            return 0;
+    }
+
+    @Override
+    public int getMascota() {
+       if(botonSImascota.isSelected())
+            return 1;
+        else
+            return 0;
+    }
+
+    @Override
+    public Integer getCantPax() {
+        return Integer.parseInt((String)ComboBoxCantPax.getSelectedItem());
+    }
+
+    @Override
+    public LocalDateTime getFecha() {
+        Date selectedDate = selectorFecha.getDate();
+        if (selectedDate != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(selectedDate);
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1; // Los meses en Java comienzan desde 0, entonces se suma 1
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            LocalDate localDate = LocalDate.of(year, month, day);
+            LocalTime currentTime = LocalTime.now();
+            LocalDateTime fecha = LocalDateTime.of(localDate, currentTime);
+            return fecha;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public double getDistancia() {
+     String text = textDistancia.getText();
+        try {
+            return Double.parseDouble(text);
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
+    
+    @Override
+    public void appendDisplay(String mensaje){
+        textAreaInfoViaje.append(mensaje);
+    };
+    
+     @Override
+    public void enablePagar(){
+        botonPagar.setEnabled(true);
+    };
+    
+     @Override
+    public void disablePagar(){
+        botonPagar.setEnabled(false);
+    };
+    
 }

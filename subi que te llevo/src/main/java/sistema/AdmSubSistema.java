@@ -709,6 +709,7 @@ public class AdmSubSistema {
 		return totalFacturado; //Si esta vacia devuelve 0
 	}
 
+    
     /**
      * Devuelve la cantidad de viajes realizados por un Chofer Temporario, dato usado luego para calcular su sueldo.<br>
      * <b>PRE: </b> Tanto el chofer como la fecha son distintos de Null.<br>
