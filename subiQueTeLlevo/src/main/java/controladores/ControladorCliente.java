@@ -28,6 +28,7 @@ public class ControladorCliente implements Controlador {
         super();
         this.recursoCompartido = recursoCompartido;
         this.vista = vista;
+        this.vista.setActionListener(this);
         this.ojoCliente = new OjoCliente(vista,recursoCompartido);
     }
     
@@ -60,12 +61,11 @@ public class ControladorCliente implements Controlador {
                 break;
 
             case "PEDIR VIAJE":
-                System.out.println("HOLAA PDIO VAIJE");
                 pedirViaje();
+                vista.disablePedirViaje();
                 break;
 
             case "PAGAR VIAJE":
-                System.out.println("PIDO VIAJEEEE");
                 pagarViaje();
                 vista.disablePagar();
                 vista.enablePedirViaje();
@@ -134,18 +134,12 @@ public class ControladorCliente implements Controlador {
         int cantPax = vista.getCantPax();
         String zona = vista.getZona();
 
-        if (validoParametrosViaje(distancia, fecha))
+
             try {
                 recursoCompartido.pedirViaje(cliente, zona, mascota, "transporte", equipaje, cantPax, distancia, fecha);
-                vista.disablePedirViaje();
              } catch (ExceptionPedido ex) {
                 vista.setDialogPedidoRechazado(ex.getMessage());
-        } else
-        {
-            if(distancia <= 0)
-                vista.setDialogAdv("<html>Distancia invalida.<br>Por favor, reingrese correctamente.</html>");
-            else
-                vista.setDialogAdv("<html>Fecha invalida.<br>Por favor, reingrese correctamente.</html>");
+
         }
     }
 
@@ -154,10 +148,7 @@ public class ControladorCliente implements Controlador {
         vista.setDialogFinViaje();
     }
     
-    private boolean validoParametrosViaje(double distancia, LocalDateTime fecha)
-    {
-        return distancia > 0 ;//&&  (LocalDateTime.now().isEqual(fecha)||LocalDateTime.now().isBefore(fecha));
-    }
+    
     private boolean validoParametrosRegistro(String nombre, String usuario, String contrasena) {
         return (nombre != null && !nombre.equals("") && usuario != null && !usuario.equals("") &&  contrasena != null && !contrasena.equals(""));
     }

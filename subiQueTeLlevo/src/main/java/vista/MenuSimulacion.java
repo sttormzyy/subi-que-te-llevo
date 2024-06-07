@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -23,7 +25,7 @@ import javax.swing.UIManager;
  *
  * @author Usuario
  */
-public class MenuSimulacion extends javax.swing.JFrame {   
+public class MenuSimulacion extends javax.swing.JFrame implements KeyListener{   
     
     /**
      * Creates new form VentanaSimulacion
@@ -154,6 +156,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         PanelClientes.add(jLabel6, gridBagConstraints);
 
+        textCantClientes.addKeyListener(this);
         textCantClientes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantClientes.setText("6");
         textCantClientes.setMaximumSize(new java.awt.Dimension(40, 20));
@@ -171,6 +174,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         PanelClientes.add(jLabel12, gridBagConstraints);
 
+        textCantMaxViajesXCliente.addKeyListener(this);
         textCantMaxViajesXCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantMaxViajesXCliente.setText("5");
         textCantMaxViajesXCliente.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -229,6 +233,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 23, 0, 0);
         PanelChoferes2.add(jLabel23, gridBagConstraints);
 
+        textCantMaxViajesxChofer.addKeyListener(this);
         textCantMaxViajesxChofer.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantMaxViajesxChofer.setText("3");
         textCantMaxViajesxChofer.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -247,6 +252,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(3, 14, 0, 0);
         PanelChoferes2.add(jLabel24, gridBagConstraints);
 
+        textCantContratado.addKeyListener(this);
         textCantContratado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantContratado.setText("3");
         textCantContratado.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -257,6 +263,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 5);
         PanelChoferes2.add(textCantContratado, gridBagConstraints);
 
+        textCantPermanente.addKeyListener(this);
         textCantPermanente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantPermanente.setText("3");
         textCantPermanente.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -266,6 +273,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         PanelChoferes2.add(textCantPermanente, gridBagConstraints);
 
+        textCantTemporario.addKeyListener(this);
         textCantTemporario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantTemporario.setText("2");
         textCantTemporario.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -352,6 +360,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel5.add(jPanel6, gridBagConstraints);
 
+        textCantAuto .addKeyListener(this);
         textCantAuto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantAuto.setText("5");
         textCantAuto.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -361,6 +370,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         jPanel5.add(textCantAuto, gridBagConstraints);
 
+        textCantMoto.addKeyListener(this);
         textCantMoto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantMoto.setText("5");
         textCantMoto.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -370,6 +380,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         jPanel5.add(textCantMoto, gridBagConstraints);
 
+        textCantCombi.addKeyListener(this);
         textCantCombi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantCombi.setText("2");
         textCantCombi.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -384,6 +395,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         BotonComenzarSimulacion.setText("COMENZAR NUEVA");
         BotonComenzarSimulacion.setActionCommand("COMENZAR");
         BotonComenzarSimulacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 153), new java.awt.Color(204, 0, 153), new java.awt.Color(204, 0, 153), new java.awt.Color(204, 0, 153)));
+        BotonComenzarSimulacion.setEnabled(false);
 
         BotonComenzarSimulacionVieja.setBackground(new java.awt.Color(51, 0, 51));
         BotonComenzarSimulacionVieja.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,7 +433,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
                         .addComponent(PanelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 2, Short.MAX_VALUE))
                     .addComponent(PanelChoferes2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -438,7 +450,7 @@ public class MenuSimulacion extends javax.swing.JFrame {
         );
         PanelImagenLayout.setVerticalGroup(
             PanelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -452,10 +464,8 @@ public class MenuSimulacion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(PanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(PanelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -529,6 +539,49 @@ public class MenuSimulacion extends javax.swing.JFrame {
     private javax.swing.JTextField textCantPermanente;
     private javax.swing.JTextField textCantTemporario;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+      
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int cantClientes=-1;
+        int cantChoferTemporario=-1;
+        int cantChoferContratado=-1;
+        int cantChoferPermanente=-1;
+        int cantMaxViajeCliente=-1;
+        int cantMaxViajeChofer=-1;
+        int cantAutos=-1;
+        int cantMotos=-1;
+        int cantCombis=-1;
+        
+        try{
+         cantClientes = getCantClientes();
+         cantChoferTemporario = getCantChoferTemporario();
+         cantChoferContratado = getCantChoferContratado();
+         cantChoferPermanente = getCantChoferPermanente();
+         cantMaxViajeCliente = getCantMaxViajeCliente();
+         cantMaxViajeChofer = getCantMaxViajeChofer();
+         cantAutos = getCantAuto();
+         cantMotos = getCantMoto();
+         cantCombis = getCantCombi();
+        } catch (NumberFormatException exc){
+        
+        }
+        
+        System.out.println("HOLAA");
+        boolean condicion = cantClientes > 0 && cantChoferTemporario > 0 && cantChoferContratado > 0 && cantChoferPermanente>0
+                            && cantMaxViajeCliente>0 &&  cantMaxViajeChofer>0 && cantAutos>=0 && cantMotos>=0 && cantCombis>=0;
+        
+        this.BotonComenzarSimulacion.setEnabled(condicion);
+    }
 
 
 }

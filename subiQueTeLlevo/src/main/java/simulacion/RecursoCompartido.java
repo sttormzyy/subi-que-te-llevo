@@ -116,7 +116,7 @@ public class RecursoCompartido extends Observable{
       
      
     
-        while(!empresa.asignarVehiculo(viajeSolicitado) && simulacionIsActiva())
+        while(simulacionIsActiva()  && !empresa.asignarVehiculo(viajeSolicitado))
         {
             evento = new EventoSimulacion("El sistema intento asignar vehiculo al viaje del cliente " + viajeSolicitado.getCliente().getNombreUsuario()+" pero no encontro uno libre, sigue en espera", 
                                            viajeSolicitado.getCliente(), null, null, TipoEvento.SISTEMA);
@@ -217,18 +217,15 @@ public class RecursoCompartido extends Observable{
             try {
                 empresa.finalizarViaje(chofer);
                 evento = new EventoSimulacion("finalizo el viaje y devolvio el vehiculo",getViaje(chofer,EstadosViajes.FINALIZADO).getCliente(), chofer, null, TipoEvento.CHOFER);
-            } catch (ExceptionChofer ex) {
-
-            } catch (ExceptionChoferSinViajesPagos ex) {
-
-            }
-
-            setChanged();
-            notifyObservers(evento);
-            notifyAll();
+            } 
+            catch (ExceptionChofer ex) {} 
+            catch (ExceptionChoferSinViajesPagos ex) {}
         } else {
              evento =  new EventoSimulacion("se retira de la empresa porque cierra",null,chofer,null,TipoEvento.CHOFER); 
         }
+        setChanged();
+        notifyObservers(evento);
+        notifyAll();
     }
     
     
@@ -311,12 +308,11 @@ public class RecursoCompartido extends Observable{
     public synchronized void subChofer(Chofer chofer)
     {
         cantChoferes--;
-        if(simulacionVive)
-        {
-            evento = new EventoSimulacion("finalizo su jornada laboral",null,chofer,null,TipoEvento.CHOFER);
-            setChanged();
-            notifyObservers(evento);
-        }
+
+        evento = new EventoSimulacion("finalizo su jornada laboral", null, chofer, null, TipoEvento.CHOFER);
+        setChanged();
+        notifyObservers(evento);
+
     }
     
     public synchronized void subCliente(Cliente cliente)

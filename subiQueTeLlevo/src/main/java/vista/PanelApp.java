@@ -35,32 +35,54 @@ public class PanelApp extends VentanaClienteAbstract{
         grupoBotonesMascota = new javax.swing.ButtonGroup();
         grupoBotonEquipaje = new javax.swing.ButtonGroup();
         grupoBotonesZona = new javax.swing.ButtonGroup();
+        jPanel2 = new javax.swing.JPanel();
         ScrollPaneInfoViaje = new javax.swing.JScrollPane();
         textAreaInfoViaje = new javax.swing.JTextArea();
-        labelInfoViaje = new javax.swing.JLabel();
-        labelFormulario = new javax.swing.JLabel();
-        botonSIequipaje = new javax.swing.JRadioButton();
-        labelMascota = new javax.swing.JLabel();
-        labelDistancia = new javax.swing.JLabel();
-        labelFecha = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
         labelCantPasajeros = new javax.swing.JLabel();
-        botonNOequipaje = new javax.swing.JRadioButton();
-        labelEquipaje = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        ComboBoxCantPax = new javax.swing.JComboBox<>();
+        jPanel6 = new javax.swing.JPanel();
+        labelDistancia = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         textDistancia = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        labelFecha = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        selectorFecha = new com.toedter.calendar.JDateChooser();
+        jPanel8 = new javax.swing.JPanel();
+        labelFecha1 = new javax.swing.JLabel();
+        botonSinAsfaltar = new javax.swing.JRadioButton();
+        botonPeligrosa = new javax.swing.JRadioButton();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        botonEstandar = new javax.swing.JRadioButton();
+        jPanel11 = new javax.swing.JPanel();
+        labelMascota = new javax.swing.JLabel();
         botonSImascota = new javax.swing.JRadioButton();
         botonNOmascota = new javax.swing.JRadioButton();
-        selectorFecha = new com.toedter.calendar.JDateChooser();
-        labelFecha1 = new javax.swing.JLabel();
-        botonPeligrosa = new javax.swing.JRadioButton();
-        botonSinAsfaltar = new javax.swing.JRadioButton();
-        botonEstandar = new javax.swing.JRadioButton();
-        ComboBoxCantPax = new javax.swing.JComboBox<>();
+        jPanel12 = new javax.swing.JPanel();
+        labelEquipaje = new javax.swing.JLabel();
+        botonSIequipaje = new javax.swing.JRadioButton();
+        botonNOequipaje = new javax.swing.JRadioButton();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         botonPagar = new javax.swing.JButton();
         botonPedirViaje = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
         setMinimumSize(new java.awt.Dimension(580, 420));
         setPreferredSize(new java.awt.Dimension(580, 420));
+        setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
         ScrollPaneInfoViaje.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(""), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
 
@@ -69,211 +91,251 @@ public class PanelApp extends VentanaClienteAbstract{
         textAreaInfoViaje.setFocusable(false);
         ScrollPaneInfoViaje.setViewportView(textAreaInfoViaje);
 
-        labelInfoViaje.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
-        labelInfoViaje.setForeground(new java.awt.Color(255, 255, 255));
-        labelInfoViaje.setText("INFORMACION VIAJE");
+        jPanel2.add(ScrollPaneInfoViaje, java.awt.BorderLayout.CENTER);
 
-        labelFormulario.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
-        labelFormulario.setForeground(new java.awt.Color(255, 255, 255));
-        labelFormulario.setText("FORMULARIO VIAJE");
+        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("INFORMACION VIAJE");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
-        grupoBotonEquipaje.add(botonSIequipaje);
-        botonSIequipaje.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        botonSIequipaje.setForeground(new java.awt.Color(255, 255, 255));
-        botonSIequipaje.setText("Si");
+        add(jPanel2);
 
-        labelMascota.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        labelMascota.setForeground(new java.awt.Color(255, 255, 255));
-        labelMascota.setText("Mascota");
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new java.awt.GridLayout(11, 0));
 
-        labelDistancia.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        labelDistancia.setForeground(new java.awt.Color(255, 255, 255));
-        labelDistancia.setText("Distancia");
+        jPanel4.setOpaque(false);
+        jPanel4.setLayout(new java.awt.BorderLayout());
 
-        labelFecha.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
-        labelFecha.setText("Fecha");
+        jLabel2.setFont(new java.awt.Font("Palatino Linotype", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("FORMULARIO PEDIDO");
+        jPanel4.add(jLabel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel3.add(jPanel4);
+
+        jPanel5.setOpaque(false);
+        jPanel5.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel18.setOpaque(false);
+        jPanel18.setLayout(new java.awt.BorderLayout());
 
         labelCantPasajeros.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         labelCantPasajeros.setForeground(new java.awt.Color(255, 255, 255));
+        labelCantPasajeros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCantPasajeros.setText("Cantidad de pasajeros");
+        jPanel18.add(labelCantPasajeros, java.awt.BorderLayout.CENTER);
 
-        grupoBotonEquipaje.add(botonNOequipaje);
-        botonNOequipaje.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        botonNOequipaje.setForeground(new java.awt.Color(255, 255, 255));
-        botonNOequipaje.setSelected(true);
-        botonNOequipaje.setText("No");
+        jPanel5.add(jPanel18);
 
-        labelEquipaje.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        labelEquipaje.setForeground(new java.awt.Color(255, 255, 255));
-        labelEquipaje.setText("Equipaje");
+        jPanel16.setOpaque(false);
+
+        ComboBoxCantPax.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ComboBoxCantPax, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ComboBoxCantPax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(jPanel16);
+
+        jPanel3.add(jPanel5);
+
+        jPanel6.setOpaque(false);
+        jPanel6.setLayout(new java.awt.GridLayout(1, 2));
+
+        labelDistancia.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelDistancia.setForeground(new java.awt.Color(255, 255, 255));
+        labelDistancia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelDistancia.setText("Distancia      ");
+        labelDistancia.setToolTipText("");
+        jPanel6.add(labelDistancia);
+
+        jPanel1.setOpaque(false);
 
         textDistancia.setMinimumSize(new java.awt.Dimension(65, 22));
         textDistancia.setPreferredSize(new java.awt.Dimension(65, 22));
 
-        grupoBotonesMascota.add(botonSImascota);
-        botonSImascota.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        botonSImascota.setForeground(new java.awt.Color(255, 255, 255));
-        botonSImascota.setText("Si");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textDistancia, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
+        );
 
-        grupoBotonesMascota.add(botonNOmascota);
-        botonNOmascota.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
-        botonNOmascota.setForeground(new java.awt.Color(255, 255, 255));
-        botonNOmascota.setSelected(true);
-        botonNOmascota.setText("No");
+        jPanel6.add(jPanel1);
+
+        jPanel3.add(jPanel6);
+
+        jPanel7.setOpaque(false);
+        jPanel7.setLayout(new java.awt.GridLayout(1, 2));
+
+        labelFecha.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelFecha.setText("Fecha        ");
+        jPanel7.add(labelFecha);
+
+        jPanel17.setOpaque(false);
 
         selectorFecha.setDateFormatString("d/M/YYYY");
 
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.add(jPanel17);
+
+        jPanel3.add(jPanel7);
+
+        jPanel8.setOpaque(false);
+        jPanel8.setLayout(new java.awt.GridLayout(1, 3));
+
         labelFecha1.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         labelFecha1.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelFecha1.setText("Zona");
+        jPanel8.add(labelFecha1);
 
-        grupoBotonesZona.add(botonPeligrosa);
-        botonPeligrosa.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        botonPeligrosa.setForeground(new java.awt.Color(255, 255, 255));
-        botonPeligrosa.setText("peligrosa");
-
-        grupoBotonesZona.add(botonSinAsfaltar);
         botonSinAsfaltar.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         botonSinAsfaltar.setForeground(new java.awt.Color(255, 255, 255));
         botonSinAsfaltar.setText("sin asfaltar");
+        jPanel8.add(botonSinAsfaltar);
 
-        grupoBotonesZona.add(botonEstandar);
+        botonPeligrosa.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        botonPeligrosa.setForeground(new java.awt.Color(255, 255, 255));
+        botonPeligrosa.setText("peligrosa");
+        jPanel8.add(botonPeligrosa);
+
+        jPanel3.add(jPanel8);
+
+        jPanel10.setOpaque(false);
+        jPanel10.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel15.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 37, Short.MAX_VALUE)
+        );
+
+        jPanel10.add(jPanel15);
+
         botonEstandar.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         botonEstandar.setForeground(new java.awt.Color(255, 255, 255));
         botonEstandar.setSelected(true);
         botonEstandar.setText("estandar");
+        jPanel10.add(botonEstandar);
 
-        ComboBoxCantPax.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jPanel3.add(jPanel10);
+
+        jPanel11.setOpaque(false);
+        jPanel11.setLayout(new java.awt.GridLayout(1, 3));
+
+        labelMascota.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelMascota.setForeground(new java.awt.Color(255, 255, 255));
+        labelMascota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMascota.setText("Mascota");
+        jPanel11.add(labelMascota);
+
+        botonSImascota.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonSImascota.setForeground(new java.awt.Color(255, 255, 255));
+        botonSImascota.setText("Si");
+        jPanel11.add(botonSImascota);
+
+        botonNOmascota.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonNOmascota.setForeground(new java.awt.Color(255, 255, 255));
+        botonNOmascota.setSelected(true);
+        botonNOmascota.setText("No");
+        jPanel11.add(botonNOmascota);
+
+        jPanel3.add(jPanel11);
+
+        jPanel12.setOpaque(false);
+        jPanel12.setLayout(new java.awt.GridLayout(1, 3));
+
+        labelEquipaje.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        labelEquipaje.setForeground(new java.awt.Color(255, 255, 255));
+        labelEquipaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEquipaje.setText("Equipaje");
+        jPanel12.add(labelEquipaje);
+
+        botonSIequipaje.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonSIequipaje.setForeground(new java.awt.Color(255, 255, 255));
+        botonSIequipaje.setText("Si");
+        jPanel12.add(botonSIequipaje);
+
+        botonNOequipaje.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        botonNOequipaje.setForeground(new java.awt.Color(255, 255, 255));
+        botonNOequipaje.setSelected(true);
+        botonNOequipaje.setText("No");
+        jPanel12.add(botonNOequipaje);
+
+        jPanel3.add(jPanel12);
+
+        jPanel13.setOpaque(false);
+        jPanel13.setLayout(new java.awt.GridLayout(1, 2));
+        jPanel3.add(jPanel13);
+
+        jPanel14.setOpaque(false);
+        jPanel14.setLayout(new java.awt.GridLayout(1, 2));
+        jPanel3.add(jPanel14);
+
+        jPanel9.setOpaque(false);
+        jPanel9.setLayout(new java.awt.GridLayout(1, 2));
 
         botonPagar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonPagar.setText("PAGAR");
         botonPagar.setActionCommand("PAGAR VIAJE");
         botonPagar.setEnabled(false);
+        jPanel9.add(botonPagar);
 
         botonPedirViaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonPedirViaje.setText("PEDIR VIAJE");
+        jPanel9.add(botonPedirViaje);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ScrollPaneInfoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelFecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelDistancia)
-                                    .addComponent(labelCantPasajeros))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(textDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ComboBoxCantPax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelFecha1)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonEstandar)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(botonPeligrosa)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(botonSinAsfaltar)))
-                                .addGap(41, 41, 41)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(botonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botonPedirViaje)
-                            .addContainerGap()))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelMascota, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelEquipaje, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonSIequipaje)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonNOequipaje))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonSImascota)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonNOmascota)))
-                        .addGap(76, 76, 76))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(labelInfoViaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                .addComponent(labelFormulario)
-                .addGap(69, 69, 69))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFormulario, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelInfoViaje, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ScrollPaneInfoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelCantPasajeros)
-                            .addComponent(ComboBoxCantPax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(labelDistancia)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelFecha))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFecha1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonPeligrosa)
-                            .addComponent(botonSinAsfaltar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonEstandar)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonPedirViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelMascota)
-                            .addComponent(botonNOmascota)
-                            .addComponent(botonSImascota))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelEquipaje)
-                            .addComponent(botonNOequipaje)
-                            .addComponent(botonSIequipaje))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        jPanel3.add(jPanel9);
+
+        add(jPanel3);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -292,21 +354,54 @@ public class PanelApp extends VentanaClienteAbstract{
     private javax.swing.ButtonGroup grupoBotonEquipaje;
     private javax.swing.ButtonGroup grupoBotonesMascota;
     private javax.swing.ButtonGroup grupoBotonesZona;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel labelCantPasajeros;
     private javax.swing.JLabel labelDistancia;
     private javax.swing.JLabel labelEquipaje;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelFecha1;
-    private javax.swing.JLabel labelFormulario;
-    private javax.swing.JLabel labelInfoViaje;
     private javax.swing.JLabel labelMascota;
     private com.toedter.calendar.JDateChooser selectorFecha;
     private javax.swing.JTextArea textAreaInfoViaje;
     private javax.swing.JTextField textDistancia;
     // End of variables declaration//GEN-END:variables
 
- 
-    public JButton getButtonPagar()
+    @Override
+    public String getNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public String getContrasena() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public String getNombreUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    
+   public JButton getButtonPagar()
     {
         return botonPagar;
     }
@@ -404,5 +499,4 @@ public class PanelApp extends VentanaClienteAbstract{
     public void disablePedirViaje(){
         botonPedirViaje.setEnabled(false);
     };
-    
 }

@@ -21,6 +21,7 @@ public class ControladorMenuSimulacion implements Controlador{
     public ControladorMenuSimulacion(MenuSimulacion vista, Simulacion simulacion)
    {
        this.vista = vista;
+       this.vista.setActionListener(this);
        this.simulacion = simulacion;
    }
 

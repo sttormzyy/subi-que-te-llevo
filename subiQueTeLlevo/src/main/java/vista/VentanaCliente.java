@@ -35,7 +35,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
         initComponents();
         this.setTitle("Subi que te llevo");
-        this.setLocationRelativeTo(null);
+        this.setLocation(800,100);
         currentVentana = panelLogin;
         switchPanel(panelLogin);
         setVisible(true);
@@ -61,9 +61,11 @@ public class VentanaCliente extends javax.swing.JFrame {
    
    public void setApp()
     {
-        this.setSize(600,460);
-        this.setMinimumSize(new Dimension(600,460));
-        switchPanel(panelApp);
+        this.setMinimumSize(new Dimension(600,420));
+        setContentPane(panelApp);
+        currentVentana = (VentanaClienteAbstract) panelApp;
+        revalidate();
+        repaint();
     }
    
    public void setActionListener(ActionListener c)

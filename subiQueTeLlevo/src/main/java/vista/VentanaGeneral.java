@@ -23,7 +23,7 @@ public class VentanaGeneral extends javax.swing.JFrame {
         panelTitulos.setSize(400,100);
        // textGeneral.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
        this.setTitle("Subi que te llevo - Simulacion");
-       this.setLocationRelativeTo(null);
+       this.setLocation(0,100);
        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/iconovioleta.jpg")).getImage());
        this.setVisible(true);
     }
