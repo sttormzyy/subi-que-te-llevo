@@ -196,7 +196,11 @@ public abstract class Vehiculo implements Cloneable{
 		String petfriendly = (this.mascota!=0)?"Si":"No";
 		String baul =(this.equipaje!=0)?"Si":"No";
 		
-		return "\\nPATENTE: "+this.patente+"\n TIPO: "+this.getClass().getName()+"\nCANT PASAJEROS MAX:"+this.cantMaxPas+"\nPET FRIENDLY:"+petfriendly+"\n EQUIPAJE:"+equipaje;
+		return "\nPATENTE: "+ this.patente +
+				"\nTIPO: " + this.getClass().getName() +
+				"\nCANT PASAJEROS MAX:" +this.cantMaxPas +
+				"\nPET FRIENDLY:" + petfriendly +
+				"\nEQUIPAJE:" + equipaje;
 	}
         
         public String getTipo()

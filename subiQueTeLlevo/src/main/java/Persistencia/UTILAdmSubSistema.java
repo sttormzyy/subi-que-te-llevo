@@ -4,6 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Persistencia.choferDTO.ChoferContratadoDTO;
+import Persistencia.choferDTO.ChoferDTO;
+import Persistencia.choferDTO.ChoferPermanenteDTO;
+import Persistencia.choferDTO.ChoferTemporarioDTO;
+import Persistencia.sistemaDTO.AdmSubSistemaDTO;
+import Persistencia.usuarioDTO.AdministradorDTO;
+import Persistencia.usuarioDTO.ClienteDTO;
+import Persistencia.usuarioDTO.UsuarioDTO;
+import Persistencia.vehiculoDTO.AutoDTO;
+import Persistencia.vehiculoDTO.CombiDTO;
+import Persistencia.vehiculoDTO.MotoDTO;
+import Persistencia.vehiculoDTO.VehiculoDTO;
 import choferes.Chofer;
 import choferes.ChoferContratado;
 import choferes.ChoferPermanente;
@@ -14,7 +26,10 @@ import sistema.AdmSubSistema;
 import usuarios.Administrador;
 import usuarios.Cliente;
 import usuarios.Usuario;
-import vehiculos.*;
+import vehiculos.Auto;
+import vehiculos.Combi;
+import vehiculos.Moto;
+import vehiculos.Vehiculo;
 
 public class UTILAdmSubSistema implements Serializable
 {
@@ -95,6 +110,7 @@ public class UTILAdmSubSistema implements Serializable
 		choferDTO.setPuntos(chofer.getPuntos());
 		return choferDTO;
 	}
+	
 	public static ChoferPermanenteDTO ChoferPermanenteDTOFromChoferPermanente(ChoferPermanente chofer) {
 		ChoferPermanenteDTO choferDTO = new ChoferPermanenteDTO();
 		choferDTO.setDni(chofer.getDni());
@@ -107,6 +123,7 @@ public class UTILAdmSubSistema implements Serializable
 		);
 		return choferDTO;
 	}
+	
 	public static ChoferContratadoDTO ChoferContratadoDTOFromChoferContratado(ChoferContratado chofer) {
 		ChoferContratadoDTO choferDTO = new ChoferContratadoDTO();
 		choferDTO.setDni(chofer.getDni());
@@ -127,7 +144,7 @@ public class UTILAdmSubSistema implements Serializable
 		//Vemos si lanzamos excepcion
 		return null;
 	}
-
+	
 	public static ChoferTemporario choferTemporarioFromChoferTemporarioDTO(ChoferTemporarioDTO chofer) {
 		return new ChoferTemporario(
 				chofer.getDni(),
@@ -187,9 +204,27 @@ public class UTILAdmSubSistema implements Serializable
 		vehiculo.setOcupado(vehiculoDTO.isOcupado());
 	    return vehiculo;
 	}
-
 	
 	//---------------------------------------- Usuarios ---------------------------------------- //
+	
+	public static UsuarioDTO usuarioDTOFromUsuario(Usuario usuario) {
+		if (usuario instanceof Cliente) {
+			return clienteDTOFromCliente( (Cliente) usuario);
+		} else if (usuario instanceof Administrador) {
+			return administradorDTOFromAdministrador( (Administrador) usuario);
+		} 
+		//Vemos si lanzamos excepcion
+		return null;
+	}
+	public static Usuario usuarioFromUsuarioDTO(UsuarioDTO usuarioDTO) {
+		if (usuarioDTO instanceof ClienteDTO) {
+			return clienteFromClienteDTO( (ClienteDTO) usuarioDTO);
+		} else if (usuarioDTO instanceof AdministradorDTO) {
+			return administradorFromAdministradorDTO( (AdministradorDTO) usuarioDTO);
+		}
+		//Vemos si lanzamos excepcion
+		return null;
+	}
 	
 	public static ClienteDTO clienteDTOFromCliente(Cliente cliente) {
 		ClienteDTO clienteDTO = new ClienteDTO();
@@ -205,6 +240,7 @@ public class UTILAdmSubSistema implements Serializable
 		cliente.addPuntos(clienteDTO.getPuntos());
 	    return cliente;
 	}
+	
 	public static AdministradorDTO administradorDTOFromAdministrador(Administrador administrador) {
 		AdministradorDTO administradorDTO = new AdministradorDTO();
 		administradorDTO.setNombreReal(administrador.getNombreReal());
@@ -216,5 +252,6 @@ public class UTILAdmSubSistema implements Serializable
 	public static Administrador administradorFromAdministradorDTO(AdministradorDTO administradorDTO) {
 		return new Administrador(administradorDTO.getNombreUsuario(), administradorDTO.getNombreReal(), administradorDTO.getContrasena());
 	}
+
 }
 

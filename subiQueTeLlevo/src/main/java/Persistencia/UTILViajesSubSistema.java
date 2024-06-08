@@ -1,12 +1,15 @@
 package Persistencia;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import Persistencia.sistemaDTO.ViajesSubSistemaDTO;
+import Persistencia.viajeDTO.PedidoDTO;
+import Persistencia.viajeDTO.ViajeDTO;
 import sistema.ViajesSubSistema;
 import viajes.IViaje;
 import viajes.Pedido;
 import viajes.ViajeFactory;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class UTILViajesSubSistema {
     private static final ViajeFactory viajeFactory = new ViajeFactory();
@@ -17,7 +20,7 @@ public class UTILViajesSubSistema {
         for(int i = 0; i < viajesSubSistema.getViajeLista().size(); i++) {
             viajeLista.add(UTILViajesSubSistema.viajeDTOFromIViaje(viajesSubSistema.getViajeLista().get(i)));
         }
-        viajesSubDTO.setViajeLista(viajeLista);
+        viajesSubDTO.setViajeListaDTO(viajeLista);
         return viajesSubDTO;
     }
 
@@ -25,7 +28,7 @@ public class UTILViajesSubSistema {
         ViajesSubSistema viajesSub = new ViajesSubSistema();
         ArrayList<IViaje> viajeLista = new ArrayList<IViaje>();
         for(int i = 0; i < viajesSub.getViajeLista().size(); i++) {
-            viajeLista.add(iViajeAViajeDTO(viajesSubSistemaDTO.getViajeLista().get(i)));
+            viajeLista.add(iViajeAViajeDTO(viajesSubSistemaDTO.getViajeListaDTO().get(i)));
         }
         viajesSub.setViajeLista(viajeLista);
         return viajesSub;

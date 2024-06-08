@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.10" class="java.beans.XMLDecoder">
+ <object class="Persistencia.sistemaDTO.EmpresaDTO">
+  <void property="admSubSistemaDTO">
+   <object class="Persistencia.sistemaDTO.AdmSubSistemaDTO" id="AdmSubSistemaDTO0">
+    <void property="choferListaDTO">
+     <void method="add">
+      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
+       <void property="dni">
+        <string>1234567</string>
+       </void>
+       <void property="nombre">
+        <string>Juan</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
+       <void property="cantidadHijos">
+        <int>5</int>
+       </void>
+       <void property="dni">
+        <string>2234567</string>
+       </void>
+       <void property="fechaIngresoDTO">
+        <object class="Persistencia.LocalDateTimeDTO">
+         <void property="anio">
+          <int>2024</int>
+         </void>
+         <void property="dia">
+          <int>8</int>
+         </void>
+         <void property="hora">
+          <int>15</int>
+         </void>
+         <void property="mes">
+          <int>6</int>
+         </void>
+         <void property="minuto">
+          <int>30</int>
+         </void>
+        </object>
+       </void>
+       <void property="nombre">
+        <string>Pablo</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
+       <void property="dni">
+        <string>3234567</string>
+       </void>
+       <void property="nombre">
+        <string>Franco</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="usuarioMapDTO">
+     <void method="put">
+      <string>GianMagliotti</string>
+      <object class="Persistencia.usuarioDTO.ClienteDTO">
+       <void property="contrasena">
+        <string>456</string>
+       </void>
+       <void property="nombreReal">
+        <string>Gian Franco Magliotti</string>
+       </void>
+       <void property="nombreUsuario">
+        <string>GianMagliotti</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>IvanAhumada</string>
+      <object class="Persistencia.usuarioDTO.ClienteDTO">
+       <void property="contrasena">
+        <string>789</string>
+       </void>
+       <void property="nombreReal">
+        <string>Ivan Ahumada</string>
+       </void>
+       <void property="nombreUsuario">
+        <string>IvanAhumada</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>GianSanPedro</string>
+      <object class="Persistencia.usuarioDTO.ClienteDTO">
+       <void property="contrasena">
+        <string>123</string>
+       </void>
+       <void property="nombreReal">
+        <string>Gianfranco San Pedro</string>
+       </void>
+       <void property="nombreUsuario">
+        <string>GianSanPedro</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="vehiculoListaDTO">
+     <void method="add">
+      <object class="Persistencia.vehiculoDTO.CombiDTO">
+       <void property="cantMaxPas">
+        <int>1</int>
+       </void>
+       <void property="patente">
+        <string>ABC123</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.vehiculoDTO.AutoDTO">
+       <void property="cantMaxPas">
+        <int>4</int>
+       </void>
+       <void property="equipaje">
+        <int>1</int>
+       </void>
+       <void property="mascota">
+        <int>1</int>
+       </void>
+       <void property="patente">
+        <string>DEF456</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.vehiculoDTO.MotoDTO">
+       <void property="cantMaxPas">
+        <int>10</int>
+       </void>
+       <void property="equipaje">
+        <int>1</int>
+       </void>
+       <void property="patente">
+        <string>GHI789</string>
+       </void>
+      </object>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void property="adminDTO">
+   <object class="Persistencia.usuarioDTO.AdministradorDTO">
+    <void property="contrasena">
+     <string>0000</string>
+    </void>
+    <void property="nombreReal">
+     <string>Morgan Freeman</string>
+    </void>
+    <void property="nombreUsuario">
+     <string>Dios</string>
+    </void>
+   </object>
+  </void>
+  <void property="viajesSubSistemaDTO">
+   <object class="Persistencia.sistemaDTO.ViajesSubSistemaDTO"/>
+  </void>
+ </object>
+</java>

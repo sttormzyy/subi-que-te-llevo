@@ -161,7 +161,7 @@ public abstract class Chofer implements Cloneable  {
 				"\nDni: " + dni + 
 				"\nNombre: " + nombre + 
 				"\nPuntos: " + puntos + 
-				"\nOcupado: " + ocupado + "]";
+				"\nOcupado: " + ocupado;
 	}
 
 	/**

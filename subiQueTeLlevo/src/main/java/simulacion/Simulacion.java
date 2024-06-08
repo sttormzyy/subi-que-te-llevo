@@ -5,6 +5,8 @@
 package simulacion;
 
 import Persistencia.PersistenciaXML;
+import Persistencia.UTILEmpresa;
+import Persistencia.sistemaDTO.EmpresaDTO;
 import choferes.Chofer;
 import choferes.ChoferContratado;
 import choferes.ChoferPermanente;
@@ -54,20 +56,25 @@ public class Simulacion {
    public void iniciarSimulacionConDatosViejos(int cantMaxViajeCliente,int cantMaxViajeChofer)
    {
        PersistenciaXML p = new PersistenciaXML();
-       Empresa empresa;
        
        try {
-           p.abrirInput("empresa.xml");
-           try {
-               empresa = (Empresa) p.leer();
-               rc = new RecursoCompartido(empresa,empresa.getUsuarioLista().size(), empresa.getChoferLista().size());
-               initThreads(empresa,cantMaxViajeCliente, cantMaxViajeChofer);
-               simular(empresa);
-           } catch (ClassNotFoundException ex) {
-               Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
-           }
+    	   p.abrirInput("Empresa.xml");
+    	   System.out.println("-Archivo Empresa abierto");
+
+    	   EmpresaDTO empresaDTO = (EmpresaDTO) p.leer();
+    	   Empresa empresa = UTILEmpresa.empresaFromEmpresaDTO(empresaDTO);
+
+    	   System.out.println("Empresa recuperada");
+    	   p.cerrarInput();
+    	   System.out.println("-Archivo cerrado\n");
+    	   
+    	   rc = new RecursoCompartido(empresa,empresa.getUsuarioLista().size(), empresa.getChoferLista().size());
+    	   initThreads(empresa,cantMaxViajeCliente, cantMaxViajeChofer);
+    	   simular(empresa);
        } catch (IOException ex) {
-           Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+    	   Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+       } catch (ClassNotFoundException ex) {
+    	   Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
    
