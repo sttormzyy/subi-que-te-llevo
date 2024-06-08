@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.10" class="java.beans.XMLDecoder">
+ <object class="Persistencia.usuarioDTO.ClienteDTO">
+  <void property="contrasena">
+   <string>789</string>
+  </void>
+  <void property="nombreReal">
+   <string>Ivan Ahumada</string>
+  </void>
+  <void property="nombreUsuario">
+   <string>IvanAhumada</string>
+  </void>
+ </object>
+</java>

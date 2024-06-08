@@ -225,7 +225,7 @@ public class ViajesSubSistema {
     }
     
    
-
+    //LO PODEMOS ELIMINAR?
     /**
      * Genera un viaje a partir de un pedido y una distancia especificados (Random).<br>
      * <b>PRE:</b> El parametro pedido no deber ser nulo, y distancia debe ser mayor a cero.<br>

@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import choferes.Chofer;
+import choferes.ChoferContratado;
 import choferes.ChoferPermanente;
+import choferes.ChoferTemporario;
 import excepciones.chofer.ExceptionChoferInexistente;
 import excepciones.chofer.ExceptionDNIrepetido;
 import excepciones.usuario.ExceptionUsuarioInexistente;
@@ -472,16 +474,29 @@ public class AdmSubSistema {
      * @param fecha: La fecha para la cual se calculan los salarios.
      * @return Una cadena que representa el listado de salarios de los Choferes, incluyendo el nombre, DNI y salario.
      */
-    public String reporteSalariosChoferes(LocalDateTime fecha)
+    public String reporteSalariosChoferes(LocalDateTime fecha, ArrayList<IViaje> viajeLista)
     {
     	assert fecha != null : "Falla Pre: fecha Null";
     	
     	StringBuilder listadoSalarios = new StringBuilder();
+    	double sueldo = 0;
 
     	listadoSalarios.append("\n		LISTADO  SUELDOS\n");
     	listadoSalarios.append("\n Nombre		       DNI	        Salario\n");
     	for (Chofer chofer : choferLista) {
-    		listadoSalarios.append(chofer.toStringListadoSalarios(fecha)).append("\n");
+    		if (chofer instanceof ChoferTemporario) {
+    			int cantidadViajesTemp = this.getCantidadViajesTemp(chofer, fecha, viajeLista); //podria ser static?
+    			sueldo = ((ChoferTemporario) chofer).getSueldo(fecha, cantidadViajesTemp);
+    		} 
+    		else if (chofer instanceof ChoferPermanente) {
+    			sueldo = ((ChoferPermanente) chofer).getSueldo(fecha);
+    		} 
+    		else if (chofer instanceof ChoferContratado) {
+    			double totalRecaudado = this.getRecaudoContratado(chofer, fecha, viajeLista);
+    			sueldo = ((ChoferContratado) chofer).getSueldo(fecha, totalRecaudado);
+    		}
+    		String datos = String.format("%-20s%-20s$%.2f", chofer.getNombre(), chofer.getDni(), sueldo);
+    		listadoSalarios.append(datos).append("\n");
     	}
     	return listadoSalarios.toString();
 
@@ -494,18 +509,30 @@ public class AdmSubSistema {
      * en un mes especifico.<br>
      * <b>PRE: </b> La fecha es distinta de Null.<br>
      * @param fecha: La fecha para la cual se calculan los salarios.
+     * @param viajeLista   ArrayList donde se guarda el historico de viajes.
      * @return Una cadena que representa el total de salarios necesarios para pagar a todos los Choferes.
      */
-    public String getTotalSalarios(LocalDateTime fecha)
+    public String getTotalSalarios(LocalDateTime fecha, ArrayList<IViaje> viajeLista)
     {
     	assert fecha != null : "Falla Pre: fecha Null";
+    	assert viajeLista != null : "Falla Pre: viajeLista Null";
     	
     	StringBuilder totalSalarios = new StringBuilder();
 
     	double total = 0;
     	for (Chofer chofer : choferLista) 
     	{
-    		total += chofer.getSueldo(fecha); //seria para el mes actual
+    		if (chofer instanceof ChoferTemporario) {
+    			int cantidadViajesTemp = this.getCantidadViajesTemp(chofer, fecha, viajeLista); //podria ser static?
+    			total += ((ChoferTemporario) chofer).getSueldo(fecha, cantidadViajesTemp);
+    		} 
+    		else if (chofer instanceof ChoferPermanente) {
+    			total += ((ChoferPermanente) chofer).getSueldo(fecha);
+    		} 
+    		else if (chofer instanceof ChoferContratado) {
+    			double totalRecaudado = this.getRecaudoContratado(chofer, fecha, viajeLista);
+    			total += ((ChoferContratado) chofer).getSueldo(fecha, totalRecaudado);
+    		}
     	}
     	totalSalarios.append("\nTotal salarios: $").append(total);
     	return totalSalarios.toString();
@@ -676,7 +703,7 @@ public class AdmSubSistema {
 	 * @param fecha. La fecha para la cual se calcula el recaudo.
 	 * @return El total facturado por el Chofer en el mes y año especificados.
 	 */
-    public double getRecaudoContratado(Chofer chofer, LocalDateTime fecha) 
+    public double getRecaudoContratado(Chofer chofer, LocalDateTime fecha, ArrayList<IViaje> viajeLista) 
 	{	
     	assert fecha != null : "Falla Pre: fecha Null";
     	assert chofer != null : "Falla Pre: chofer Null";
@@ -684,7 +711,6 @@ public class AdmSubSistema {
     	
     	//los viajes se agregan al final con add, por lo que si recorro desde el final empiezo por los mas recientes
     	double totalFacturado = 0;
-		ArrayList<IViaje> viajeLista = empresa.getViajeLista();
 		int i = viajeLista.size() - 1;
 		
 		//Recorro hasta encontrar el año especifico
@@ -715,15 +741,15 @@ public class AdmSubSistema {
      * <b>PRE: </b> Tanto el chofer como la fecha son distintos de Null.<br>
      * @param chofer: El Chofer del cual se desea obtener la cantidad de viajes.
      * @param fecha: La fecha para la cual se desea calcular la cantidad de viajes.
+     * @param viajeLista   ArrayList donde se guarda el historico de viajes.
      * @return La cantidad de viajes realizados por el Chofer en el mes y año especificados.
      */
-	public double getCantidadViajesTemp(Chofer chofer, LocalDateTime fecha) 
+	public int getCantidadViajesTemp(Chofer chofer, LocalDateTime fecha, ArrayList<IViaje> viajeLista) 
 	{
 		assert fecha != null : "Falla Pre: fecha Null";
     	assert chofer != null : "Falla Pre: chofer Null";
 		
-		double cantViajes = 0;
-		ArrayList<IViaje> viajeLista = empresa.getViajeLista();
+    	int cantViajes = 0;
 		int i = viajeLista.size() - 1;
 		
 		//Recorro hasta encontrar el año especifico desde el final, viejos al principio y recientes al final

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.10" class="java.beans.XMLDecoder">
+ <object class="Persistencia.vehiculoDTO.CombiDTO">
+  <void property="cantMaxPas">
+   <int>1</int>
+  </void>
+  <void property="patente">
+   <string>ABC123</string>
+  </void>
+ </object>
+</java>

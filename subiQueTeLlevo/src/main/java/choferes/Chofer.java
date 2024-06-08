@@ -34,20 +34,20 @@ public abstract class Chofer implements Cloneable  {
     }
 
 // Metodos abstractos
-    
+
     /**
      * Obtiene el sueldo del Chofer.<br>
      * @return El sueldo del Chofer.
      */
-    public abstract double getSueldo(); 
+    //public abstract double getSueldo(); 
     
     /**
      * Obtiene el sueldo del Chofer para una fecha especifica.<br>
      * @param fecha La fecha para la cual se calcula el sueldo.
      * @return El sueldo del Chofer para la fecha dada.
      */
-    public abstract double getSueldo(LocalDateTime fecha);
-    
+    //public abstract double getSueldo(LocalDateTime fecha);
+
 // Getters y Setters
     
     /**
@@ -139,18 +139,6 @@ public abstract class Chofer implements Cloneable  {
         return String.format("%-20s %-20s %-10d", nombre, dni, puntos);
     }
     
-	/**
-     * Genera una representacion en formato de lista de los datos y el salario del Chofer para un mes especifico.<br>
-     * <b>PRE:</b> La fecha no puede ser nula.<br>
-	 * <b>POST:</b> Se devuelve una cadena de caracteres que representa al Chofer en un formato de lista de salarios.<br>
-     * @param fecha La fecha para la cual se calcula el salario.
-     * @return Una cadena de caracteres que representa al Chofer en un formato de lista de salarios.
-     */
-    public String toStringListadoSalarios(LocalDateTime fecha) {
-    	assert fecha != null : "La fecha no puede ser nula.";
-        return String.format("%-20s%-20s$%.2f", nombre, dni, this.getSueldo(fecha));
-    }
-
     /**
      * Genera una representacion de los atributos del Chofer.<br>
      * <b>POST:</b> Se devuelve una cadena de caracteres que representa al Chofer.<br>

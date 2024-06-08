@@ -6,11 +6,11 @@ import java.time.temporal.ChronoUnit;
 /**
  * Clase que representa a un chofer permanente.
  */
-public class ChoferPermanente extends Asalariado{
+public class ChoferPermanente extends Asalariado
+{
 	private static double sueldoBasico=2000;
 	private static double plusAntiguedad = 10;       
-	private static double plusXHijos = 10;          
-	private static double aportes = 10;              
+	private static double plusXHijos = 10;             
 	private int cantidadHijos;
 	private LocalDateTime fechaIngreso;
 	
@@ -74,7 +74,7 @@ public class ChoferPermanente extends Asalariado{
 		assert fecha != null : "El parametro fecha no puede ser nulo.";
 		double sueldoBruto = getSueldoBruto(fecha);
         // Calcular los aportes jubilatorios
-		return sueldoBruto - ( sueldoBruto * ( ChoferPermanente.aportes / 100) );
+		return sueldoBruto - ( sueldoBruto * ( Asalariado.aportes / 100) );
 	}
 	
 	/**
@@ -168,29 +168,6 @@ public class ChoferPermanente extends Asalariado{
 	    assert porcentaje >= 0 : "El porcentaje de plus por cantidad de hijos no puede ser negativo.";
 
 		ChoferPermanente.plusXHijos = porcentaje;
-	}
-	
-	/**
-     * Obtiene el porcentaje de aportes para los Choferes Permanentes.<br>
-  	 * <b>POST:</b> Se devuelve el porcentaje de aportes para los Choferes Permanentes.<br>
-     * @return El porcentaje de aportes para los Choferes Permanentes.
-     */
-	public double getAportes() 
-	{
-		return ChoferPermanente.aportes;
-	}
-	
-	/**
-     * Establece el porcentaje de aportes para los Choferes Permanentes.<br>
-     * <b>PRE:</b> El parámetro aportes no puede ser negativo.<br>
-     * <b>POST:</b> Se actualiza el porcentaje de aportes para los Choferes Permanentes.<br>
-     * @param aportes El nuevo porcentaje de aportes para los Choferes Permanentes.
-     */
-	public void setAportes(double aportes) 
-	{
-	    assert aportes >= 0 : "El porcentaje de aportes no puede ser negativo.";
-
-		ChoferPermanente.aportes = aportes;
 	}
 	
 	/**

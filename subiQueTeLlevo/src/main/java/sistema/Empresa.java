@@ -333,13 +333,14 @@ public class Empresa {
 	/**
      * Solicita al SubSistema Administrador generar un reporte de los salarios de todos los Choferes en un mes especifico en formato cadena.<br>
      * @param fecha  La fecha correspondiente al mes del reporte.
+     * @param viajeLista   ArrayList donde se guarda el historico de viajes.
      * @return El reporte de salarios de los Choferes.
      * @throws ExceptionFecha Si la fecha especificada es invalida.
      */
-	public String reporteSalariosChoferes(LocalDateTime fecha)  throws ExceptionFecha
+	public String reporteSalariosChoferes(LocalDateTime fecha, ArrayList<IViaje> viajeLista)  throws ExceptionFecha
 	{
 		if( LocalDateTime.now().isEqual(fecha)||LocalDateTime.now().isBefore(fecha))
-			return admSubSistema.reporteSalariosChoferes(fecha);
+			return admSubSistema.reporteSalariosChoferes(fecha, viajeLista);
 		else
 			throw new ExceptionFecha(fecha);
 	}
@@ -354,8 +355,9 @@ public class Empresa {
      */
 	public String getTotalSalarios(LocalDateTime fecha) throws ExceptionFecha
 	{
+		//deberiamos chequear lista null?
 		if(LocalDateTime.now().isEqual(fecha)||LocalDateTime.now().isBefore(fecha))
-			return admSubSistema.getTotalSalarios(fecha);
+			return admSubSistema.getTotalSalarios(fecha, viajesSubSistema.getViajeLista());
 		else
 			throw new ExceptionFecha(fecha);
 	}
@@ -672,22 +674,24 @@ public class Empresa {
      * Solicita al SubSistema Administrador el recaudo contratado por un Chofer en una fecha especifica.<br>
      * @param chofer  El Chofer para el cual se calcula el recaudo.
      * @param fecha   La fecha para la cual se calcula el recaudo.
+     * @param viajeLista   ArrayList donde se guarda el historico de viajes.
      * @return El recaudo contratado por el Chofer en la fecha especificada.
      */
-	public double getRecaudoContratado(Chofer chofer, LocalDateTime fecha) 
+	public double getRecaudoContratado(Chofer chofer, LocalDateTime fecha, ArrayList<IViaje> viajeLista) 
 	{
-		return admSubSistema.getRecaudoContratado(chofer, fecha);
+		return admSubSistema.getRecaudoContratado(chofer, fecha, viajeLista);
 	}
 	
 	/**
      * Solicita al SubSistema Administrador la cantidad de viajes temporales realizados por un Chofer en una fecha especifica.<br>
      * @param chofer  El Chofer para el cual se calcula la cantidad de viajes temporales.
      * @param fecha   La fecha para la cual se calcula la cantidad de viajes temporales.
+     * @param viajeLista   ArrayList donde se guarda el historico de viajes.
      * @return La cantidad de viajes temporales realizados por el Chofer en la fecha especificada.
      */
-	public double getCantidadViajesTemp(Chofer chofer, LocalDateTime fecha) 
+	public double getCantidadViajesTemp(Chofer chofer, LocalDateTime fecha,  ArrayList<IViaje> viajeLista) 
 	{
-		return admSubSistema.getCantidadViajesTemp(chofer, fecha);
+		return admSubSistema.getCantidadViajesTemp(chofer, fecha, viajeLista);
 	}
 	
 // FIN funcionalidades generales de la empresa que no estan relacionadas con otras como para crear un susbsistema aparte

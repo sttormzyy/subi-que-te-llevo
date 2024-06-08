@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import Persistencia.LocalDateTimeDTO;
 
-public class ChoferPermanenteDTO extends ChoferDTO
+public class ChoferPermanenteDTO extends AsalariadoDTO
 {             
 	private int cantidadHijos;
 	private LocalDateTimeDTO fechaIngresoDTO;

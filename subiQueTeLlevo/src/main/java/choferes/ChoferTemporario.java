@@ -13,8 +13,7 @@ public class ChoferTemporario  extends Asalariado
 {
     private static double sueldoBasico=2000;
     private static int cantidadViajesParaPlus = 40;
-    private static double plusXCantidadViajes = 10;       
-    private static double aportes;						
+    private static double plusXCantidadViajes = 10; 	
 
 // Constructor
     /**
@@ -33,9 +32,9 @@ public class ChoferTemporario  extends Asalariado
      * Obtiene el sueldo del Chofer Temporario para el mes actual.<br>
      * @return El sueldo del Chofer para el mes actual.
      */
-    public double getSueldo() {
+    public double getSueldo(int cantidadViajesTemp) {
     	LocalDateTime fechaActual = LocalDateTime.now();
-		return this.getSueldoNeto(fechaActual);
+		return this.getSueldoNeto(fechaActual, cantidadViajesTemp);
 	}
     
     /**
@@ -44,8 +43,8 @@ public class ChoferTemporario  extends Asalariado
      * @param fecha La fecha para la cual se calcula el sueldo.
      * @return El sueldo del chofer para la fecha dada.
      */
-    public double getSueldo(LocalDateTime fecha) {
-		return this.getSueldoNeto(fecha);
+    public double getSueldo(LocalDateTime fecha, int cantidadViajesTemp) {
+		return this.getSueldoNeto(fecha, cantidadViajesTemp);
 	}
     
     /**
@@ -54,9 +53,9 @@ public class ChoferTemporario  extends Asalariado
      * @param fecha La fecha para la cual se calcula el sueldo.
      * @return El sueldo neto del Chofer para la fecha dada.
      */
-    public double getSueldoNeto(LocalDateTime fecha) {
-        double sueldoBruto = getSueldoBruto(fecha);
-        double descuento = sueldoBruto * ( ChoferTemporario.aportes / 100 );
+    public double getSueldoNeto(LocalDateTime fecha, int cantidadViajesTemp) {
+        double sueldoBruto = getSueldoBruto(fecha, cantidadViajesTemp);
+        double descuento = sueldoBruto * ( Asalariado.aportes / 100 );
         double sueldoNeto = sueldoBruto - descuento;
         return sueldoNeto;
     }
@@ -67,9 +66,9 @@ public class ChoferTemporario  extends Asalariado
      * @param fecha La fecha para la cual se calcula el sueldo.
      * @return El sueldo bruto del chofer para la fecha dada.
      */
-    public double getSueldoBruto(LocalDateTime fecha) {
+    public double getSueldoBruto(LocalDateTime fecha, int cantidadViajesTemp) {
         double sueldoBruto = sueldoBasico;
-        if (Empresa.getInstance().getCantidadViajesTemp(this,fecha) > ChoferTemporario.cantidadViajesParaPlus) 
+        if (cantidadViajesTemp > ChoferTemporario.cantidadViajesParaPlus) 
         {
         	sueldoBruto += sueldoBasico * (ChoferTemporario.plusXCantidadViajes / 100);
         }
@@ -94,26 +93,6 @@ public class ChoferTemporario  extends Asalariado
      */
 	public static void setSueldoBasico(double sueldoBasico) {
 		ChoferTemporario.sueldoBasico = sueldoBasico;
-	}
-
-	/**
-	 * Obtiene los aportes del Chofer Temporario.<br>
-	 * <b>POST:</b> Se devuelve el valor de los aportes del Chofer Temporario.<br>
-	 * @return Los aportes del Chofer Temporario.
-	 */
-	public double getAportes() {
-		return ChoferTemporario.aportes;
-	}
-	
-	/**
-	 * Establece los aportes del Chofer Temporario.<br>
-	 * <b>PRE:</b> El parametro aportes no puede ser negativo.<br>
-	 * <b>POST:</b> Se actualizan los aportes del Chofer Temporario.<br>
-	 * @param aportes Los nuevos aportes del Chofer Temporario.
-	 */
-	public void setAportes(double aportes) {
-		assert aportes >= 0: "Los aportes no pueden ser negativos";
-		ChoferTemporario.aportes = aportes;
 	}
 	
 	/**

@@ -35,10 +35,10 @@ public class ChoferContratado extends Chofer{
 	 * <b>POST:</b> Se devuelve el sueldo del chofer contratado para el mes especificado.<br>
      * @return El sueldo del chofer para el mes especificado.
      */
-	public double getSueldo() 
+	public double getSueldo(double totalRecaudado) 
 	{
 		LocalDateTime fechaActual = LocalDateTime.now();
-        return Empresa.getInstance().getRecaudoContratado(this, fechaActual) * (gananciaViaje / 100);
+        return totalRecaudado * (gananciaViaje / 100);
     }
 	
 	/**
@@ -48,10 +48,10 @@ public class ChoferContratado extends Chofer{
      * @param fecha La fecha para la cual se calcula el sueldo.
      * @return El sueldo del chofer para el mes especificado.
      */
-	public double getSueldo(LocalDateTime fecha)
+	public double getSueldo(LocalDateTime fecha, double totalRecaudado)
 	{
 	    assert fecha != null : "La fecha no puede ser nula.";
-		return Empresa.getInstance().getRecaudoContratado(this, fecha) * (gananciaViaje / 100);
+		return totalRecaudado * (gananciaViaje / 100);
 	}
 
 // Getters y Setters
