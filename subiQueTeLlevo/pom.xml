@@ -21,6 +21,12 @@
     <build>
         <resources>
             <resource>
+                <directory>${basedir}</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+            </resource>
+            <resource>
                 <directory>../../../../../../Nueva carpeta/subi-que-te-llevo/subiQueTeLlevo/</directory>
                 <includes>
                     <include>*</include>

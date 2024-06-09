@@ -55,8 +55,8 @@ public class Empresa {
 	{
 		if (empresa == null) {
 			empresa = new Empresa();
-			empresa.viajesSubSistema = new ViajesSubSistema(empresa);
-			empresa.admSubSistema = new AdmSubSistema(empresa);
+			empresa.viajesSubSistema = new ViajesSubSistema();
+			empresa.admSubSistema = new AdmSubSistema();
 		}
 
 		return empresa;

@@ -26,14 +26,9 @@ import viajes.ViajeFactory;
  * asi como el manejo de pedidos y la asignación de vehiculos y choferes a los viajes.
  */
 public class ViajesSubSistema {
-    private Empresa empresa;
+    private Empresa empresa = Empresa.getInstance();
     private ViajeFactory viajeFactory = new ViajeFactory();
     
-    
-    public ViajesSubSistema(Empresa empresa)
-    {
-        this.empresa = empresa;
-    }
     /**
      * Coleccion de viajes de la empresa
      */
