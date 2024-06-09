@@ -123,6 +123,24 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         return Integer.parseInt(textCantCombi.getText());
     }
     
+    /**
+     * Deshabilita el boton de iniciar simulacion con datos persistidos
+     * */
+    public void disableIniciarConDatosViejos()
+    {
+        this.BotonComenzarSimulacionVieja.setEnabled(false);
+    }
+    
+    
+    /**
+     * Muestra por pantalla una ventana emergente comunicando un error al usuario
+     */
+   public void setDialog(String mensaje, String tipo)
+    {
+        DialogCliente dialog = new DialogCliente(this, true, tipo, mensaje);
+        dialog.setVisible(true);
+    }
+    
     
    
     @SuppressWarnings("unchecked")

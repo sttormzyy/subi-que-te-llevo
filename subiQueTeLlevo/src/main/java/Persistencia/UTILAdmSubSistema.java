@@ -177,9 +177,9 @@ public class UTILAdmSubSistema implements Serializable
 		if (vehiculo instanceof Auto) {
 			vehiculoDTO = new AutoDTO();
 		} else if (vehiculo instanceof Moto) {
-			vehiculoDTO = new CombiDTO();
-		} else {
 			vehiculoDTO = new MotoDTO();
+		} else {
+			vehiculoDTO = new CombiDTO();
 		}
 		vehiculoDTO.setPatente(vehiculo.getPatente());
 		vehiculoDTO.setCantMaxPas(vehiculo.getCantMaxPas());

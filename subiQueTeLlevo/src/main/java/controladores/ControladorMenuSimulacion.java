@@ -5,8 +5,12 @@
 package controladores;
 
 
+import Persistencia.PersistenciaXML;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import simulacion.ParametrosSimulacion;
 import simulacion.Simulacion;
 import vista.MenuSimulacion;
@@ -62,9 +66,30 @@ public class ControladorMenuSimulacion implements ActionListener{
                  break;
 
             case "INICIAR CON DATOS CARGADOS":
-                simulacion.iniciarSimulacionConDatosViejos();
-                vista.dispose();
-                break;
+                 ParametrosSimulacion parametros =  null;
+                 PersistenciaXML leeParametros = new  PersistenciaXML();
+             
+                 try {
+                     leeParametros.abrirInput("Parametros.xml");
+                     parametros = (ParametrosSimulacion) leeParametros.leer();
+                 } catch (IOException ex) {
+                     Logger.getLogger(ControladorMenuSimulacion.class.getName()).log(Level.SEVERE, null, ex);
+                 } catch (ClassNotFoundException ex) {
+                 Logger.getLogger(ControladorMenuSimulacion.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 
+                 if(parametros != null)
+                 {
+                    simulacion.iniciarSimulacionConDatosViejos(parametros);
+                    vista.dispose();
+                 }
+                 else
+                 {
+                    vista.setDialog("No hay datos persistidos","Error");
+                    vista.disableIniciarConDatosViejos();
+                 }
+                 break;
+
         }
         
     }

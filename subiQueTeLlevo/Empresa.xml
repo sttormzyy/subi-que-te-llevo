@@ -10,7 +10,7 @@
         <string>07770</string>
        </void>
        <void property="nombre">
-        <string>Fangio0</string>
+        <string>Chano0</string>
        </void>
       </object>
      </void>
@@ -37,30 +37,16 @@
     </void>
     <void property="usuarioMapDTO">
      <void method="put">
-      <string>Moria Casan2</string>
+      <string>Moria Casan3</string>
       <object class="Persistencia.usuarioDTO.ClienteDTO">
        <void property="contrasena">
-        <string>4776</string>
+        <string>6779</string>
        </void>
        <void property="nombreReal">
-        <string>Cliente2</string>
+        <string>Cliente3</string>
        </void>
        <void property="nombreUsuario">
-        <string>Moria Casan2</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Jennifer Anniston4</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>87712</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente4</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Jennifer Anniston4</string>
+        <string>Moria Casan3</string>
        </void>
       </object>
      </void>
@@ -79,21 +65,35 @@
       </object>
      </void>
      <void method="put">
-      <string>Mirtha3</string>
+      <string>Mirtha4</string>
       <object class="Persistencia.usuarioDTO.ClienteDTO">
        <void property="contrasena">
-        <string>6779</string>
+        <string>87712</string>
        </void>
        <void property="nombreReal">
-        <string>Cliente3</string>
+        <string>Cliente4</string>
        </void>
        <void property="nombreUsuario">
-        <string>Mirtha3</string>
+        <string>Mirtha4</string>
        </void>
       </object>
      </void>
      <void method="put">
-      <string>Jennifer Anniston0</string>
+      <string>Jennifer Anniston2</string>
+      <object class="Persistencia.usuarioDTO.ClienteDTO">
+       <void property="contrasena">
+        <string>4776</string>
+       </void>
+       <void property="nombreReal">
+        <string>Cliente2</string>
+       </void>
+       <void property="nombreUsuario">
+        <string>Jennifer Anniston2</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>Moria Casan0</string>
       <object class="Persistencia.usuarioDTO.ClienteDTO">
        <void property="contrasena">
         <string>0770</string>
@@ -102,7 +102,7 @@
         <string>Cliente0</string>
        </void>
        <void property="nombreUsuario">
-        <string>Jennifer Anniston0</string>
+        <string>Moria Casan0</string>
        </void>
       </object>
      </void>
@@ -134,7 +134,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>275586</string>
+        <string>91629</string>
        </void>
       </object>
      </void>
@@ -150,7 +150,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>10622</string>
+        <string>42275</string>
        </void>
       </object>
      </void>
@@ -166,7 +166,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>76727</string>
+        <string>122532</string>
        </void>
       </object>
      </void>
@@ -182,7 +182,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>353246</string>
+        <string>102342</string>
        </void>
       </object>
      </void>
@@ -198,7 +198,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>94531</string>
+        <string>297212</string>
        </void>
       </object>
      </void>
@@ -208,7 +208,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>62028</string>
+        <string>282617</string>
        </void>
       </object>
      </void>
@@ -218,7 +218,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>105781</string>
+        <string>76743</string>
        </void>
       </object>
      </void>
@@ -228,7 +228,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>3399</string>
+        <string>7779</string>
        </void>
       </object>
      </void>
@@ -238,7 +238,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>39079</string>
+        <string>56921</string>
        </void>
       </object>
      </void>
@@ -248,7 +248,33 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>286749</string>
+        <string>290699</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.vehiculoDTO.CombiDTO">
+       <void property="cantMaxPas">
+        <int>10</int>
+       </void>
+       <void property="equipaje">
+        <int>1</int>
+       </void>
+       <void property="patente">
+        <string>349678</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.vehiculoDTO.CombiDTO">
+       <void property="cantMaxPas">
+        <int>10</int>
+       </void>
+       <void property="equipaje">
+        <int>1</int>
+       </void>
+       <void property="patente">
+        <string>356168</string>
        </void>
       </object>
      </void>

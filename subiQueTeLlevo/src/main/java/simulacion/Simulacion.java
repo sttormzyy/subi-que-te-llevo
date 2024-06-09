@@ -58,21 +58,16 @@ public class Simulacion {
     * gestiona el inicio de una simulacion con datos persistidos.<br>
     * Obtiene de archivos la empresa, a partir de sus listas de choferes y clientes inicializa los hilos necesarios.<br>
     */
-   public void iniciarSimulacionConDatosViejos()
+   public void iniciarSimulacionConDatosViejos(ParametrosSimulacion parametros)
    {
-       PersistenciaXML leeParametros = new PersistenciaXML();
        PersistenciaXML leeEmpresa = new PersistenciaXML();
-       ParametrosSimulacion parametros =  new ParametrosSimulacion();
        
        try {
     	   leeEmpresa.abrirInput("Empresa.xml");
     	   EmpresaDTO empresaDTO = (EmpresaDTO) leeEmpresa.leer();
     	   Empresa empresa = UTILEmpresa.empresaFromEmpresaDTO(empresaDTO);
     	   leeEmpresa.cerrarInput();
-           
-    	   leeParametros.abrirInput("Parametros.xml");
-           parametros = (ParametrosSimulacion) leeParametros.leer();
-           leeParametros.cerrarInput();
+
            
     	   rc = new RecursoCompartido(empresa,empresa.getUsuarioLista().size(), empresa.getChoferLista().size());
     	   initThreads(empresa,parametros.getCantMaxViajeChofer(),parametros.getCantMaxViajeCliente());
@@ -220,6 +215,7 @@ public class Simulacion {
             } catch (ExceptionVehiculo ex) {
             }
         }
+        i=0;
         while(i<cantCombis) 
         {
             try {

@@ -9,7 +9,6 @@ import excepciones.chofer.ExceptionChofer;
 import excepciones.pedido.ExceptionPedido;
 import excepciones.pedido.ExceptionVehiculoDisp;
 import excepciones.usuario.ExceptionUsuario;
-import excepciones.usuario.ExceptionUsuarioInexistente;
 import excepciones.viaje.ExceptionChoferSinViajesPagos;
 import excepciones.viaje.ExceptionSinViajeaPagar;
 import java.time.LocalDateTime;
