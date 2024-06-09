@@ -186,6 +186,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         PanelClientes.add(jLabel6, gridBagConstraints);
 
+        textCantClientes.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantClientes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantClientes.setText("6");
         textCantClientes.setMaximumSize(new java.awt.Dimension(40, 20));
@@ -203,6 +204,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         PanelClientes.add(jLabel12, gridBagConstraints);
 
+        textCantMaxViajesXCliente.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantMaxViajesXCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantMaxViajesXCliente.setText("5");
         textCantMaxViajesXCliente.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -261,6 +263,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.insets = new java.awt.Insets(0, 23, 0, 0);
         PanelChoferes2.add(jLabel23, gridBagConstraints);
 
+        textCantMaxViajesxChofer.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantMaxViajesxChofer.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantMaxViajesxChofer.setText("3");
         textCantMaxViajesxChofer.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -279,6 +282,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.insets = new java.awt.Insets(3, 14, 0, 0);
         PanelChoferes2.add(jLabel24, gridBagConstraints);
 
+        textCantContratado.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantContratado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantContratado.setText("3");
         textCantContratado.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -289,6 +293,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 5);
         PanelChoferes2.add(textCantContratado, gridBagConstraints);
 
+        textCantPermanente.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantPermanente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantPermanente.setText("3");
         textCantPermanente.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -298,6 +303,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.gridy = 3;
         PanelChoferes2.add(textCantPermanente, gridBagConstraints);
 
+        textCantTemporario.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantTemporario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantTemporario.setText("2");
         textCantTemporario.setMinimumSize(new java.awt.Dimension(45, 20));
@@ -384,6 +390,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel5.add(jPanel6, gridBagConstraints);
 
+        textCantAuto.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantAuto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantAuto.setText("5");
         textCantAuto.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -393,6 +400,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.gridy = 1;
         jPanel5.add(textCantAuto, gridBagConstraints);
 
+        textCantMoto.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantMoto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantMoto.setText("5");
         textCantMoto.setMinimumSize(new java.awt.Dimension(40, 20));
@@ -402,6 +410,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.gridy = 2;
         jPanel5.add(textCantMoto, gridBagConstraints);
 
+        textCantCombi.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantCombi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCantCombi.setText("2");
         textCantCombi.setMinimumSize(new java.awt.Dimension(40, 20));

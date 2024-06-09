@@ -19,6 +19,8 @@ public class UTILEmpresa implements Serializable{
         Empresa empresa = Empresa.getInstance();
         empresa.setAdmSubSistema(UTILAdmSubSistema.admSubSistemaFromAdmSubSistemaDTO(empresaDTO.getAdmSubSistemaDTO()));
         empresa.setViajesSubSistema(UTILViajesSubSistema.viajesSubsistemafromViajesSubSistemaDTO(empresaDTO.getViajesSubSistemaDTO()));
+        
+        if(empresaDTO.getAdminDTO()!=null)
         try {
             empresa.addAdmin(UTILAdmSubSistema.administradorFromAdministradorDTO(empresaDTO.getAdminDTO()));
         } catch (ExceptionUsuario e) {

@@ -72,7 +72,7 @@ public class Simulacion {
            
     	   leeParametros.abrirInput("Parametros.xml");
            parametros = (ParametrosSimulacion) leeParametros.leer();
-           leeParametros.cerrarOutput();
+           leeParametros.cerrarInput();
            
     	   rc = new RecursoCompartido(empresa,empresa.getUsuarioLista().size(), empresa.getChoferLista().size());
     	   initThreads(empresa,parametros.getCantMaxViajeChofer(),parametros.getCantMaxViajeCliente());
