@@ -6,6 +6,8 @@ package controladores;
 
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import simulacion.ParametrosSimulacion;
 import simulacion.Simulacion;
 import vista.MenuSimulacion;
 
@@ -13,46 +15,54 @@ import vista.MenuSimulacion;
  *
  * @author Usuario
  */
-public class ControladorMenuSimulacion implements Controlador{
+public class ControladorMenuSimulacion implements ActionListener{
     private MenuSimulacion vista;
     private Simulacion simulacion;
  
     
-    public ControladorMenuSimulacion(MenuSimulacion vista, Simulacion simulacion)
+    public ControladorMenuSimulacion(Simulacion simulacion)
    {
-       this.vista = vista;
-       this.vista.setActionListener(this);
        this.simulacion = simulacion;
    }
 
+    /**
+     * Setea la vista para la cual el controlador funciona de ActionListener
+     * @param vista 
+     */
+    public void setVista(MenuSimulacion vista)
+    {
+       this.vista = vista;
+       this.vista.setActionListener(this);
+    }
 
+    /**
+     * Ejecuta el metodo que corresponda segun el action command del parametro ActionEvent<br>
+     * Este puede ser comenzar una nueva simulacion o activar una simulacion con datos previos
+     * @param evento evento que contiene el comando de la accion solicitada desde la visa
+     */
    @Override
     public void actionPerformed(ActionEvent evento) {
         
 
          switch(evento.getActionCommand()) {
             case "COMENZAR":
-                int cantClientes = vista.getCantClientes();
-                int cantChoferTemporario = vista.getCantChoferTemporario();
-                int cantChoferContratado = vista.getCantChoferContratado();
-                int cantChoferPermanente = vista.getCantChoferPermanente();
-                int cantMaxViajeCliente = vista.getCantMaxViajeCliente();
-                int cantMaxViajeChofer = vista.getCantMaxViajeChofer();
-                int cantAutos = vista.getCantAuto();
-                int cantMotos = vista.getCantMoto();
-                int cantCombis = vista.getCantCombi();
+                 ParametrosSimulacion Parametros = new ParametrosSimulacion();
+                 Parametros.setCantClientes(vista.getCantClientes());
+                 Parametros.setCantChoferTemporario(vista.getCantChoferTemporario());
+                 Parametros.setCantChoferContratado(vista.getCantChoferContratado());
+                 Parametros.setCantChoferPermanente(vista.getCantChoferPermanente());
+                 Parametros.setCantMaxViajeCliente(vista.getCantMaxViajeCliente());
+                 Parametros.setCantMaxViajeChofer(vista.getCantMaxViajeChofer());
+                 Parametros.setCantAutos(vista.getCantAuto());
+                 Parametros.setCantMotos(vista.getCantMoto());
+                 Parametros.setCantCombis(vista.getCantCombi());
 
-                simulacion.iniciarSimulacionNueva(cantClientes,cantMaxViajeCliente,cantChoferTemporario,
-                cantChoferContratado,  cantChoferPermanente, cantMaxViajeChofer, 
-                cantAutos, cantMotos, cantCombis);
-                vista.dispose();
-                break;
+                 simulacion.iniciarSimulacionNueva(Parametros);
+                 vista.dispose();
+                 break;
 
             case "INICIAR CON DATOS CARGADOS":
-                cantMaxViajeCliente = vista.getCantMaxViajeCliente();
-                cantMaxViajeChofer = vista.getCantMaxViajeChofer();
-
-                simulacion.iniciarSimulacionConDatosViejos(cantMaxViajeCliente,cantMaxViajeChofer);
+                simulacion.iniciarSimulacionConDatosViejos();
                 vista.dispose();
                 break;
         }

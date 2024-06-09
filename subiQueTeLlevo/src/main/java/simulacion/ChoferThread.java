@@ -5,12 +5,10 @@
 package simulacion;
 
 import choferes.Chofer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
- *
- * @author Usuario
+ * Clase encargada de representar el comportamiento de un chofer de la empresa
  */
 public class ChoferThread extends Thread{
     private RecursoCompartido rc;
@@ -25,6 +23,10 @@ public class ChoferThread extends Thread{
     }
     
      
+     /**
+      * Define el comportamiento del hilo del chofer respecto al recurso compartido<br>
+      * Este puede ser tomar o finalizar un viaje
+      */
 @Override
 public void run()
 {

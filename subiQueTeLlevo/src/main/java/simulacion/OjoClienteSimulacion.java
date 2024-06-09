@@ -13,8 +13,7 @@ import vista.VentanaCliente;
 import vista.VentanaGeneral;
 
 /**
- *
- * @author Usuario
+ *Clase encargada de observar al recurso compartido y comunicarle a la ventana general los eventos relacionados con un hilo cliente en particular
  */
 public class OjoClienteSimulacion extends OjoAbstracto{
   
@@ -29,8 +28,11 @@ public class OjoClienteSimulacion extends OjoAbstracto{
         observado.addObserver(this);
     }
     
-    
-    
+    /**
+     * Comunica a la ventana general el evento correspondiente asociado a un cliente determinado
+     * @param o Objeto observado, en este caso el recurso compartido
+     * @param e Objeto que contiene la informacion transmitida por el observado
+     */
     @Override
     public void update(Observable o, Object e) {
         super.update(o, e);

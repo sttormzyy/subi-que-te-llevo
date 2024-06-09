@@ -9,8 +9,7 @@ import usuarios.Cliente;
 import vehiculos.Vehiculo;
 
 /**
- *
- * @author Usuario
+ * Clase encargada de almacenar la informacion necesaria para que el recurso compartido comunique eventos a sus observers
  */
 public class EventoSimulacion {
     private String mensaje;

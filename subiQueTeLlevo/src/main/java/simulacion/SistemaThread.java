@@ -5,8 +5,7 @@
 package simulacion;
 
 /**
- *
- * @author Usuario
+ *Clase encargada de simular el comportamiento del sistema, cumpliendo tareas tales como asignar vehiculos a los viajes de la simulacion
  */
 public class SistemaThread extends Thread{
    private RecursoCompartido rc;
@@ -16,7 +15,11 @@ public class SistemaThread extends Thread{
     {
         this.rc = rc;
     }
-    
+ 
+    /**
+      * Define el comportamiento del hilo del ssitema respecto al recurso compartido<br>
+      * Este puede ser asignar vehiculo a un viaje solicitado
+      */
 @Override
 public void run()
 {

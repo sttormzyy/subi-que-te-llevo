@@ -225,13 +225,29 @@ public class Empresa {
 			throw new ExceptionUsuarioNull();
 	}
 	
-	 /**
+     /**
+     * Solicita al SubSistema Administrador un cliente que intenta iniciar seison desde la app.<br>
+     * @param nombreUsuario  El nombre de usuario del cliente a obtener.
+     * @param contrasena Contrasena del usuario
+     * @return El cliente correspondiente al nombre de usuario especificado.
+     * @throws ExceptionUsuario Si el cliente a obtener no existe o se ingreso null.
+     */
+	public Cliente getCliente(String nombreUsuario, String contrasena) throws ExceptionUsuario 
+        {
+		if(nombreUsuario != null && nombreUsuario!= "" && contrasena!=null && contrasena!="" )
+			return admSubSistema.getCliente(nombreUsuario,contrasena);
+		else
+			throw new ExceptionUsuarioNull();
+	}
+        
+    /**
      * Solicita al SubSistema Administrador un cliente de la Empresa.<br>
      * @param nombreUsuario  El nombre de usuario del cliente a obtener.
      * @return El cliente correspondiente al nombre de usuario especificado.
      * @throws ExceptionUsuario Si el cliente a obtener no existe o se ingreso null.
      */
-	public Cliente getCliente(String nombreUsuario) throws ExceptionUsuario {
+	public Cliente getCliente(String nombreUsuario) throws ExceptionUsuario 
+        {
 		if(nombreUsuario != null && nombreUsuario!= "")
 			return admSubSistema.getCliente(nombreUsuario);
 		else
@@ -625,7 +641,39 @@ public class Empresa {
     
     	viajesSubSistema.finalizarViaje(chofer);
    
-	}
+    }
+    
+    public boolean hayViajeConVehiculo()
+    {
+       return viajesSubSistema.hayViajeConVehiculo();
+        
+    }
+    
+    public IViaje getViajeSolicitado()
+    {
+      return viajesSubSistema.getViajeSolicitado();
+
+    }
+    
+    public IViaje getViaje(Chofer chofer, IViaje.EstadosViajes estado)
+    {
+      return viajesSubSistema.getViaje(chofer,estado);
+    }
+    
+     public IViaje getViaje(Cliente cliente, IViaje.EstadosViajes estado)
+    {
+       return viajesSubSistema.getViaje(cliente,estado);
+    }
+    
+    public boolean viajeIniciado(Cliente cliente)
+    {
+       return viajesSubSistema.viajeIniciado(cliente);
+                  
+    }
+    
+    public boolean viajePago(Chofer chofer){
+        return viajesSubSistema.viajePago(chofer);
+    }
     
 // FIN funcionalidades subsistema de viajes
 

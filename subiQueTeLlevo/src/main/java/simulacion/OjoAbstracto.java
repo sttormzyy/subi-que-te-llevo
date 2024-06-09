@@ -8,8 +8,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- *
- * @author Usuario
+ *Clase abstracta que implementa observer y sirve para ser extendida por clases observadoras mas especificas<br>
+ * brindando una herencia comun entre ellas
  */
 public class OjoAbstracto implements Observer{
     protected Observable observado;

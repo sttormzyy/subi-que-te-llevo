@@ -5,14 +5,10 @@
 package simulacion;
 
 import java.util.Observable;
-import java.util.Observer;
-import javax.swing.JFrame;
-import simulacion.EventoSimulacion.TipoEvento;
 import vista.VentanaGeneral;
 
 /**
- *
- * @author Usuario
+ *Clase encargada de observar al recurso compartido y comunicarle a la ventana general los eventos generales relacionados con la simulacion
  */
 public class OjoGeneral extends OjoAbstracto{
     private VentanaGeneral vista;
@@ -24,6 +20,11 @@ public class OjoGeneral extends OjoAbstracto{
         observado.addObserver(this);
     }
 
+     /**
+     * Comunica a la ventana general todos los eventos asociados con la simulacion
+     * @param o Objeto observado, en este caso el recurso compartido
+     * @param e Objeto que contiene la informacion transmitida por el observado
+     */
     @Override
     public void update(Observable o, Object e) {
         super.update(o, e);

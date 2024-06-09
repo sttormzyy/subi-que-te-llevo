@@ -27,19 +27,21 @@ import viajes.IViaje;
  * el calculo de salarios y otros metodos auxiliares.
  */
 public class AdmSubSistema {
-    private Empresa empresa = Empresa.getInstance(); 
+    private Empresa empresa = Empresa.getInstance();
     /**
-     * Coleccion de Usuarios de la empresa, se utiliza HashMap cuyas claves son los nombre de usuario debido a que estos no pueden repetirse
+     * Coleccion de Usuarios de la empresa, se utiliza HashMap cuyas claves son
+     * los nombre de usuario debido a que estos no pueden repetirse
      */
     private HashMap<String, Usuario> usuarioMap = new HashMap<String, Usuario>();
     /**
-     * Coleccion de Choferes de la empresa, nuclea choferes de cualquier tipo de vinculacion laboral
+     * Coleccion de Choferes de la empresa, nuclea choferes de cualquier tipo de
+     * vinculacion laboral
      */
-	private ArrayList<Chofer> choferLista = new ArrayList<Chofer>();
-	/**
-	 * Coleccion de Vehiculos de la empresa, nuclea vehiculos de todo tipo
-	 */
-	private ArrayList<Vehiculo> vehiculoLista = new ArrayList<Vehiculo>();
+    private ArrayList<Chofer> choferLista = new ArrayList<Chofer>();
+    /**
+     * Coleccion de Vehiculos de la empresa, nuclea vehiculos de todo tipo
+     */
+    private ArrayList<Vehiculo> vehiculoLista = new ArrayList<Vehiculo>();
 	
 	
 	
@@ -260,16 +262,43 @@ public class AdmSubSistema {
 	}
 
 	/**
-	 * Obtiene un cliente del sistema a partir de su nombre de usuario.<br>
+	 * Obtiene un cliente del sistema a partir de su nombre de usuario y contrasena.<br>
+         * Sirve para simular inicios de sesion<br>
 	 * <b>PRE: </b> El nombre de usuario es distinto de Null.<br>
 	 * @param nombreUsuario. El nombre de usuario del cliente a obtener.
+         * @param contrasena. Contrasena del cliente
+	 * @return Referencia al cliente correspondiente al nombre de usuario especificado.
+	 * @throws ExceptionUsuarioInexistente si el cliente con el nombre de usuario especificado no existe en el sistema.
+	 */
+	public Cliente getCliente(String nombreUsuario, String contrasena) throws ExceptionUsuarioInexistente
+	{
+		assert nombreUsuario != null : "Fallo Pre: El nombreUsuario no puede ser Null ";
+                Cliente cliente;
+		if (usuarioMap.containsKey(nombreUsuario))
+		{
+			cliente =  (Cliente) usuarioMap.get(nombreUsuario);
+                        if(cliente.getContrasena().equals(contrasena))
+                            return cliente;
+                        else
+                            throw new  ExceptionUsuarioInexistente(nombreUsuario);
+		}
+		else
+			throw new  ExceptionUsuarioInexistente(nombreUsuario);
+	}
+        
+        /**
+	 * Obtiene un cliente del sistema a partir de su nombre de usuario y contrasena.<br>
+         * Alternativa al inicio de sesion con contrasena, tiene usos internos<br>
+	 * <b>PRE: </b> El nombre de usuario es distinto de Null.<br>
+	 * @param nombreUsuario. El nombre de usuario del cliente a obtener.
+         * @param contrasena. Contrasena del cliente
 	 * @return Referencia al cliente correspondiente al nombre de usuario especificado.
 	 * @throws ExceptionUsuarioInexistente si el cliente con el nombre de usuario especificado no existe en el sistema.
 	 */
 	public Cliente getCliente(String nombreUsuario) throws ExceptionUsuarioInexistente
 	{
 		assert nombreUsuario != null : "Fallo Pre: El nombreUsuario no puede ser Null ";
-
+                Cliente cliente;
 		if (usuarioMap.containsKey(nombreUsuario))
 		{
 			return (Cliente) usuarioMap.get(nombreUsuario);

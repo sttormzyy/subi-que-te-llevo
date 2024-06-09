@@ -341,7 +341,7 @@
               <SubComponents>
                 <Component class="com.toedter.calendar.JDateChooser" name="selectorFecha">
                   <Properties>
-                    <Property name="dateFormatString" type="java.lang.String" value="d/M/YYYY"/>
+                    <Property name="dateFormatString" type="java.lang.String" value="d/M/yyyy"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -372,6 +372,9 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="botonSinAsfaltar">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonesZona"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="1"/>
                 </Property>
@@ -383,6 +386,9 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="botonPeligrosa">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonesZona"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="1"/>
                 </Property>
@@ -424,6 +430,9 @@
             </Container>
             <Component class="javax.swing.JRadioButton" name="botonEstandar">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonesZona"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="1"/>
                 </Property>
@@ -460,6 +469,9 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="botonSImascota">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonesMascota"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="0"/>
                 </Property>
@@ -471,6 +483,9 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="botonNOmascota">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonesMascota"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="0"/>
                 </Property>
@@ -507,6 +522,9 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="botonSIequipaje">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonEquipaje"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="0"/>
                 </Property>
@@ -518,6 +536,9 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="botonNOequipaje">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="grupoBotonEquipaje"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Palatino Linotype" size="12" style="0"/>
                 </Property>
@@ -576,7 +597,12 @@
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="PEDIR VIAJE"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="botonPedirViaje.addMouseListener(this);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

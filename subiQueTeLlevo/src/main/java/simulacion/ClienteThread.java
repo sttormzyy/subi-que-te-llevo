@@ -9,8 +9,7 @@ import usuarios.Cliente;
 import viajes.IViaje.EstadosViajes;
 
 /**
- *
- * @author Usuario
+ *Clase encargada de representar el comportamiento de un cliente de la empresa
  */
 public class ClienteThread extends Thread{
   private Cliente cliente;
@@ -25,6 +24,11 @@ public class ClienteThread extends Thread{
       this.cantViajes = cantviajes;
   }
     
+  
+  /**
+      * Define el comportamiento del hilo del cliente respecto al recurso compartido<br>
+      * Este puede ser pedir o pagar un viaje
+      */
    @Override
    public void run()
    {

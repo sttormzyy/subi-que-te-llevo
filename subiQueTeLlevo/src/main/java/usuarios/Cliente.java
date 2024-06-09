@@ -5,6 +5,15 @@ package usuarios;
  */
 public class Cliente extends Usuario{
 	private int puntos;
+        private boolean usandoApp = false;
+
+    public boolean isUsandoApp() {
+        return usandoApp;
+    }
+
+    public void setUsandoApp(boolean usandoApp) {
+        this.usandoApp = usandoApp;
+    }
 	
 	/**
      * Crea una nueva instancia de Cliente.<br>

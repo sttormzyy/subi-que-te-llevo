@@ -18,6 +18,8 @@ public class Prueba {
         }
 
         Simulacion simulacion = new Simulacion();
-        ControladorMenuSimulacion controladorMenu= new ControladorMenuSimulacion(new MenuSimulacion(),simulacion);
+        ControladorMenuSimulacion controladorMenu= new ControladorMenuSimulacion(simulacion);
+        controladorMenu.setVista(new MenuSimulacion());
+        
     }
 }

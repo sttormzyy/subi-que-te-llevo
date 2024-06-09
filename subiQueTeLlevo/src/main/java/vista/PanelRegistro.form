@@ -120,8 +120,15 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textNombre">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField()"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textNombre.addKeyListener(this);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="textNombreUsuario">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textNombreUsuario.addKeyListener(this);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="botonRegistrarse">
       <Properties>
@@ -130,6 +137,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="REGISTRARSE"/>
         <Property name="actionCommand" type="java.lang.String" value="INTENTO REGISTRO"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botonAtras">
@@ -153,6 +161,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textContrasena">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textContrasena.addKeyListener(this);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

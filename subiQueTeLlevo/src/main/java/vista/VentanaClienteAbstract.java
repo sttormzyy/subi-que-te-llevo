@@ -6,14 +6,17 @@ package vista;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Usuario
- */
-public class VentanaClienteAbstract extends javax.swing.JPanel {
+ *Clase que define un comportamiento basico para las distintas ventanas usadas en la app ademas de representar un ancestro comun y facilitar el uso polimorfico
+ * */
+public class VentanaClienteAbstract extends javax.swing.JPanel implements KeyListener,MouseListener {
 
     /**
      * Creates new form VentanaClienteAbstract
@@ -124,6 +127,46 @@ public class VentanaClienteAbstract extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+   
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+  
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+     
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+  
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

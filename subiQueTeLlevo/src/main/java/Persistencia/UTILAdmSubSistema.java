@@ -232,12 +232,14 @@ public class UTILAdmSubSistema implements Serializable
 		clienteDTO.setNombreUsuario(cliente.getNombreUsuario());
 		clienteDTO.setContrasena(cliente.getContrasena());
 		clienteDTO.setPuntos(cliente.getPuntos());
+                clienteDTO.setUsandoApp(cliente.isUsandoApp());
 		return clienteDTO;
 	}
 
 	public static Cliente clienteFromClienteDTO(ClienteDTO clienteDTO) {
 		Cliente cliente = new Cliente(clienteDTO.getNombreUsuario(), clienteDTO.getNombreReal(), clienteDTO.getContrasena());
 		cliente.addPuntos(clienteDTO.getPuntos());
+                cliente.setUsandoApp(clienteDTO.isUsandoApp());
 	    return cliente;
 	}
 	

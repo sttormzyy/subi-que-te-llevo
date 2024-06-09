@@ -223,43 +223,8 @@ public class ViajesSubSistema {
     	IViaje viajeNuevo = viajeFactory.getViaje(pedidoNuevo, distancia);
 		addViaje(viajeNuevo);
     }
-    
    
-    //LO PODEMOS ELIMINAR?
-    /**
-     * Genera un viaje a partir de un pedido y una distancia especificados (Random).<br>
-     * <b>PRE:</b> El parametro pedido no deber ser nulo, y distancia debe ser mayor a cero.<br>
-     * @param pedido     El pedido del viaje.
-     * @param distancia  La distancia del viaje.
-     * @throws ExceptionChoferDisp Si no hay Choferes disponibles para conducir el viaje.
-     */
-    /*ESTA ES LA VERSION VIEJA
-    private void generarViaje(Pedido pedido, double distancia) throws ExceptionChoferDisp
-	{
-    	assert pedido!=null:"Fallo pre: El pedido no puede ser null";
-    	assert distancia>0:"Fallo pre: La distancia no puede ser negativa";
-    	
-		Vehiculo vehiculo;
-		Chofer chofer;
-
-		IViaje viajeNuevo = viajeFactory.getViaje(pedido, distancia);
-		addViaje(viajeNuevo); 
-
-		vehiculo = this.buscarVehiculo(pedido);
-		vehiculo.setOcupado(true);
-		
-		chofer = this.buscarChofer();
-		chofer.setOcupado(true);
-		
-		viajeNuevo.setChofer(chofer);
-		viajeNuevo.setVehiculo(vehiculo);
-		viajeNuevo.setEstado(EstadosViajes.INICIADO);   
-	}
-    */
-    
-    
-    
-    
+     
     /**
      * Busca el vehículo con mayor prioridad para el pedido especificado, cuyos atributos estan todos validados.<br>
      * <b>PRE: </b> El viaje es distinto de null<br>
@@ -428,6 +393,75 @@ public class ViajesSubSistema {
 		assert viajePagoOFinalizado.getCalificacionChofer()!=0:"Fallo post: El viaje no fue calificado";
 	}
 	
+        
+    public boolean hayViajeConVehiculo()
+    {
+        int i=0;
+        
+        while(i<viajeLista.size() && viajeLista.get(i).getEstado() != EstadosViajes.CONVEHICULO){
+            i++;
+        }        
+        
+         return i<viajeLista.size();
+    }
+    
+    public IViaje getViajeSolicitado()
+    {
+        int i=viajeLista.size()-1;
+        
+        while(i>=0 && viajeLista.get(i).getEstado() != EstadosViajes.SOLICITADO){
+            i--;
+        }        
+        
+        if(i>=0)
+            return viajeLista.get(i);
+        else
+            return null;      
+    }
+    
+    public IViaje getViaje(Chofer chofer, EstadosViajes estado)
+    {
+        int i=0;
+        
+        while(viajeLista.get(i).getChofer() != chofer || viajeLista.get(i).getEstado() != estado){
+            i++;
+        }        
+        return viajeLista.get(i);   
+    }
+    
+    public IViaje getViaje(Cliente cliente, EstadosViajes estado)
+    {
+        int i=0;
+        
+        while(viajeLista.get(i).getCliente() != cliente || viajeLista.get(i).getEstado() != estado){
+            i++;
+        }        
+        return viajeLista.get(i);   
+    }
+    
+    public boolean viajeIniciado(Cliente cliente)
+    {
+        int i=0;
+        
+        while((i<viajeLista.size()) && !(viajeLista.get(i).getCliente() == cliente && viajeLista.get(i).getEstado() == EstadosViajes.INICIADO)){
+            i++;
+        }
+  
+        return i<viajeLista.size();
+                  
+    }
+    
+    
+    public boolean viajePago(Chofer chofer){
+        int i = viajeLista.size()-1;
+        
+        while((i>=0) && !(viajeLista.get(i).getChofer() == chofer && viajeLista.get(i).getEstado() == EstadosViajes.PAGO)){
+            System.out.println("Estado "+viajeLista.get(i).getEstado());
+            i--;
+        }
+  
+        return i>=0;
+    }
 	//invariantes
 	
 	/**

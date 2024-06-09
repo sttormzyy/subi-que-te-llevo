@@ -10,9 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Usuario
- */
+ *Clase que permite crear JPanels con la imagen de fondo que se desee 
+ **/
 public  class FondoPanel extends JPanel {
      private Image imagen;
      private String ruta;
@@ -22,6 +21,10 @@ public  class FondoPanel extends JPanel {
          this.ruta = "/imagenes/" + ruta;
      }
 
+     /**
+      * Metodo que permite tener una imagen como fondo de JPanel la cual sea capaz de adaptarse al tamano del mismo
+      * @param g 
+      */
      public void paint(Graphics g){
          imagen = new ImageIcon(getClass().getResource(ruta)).getImage();
          g.drawImage(imagen, 0, 0, getWidth(), getHeight(),this);

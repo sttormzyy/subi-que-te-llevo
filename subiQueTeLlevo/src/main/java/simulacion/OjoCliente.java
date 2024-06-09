@@ -13,12 +13,10 @@ import vista.VentanaCliente;
 import vista.VentanaGeneral;
 
 /**
- *
- * @author Usuario
+ *Clase encargada de observar al recurso compartido y comunicarle a la ventana general los eventos relacionados con un cliente que esta usando la app 
  */
 public class OjoCliente extends OjoAbstracto{
     private VentanaCliente vista;
-    private Cliente cliente;
     
     public OjoCliente(VentanaCliente vista, Observable observado)
     {
@@ -27,19 +25,20 @@ public class OjoCliente extends OjoAbstracto{
         observado.addObserver(this);
     }
     
-    public void setCliente(Cliente cliente)
-    {
-        this.cliente = cliente;
-    }
-    
+    /**
+     * Comunica a la ventana general el evento correspondiente asociado a un cliente determinado
+     * @param o Objeto observado, en este caso el recurso compartido
+     * @param e Objeto que contiene la informacion transmitida por el observado
+     */
     @Override
     public void update(Observable o, Object e) {
         super.update(o, e);
+        Cliente clienteEvento;
         
         EventoSimulacion evento = (EventoSimulacion)e;
         
-        Cliente clienteEvento = evento.getCliente();
-        if(clienteEvento != null && clienteEvento.equals(cliente))
+        clienteEvento = evento.getCliente();
+        if(clienteEvento != null && clienteEvento.isUsandoApp())
         {
             switch(evento.getTipo())
             {

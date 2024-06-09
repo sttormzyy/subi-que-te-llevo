@@ -7,21 +7,18 @@ package controladores;
 import excepciones.pedido.ExceptionPedido;
 import excepciones.usuario.ExceptionUsuario;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import simulacion.OjoCliente;
 import simulacion.RecursoCompartido;
 import usuarios.Cliente;
 import vista.VentanaCliente;
 
 
-public class ControladorCliente implements Controlador {
+public class ControladorCliente implements ActionListener {
     private RecursoCompartido recursoCompartido;
     private VentanaCliente  vista;
-    private OjoCliente ojoCliente;
-    private Cliente cliente;          
+    private Cliente cliente;
+    
             
     public ControladorCliente(RecursoCompartido recursoCompartido, VentanaCliente vista)
     {
@@ -29,12 +26,15 @@ public class ControladorCliente implements Controlador {
         this.recursoCompartido = recursoCompartido;
         this.vista = vista;
         this.vista.setActionListener(this);
-        this.ojoCliente = new OjoCliente(vista,recursoCompartido);
     }
     
-        @Override
-    public void actionPerformed(ActionEvent e) {
-        switch(e.getActionCommand()) {
+    /**
+     * Ejecuta el metodo que corresponda segun el action command del parametro ActionEvent
+     * @param evento evento que contiene el comando de la accion solicitada desde la visa
+     */
+    @Override
+    public void actionPerformed(ActionEvent evento) {
+        switch(evento.getActionCommand()) {
             case "ATRAS REG":
             case "ATRAS SESION":
                 vista.setLogin();
@@ -73,7 +73,7 @@ public class ControladorCliente implements Controlador {
             
             case "ABANDONAR":
                 vista.dispose();
-                recursoCompartido.matarSimulacion();
+                recursoCompartido.desconectarUsuario();
                 break;
                 
             case "CONTINUAR PIDIENDO":
@@ -83,50 +83,53 @@ public class ControladorCliente implements Controlador {
         }
     }
 
+    /**
+     * Deriva en el recurso compartido el registro de un nuevo cliente de la empresa
+     */
     private void intentoRegistro() {
         String nombre = vista.getNombre();
         String nombreUsuario = vista.getNombreUsuario();
         String contrasena = vista.getContrasena();
 
-        if (validoParametrosRegistro(nombre, nombreUsuario, contrasena)) {
-            cliente = new Cliente(nombreUsuario, nombre, contrasena);
-            try {
-                recursoCompartido.addCliente(cliente);
-                ojoCliente.setCliente(cliente);
-                vista.setDialogExito("Registro exitoso");
-                vista.setApp();
-            } catch (ExceptionUsuario ex) {
-                vista.setDialogError("Nombre usuario repetido");
-            }
-        } else {
-            vista.setDialogAdv("<html>Datos inválidos.<br>Por favor, reingrese correctamente.</html>");
+        cliente = new Cliente(nombreUsuario, nombre, contrasena);
+        try {
+            recursoCompartido.addCliente(cliente);
+            cliente.setUsandoApp(true);
+            vista.setDialog("Registro exitoso","Exito");
+            vista.setApp();
+        } catch (ExceptionUsuario ex) {
+            vista.setDialog("Nombre usuario repetido","Error");
         }
+
     }
 
+    /**
+     * Intenta iniciar sesion con los datos ingresados por ventana del usuario<br>
+     * Si encuentra abre la app, sino comunica que el error al intentar iniciar sesion
+     */
     private void intentoInicioSesion() {
         String nombreUsuario = vista.getNombreUsuario();
         String contrasena = vista.getContrasena();
 
-        if (validoParametrosSesion(nombreUsuario, contrasena)) {
-            try {
-                cliente = recursoCompartido.getCliente(nombreUsuario);
-                if (cliente != null) {
-                    vista.setDialogExito("Inicio sesión exitoso");
-                    ojoCliente.setCliente(cliente);
-                    vista.setApp();
-                } else {
-                    vista.setDialogError("Usuario no encontrado");
-                }
-            } catch (ExceptionUsuario ex) {
-                vista.setDialogError("Usuario no encontrado");
+        try {
+            cliente = recursoCompartido.getCliente(nombreUsuario, contrasena);
+            if (cliente != null) {
+                cliente.setUsandoApp(true);
+                vista.setDialog("Inicio sesión exitoso","Exito");
+                vista.setApp();
+            } else {
+                vista.setDialog("Usuario no encontrado","Error");
             }
-        } else {
-            vista.setDialogAdv("<html>Datos inválidos.<br>Por favor, reingrese correctamente.</html>");
+        } catch (ExceptionUsuario ex) {
+            vista.setDialog("Usuario no encontrado","Error");
         }
+
     }
 
+    /**
+     * Deriva en el recurso compartido la peticion de un nuevo viaje del cliente que esta usando la app
+     */
     private void pedirViaje() {
-
         double distancia = vista.getDistancia();
         LocalDateTime fecha = vista.getFecha();
         int mascota = vista.getMascota();
@@ -134,26 +137,21 @@ public class ControladorCliente implements Controlador {
         int cantPax = vista.getCantPax();
         String zona = vista.getZona();
 
-
-            try {
-                recursoCompartido.pedirViaje(cliente, zona, mascota, "transporte", equipaje, cantPax, distancia, fecha);
-             } catch (ExceptionPedido ex) {
-                vista.setDialogPedidoRechazado(ex.getMessage());
+        try {
+            recursoCompartido.pedirViaje(cliente, zona, mascota, "transporte", equipaje, cantPax, distancia, fecha);
+            vista.disablePedirViaje();
+        } catch (ExceptionPedido ex) {
+            vista.setDialog(ex.getMessage(),"Error");
 
         }
     }
 
+    /**
+     * Solicita al recurso compartido finalizar el viaje del cliente que esta usando la app
+     */
     private void pagarViaje() {
         recursoCompartido.pagarViaje(cliente);
         vista.setDialogFinViaje();
     }
     
-    
-    private boolean validoParametrosRegistro(String nombre, String usuario, String contrasena) {
-        return (nombre != null && !nombre.equals("") && usuario != null && !usuario.equals("") &&  contrasena != null && !contrasena.equals(""));
-    }
-
-    private boolean validoParametrosSesion(String usuario, String contrasena) {
-        return (usuario !=null && !usuario.equals("") && contrasena !=null && !contrasena.equals(""));
-    }
 }
