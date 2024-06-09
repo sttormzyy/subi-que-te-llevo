@@ -70,7 +70,6 @@ public class RecursoCompartido extends Observable{
     public synchronized void pedirViaje(Cliente cliente,String zona, int mascota, String tipoServicio, int equipaje, int cantPax, double distancia, LocalDateTime fecha)
             throws ExceptionPedido, ExceptionVehiculoDisp
     {
-       System.out.println("PEDIR VIAJE " + cliente.getNombreUsuario() + " " + zona + " " + mascota + " " + tipoServicio + " " + equipaje + " " + cantPax + " " + distancia + "\n");
 
        if(simulacionIsActiva())
        {
@@ -166,7 +165,7 @@ public class RecursoCompartido extends Observable{
     {
         IViaje viaje;
         
-        while(!hayViajeConVehiculo() && simulacionIsActiva())
+        while(simulacionIsActiva() && !hayViajeConVehiculo())
         {
             try {
                 wait();
@@ -183,7 +182,7 @@ public class RecursoCompartido extends Observable{
                 evento =  new EventoSimulacion("no hay mas clientes se retira de la empresa",null,chofer,null,TipoEvento.CHOFER); 
         }
         else
-          evento =  new EventoSimulacion("recibe un llamado de la empresa",null,chofer,null,TipoEvento.CHOFER); 
+          evento =  new EventoSimulacion("abandona la empresa porque cierra",null,chofer,null,TipoEvento.CHOFER); 
         
         setChanged();
         notifyObservers(evento);
@@ -239,14 +238,14 @@ public class RecursoCompartido extends Observable{
     public synchronized void finalizarViaje(Chofer chofer)
     {
 
-        while(!viajePago(chofer) && simulacionIsActiva())
+        while(simulacionIsActiva() && !viajePago(chofer))
             try {
                 wait();
             } catch (InterruptedException ex) {
                 
             }
        
-       
+        if(simulacionIsActiva())
             try {
                 empresa.finalizarViaje(chofer);
                 evento = new EventoSimulacion("finalizo el viaje y devolvio el vehiculo",getViaje(chofer,EstadosViajes.FINALIZADO).getCliente(), chofer, null, TipoEvento.CHOFER);

@@ -26,8 +26,14 @@ import viajes.ViajeFactory;
  * asi como el manejo de pedidos y la asignación de vehiculos y choferes a los viajes.
  */
 public class ViajesSubSistema {
-    private Empresa empresa = Empresa.getInstance(); 
+    private Empresa empresa;
     private ViajeFactory viajeFactory = new ViajeFactory();
+    
+    
+    public ViajesSubSistema(Empresa empresa)
+    {
+        this.empresa = empresa;
+    }
     /**
      * Coleccion de viajes de la empresa
      */
@@ -221,7 +227,7 @@ public class ViajesSubSistema {
         
     	pedidoNuevo = this.generarPedido(cliente, zona, mascota, tipoServicio, equipaje, cantPax, fecha);
     	IViaje viajeNuevo = viajeFactory.getViaje(pedidoNuevo, distancia);
-		addViaje(viajeNuevo);
+	addViaje(viajeNuevo);
     }
    
      
@@ -262,8 +268,8 @@ public class ViajesSubSistema {
              
 	}
 
-	/**
-     * Busca un Chofer disponible para conducir un viaje en estado solicitado que ya tie
+    /**
+     * Busca un Chofer disponible para conducir un viaje que ya tiene vehiculo
      * @param chofer vehiculo asignado.<br>
      */
 	public void asignarChofer(Chofer chofer)
@@ -293,7 +299,7 @@ public class ViajesSubSistema {
 	{
 		assert cliente!=null:"Fallo pre: El cliente no puede ser null";
 		
-		IViaje viajePendiente =  buscarViaje(cliente,EstadosViajes.INICIADO);
+		IViaje viajePendiente =  getViaje(cliente,EstadosViajes.INICIADO);
 		
 		if(viajePendiente != null)
 			viajePendiente.setEstado(EstadosViajes.PAGO);
@@ -303,33 +309,10 @@ public class ViajesSubSistema {
 		assert viajePendiente.getEstado()==EstadosViajes.PAGO:"Fallo post: El viaje no cambio su estado a pago";
 	}
 	
-	/**
-     * Busca un viaje pendiente para un cliente especificado.<br>
-     * <b>PRE: </b> El cliente es distinto de null<br>
-     * @param cliente El cliente para el cual se busca el viaje pendiente.
-     * @return El viaje pendiente del cliente especificado.
-     * @throws ExceptionSinViajeaPagar Si no hay ningun viaje pendiente para el cliente especificado.
-     */
-	private IViaje buscarViaje(Cliente cliente, EstadosViajes estado) 
-	{
-		assert cliente!=null:"Fallo pre: El cliente debe ser distinto de null";
-		
-		IViaje viajePendiente;
-		int i = viajeLista.size() - 1;
-		
-		while(i>=0 && !(viajeLista.get(i).getCliente() == cliente && viajeLista.get(i).getEstado() == EstadosViajes.INICIADO))
-                    i--;
-                 
-                
-                if(i>=0)
-                {
-                    return viajeLista.get(i);
-                }else
-                    return null;
-	}
 	
-	/**
-     * Finaliza un viaje asignado a un Chofer especificado.<br>
+	
+    /**
+     * Finaliza un viaje conducido por un chofer especifico.<br>
      * <b>PRE: </b> El chofer es distinto de null<br>
      * <b>POST: </b> El viaje cambia su estado a finalizado<br>
      * @param chofer El Chofer que finaliza el viaje.
@@ -338,9 +321,7 @@ public class ViajesSubSistema {
 	public void finalizarViaje(Chofer chofer) throws ExceptionChoferSinViajesPagos
 	{
 		assert chofer!=null:"Fallo pre: EL chofer que finaliza viaje no puede ser null";
-		
-		ArrayList<Chofer> choferLista = empresa.getChoferLista();
-		ArrayList<Vehiculo> vehiculoLista = empresa.getVehiculoLista();
+                
 		Vehiculo vehiculo = null;		
 		IViaje viaje = null;
 		
@@ -380,10 +361,10 @@ public class ViajesSubSistema {
 		assert cliente!=null:"Fallo pre: EL cliente que califica no puede ser null";
 		assert (calificacion >0 && calificacion <=10):"Fallo pre: La calificacion no puede ser negativa ni mayor a 10";
 		
-		IViaje viajePagoOFinalizado = buscarViaje(cliente,EstadosViajes.PAGO);
+		IViaje viajePagoOFinalizado = getViaje(cliente,EstadosViajes.PAGO);
 		
 	    if(viajePagoOFinalizado == null)
-	    	viajePagoOFinalizado = buscarViaje(cliente,EstadosViajes.FINALIZADO);
+	    	viajePagoOFinalizado = getViaje(cliente,EstadosViajes.FINALIZADO);
 		
 		if(viajePagoOFinalizado != null)
 			viajePagoOFinalizado.setCalificacionChofer(calificacion);
@@ -394,6 +375,11 @@ public class ViajesSubSistema {
 	}
 	
         
+        /**
+     *Chequea que exista un viaje con vehiculo.<br>
+	 * <b>POST:</b> Se devuelve true si existe, false caso contrario.<br>
+     * @return  existencia de un viaje con vehiculo 
+     */
     public boolean hayViajeConVehiculo()
     {
         int i=0;
@@ -405,6 +391,11 @@ public class ViajesSubSistema {
          return i<viajeLista.size();
     }
     
+     /**
+     * Devuelve un viaje en estado solicitado.<br>
+	 * <b>POST:</b> Se devuelve  un viaje en estado solicitado si existe, null caso contrario.<br>
+     * @return  viaje en estado solicitado
+     */
     public IViaje getViajeSolicitado()
     {
         int i=viajeLista.size()-1;
@@ -419,6 +410,11 @@ public class ViajesSubSistema {
             return null;      
     }
     
+    /**
+     * Devuelve un viaje asociado al chofer pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
+	 * <b>POST:</b> Se devuelve  viaje asociado al chofer pasado como parametro si existe, null caso contrario.<br>
+     * @return  viaje asociado al chofer pasado como parametro 
+     */
     public IViaje getViaje(Chofer chofer, EstadosViajes estado)
     {
         int i=0;
@@ -429,6 +425,11 @@ public class ViajesSubSistema {
         return viajeLista.get(i);   
     }
     
+    /**
+     * Devuelve un viaje asociado al cliente pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
+	 * <b>POST:</b> Se devuelve  viaje asociado al cliente pasado como parametro si existe, null caso contrario.<br>
+     * @return  viaje asociado al cliente pasado como parametro 
+     */
     public IViaje getViaje(Cliente cliente, EstadosViajes estado)
     {
         int i=0;
@@ -439,6 +440,11 @@ public class ViajesSubSistema {
         return viajeLista.get(i);   
     }
     
+    /**
+     *Chequea que exista un viaje iniciado  de un cliente especifico.<br>
+	 * <b>POST:</b> Se devuelve true si existe, false caso contrario.<br>
+     * @return  existencia de un viaje iniciado de un cliente especifico
+     */
     public boolean viajeIniciado(Cliente cliente)
     {
         int i=0;
@@ -451,7 +457,11 @@ public class ViajesSubSistema {
                   
     }
     
-    
+     /**
+     *Devuelve un cliente cuyo nombre y contrasena coincidan con los parametros, lanza excepcion en caso contrario.<br>
+	 * <b>POST:</b> Se devuelve cliente si existe, false caso contrario.<br>
+     * @return  cliente
+     */
     public boolean viajePago(Chofer chofer){
         int i = viajeLista.size()-1;
         

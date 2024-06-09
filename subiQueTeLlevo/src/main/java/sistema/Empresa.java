@@ -55,8 +55,8 @@ public class Empresa {
 	{
 		if (empresa == null) {
 			empresa = new Empresa();
-			empresa.viajesSubSistema = new ViajesSubSistema();
-			empresa.admSubSistema = new AdmSubSistema();
+			empresa.viajesSubSistema = new ViajesSubSistema(empresa);
+			empresa.admSubSistema = new AdmSubSistema(empresa);
 		}
 
 		return empresa;
@@ -571,30 +571,19 @@ public class Empresa {
 		Cliente cliente = getCliente(nombreUsuario);
 		
 		if(cantPax<0 || distancia <0)
-                {System.out.println("dist"); 
 			if(cantPax<0)
 				throw new IllegalArgumentException("La cantidad de pasajeros debe ser positiva");
 			else
 				throw new IllegalArgumentException("La distancia debe ser positiva");
-                     
-                }
-		
-		if(fecha == null){
-                    System.out.println("fecha");
+ 
+		if(fecha == null)
 			throw new ExceptionFecha();
-                }
-   
-		
-		if(nombreUsuario == null){
-                    System.out.println("usuariop");
+                
+		if(nombreUsuario == null)
 			throw new ExceptionUsuarioNull();
-                }
-		
+                
 		if(zona == null)
-                {
-                    System.out.println("zona");
 			throw new ExceptionZona(zona);
-                }
 		
 		viajesSubSistema.pedirViaje(cliente,zona, mascota, tipoServicio, equipaje, cantPax, distancia, fecha);	
 	}
@@ -643,36 +632,75 @@ public class Empresa {
    
     }
     
+    
+    /**
+     *Chequea que exista un viaje con vehiculo.<br>
+	 * <b>POST:</b> Se devuelve true si existe, false caso contrario.<br>
+     * @return  existencia de un viaje con vehiculo 
+     */
     public boolean hayViajeConVehiculo()
     {
        return viajesSubSistema.hayViajeConVehiculo();
         
     }
     
+     /**
+     * Devuelve un viaje en estado solicitado.<br>
+	 * <b>POST:</b> Se devuelve  un viaje en estado solicitado si existe, null caso contrario.<br>
+     * @return  viaje en estado solicitado
+     */
     public IViaje getViajeSolicitado()
     {
       return viajesSubSistema.getViajeSolicitado();
 
     }
     
+     /**
+     * Devuelve un viaje asociado al chofer pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
+	 * <b>POST:</b> Se devuelve  viaje asociado al chofer pasado como parametro si existe, null caso contrario.<br>
+     * @return  viaje asociado al chofer pasado como parametro 
+     */
     public IViaje getViaje(Chofer chofer, IViaje.EstadosViajes estado)
     {
       return viajesSubSistema.getViaje(chofer,estado);
     }
     
+    /**
+     * Devuelve un viaje asociado al cliente pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
+	 * <b>POST:</b> Se devuelve  viaje asociado al cliente pasado como parametro si existe, null caso contrario.<br>
+     * @return  viaje asociado al cliente pasado como parametro 
+     */
      public IViaje getViaje(Cliente cliente, IViaje.EstadosViajes estado)
     {
        return viajesSubSistema.getViaje(cliente,estado);
     }
     
+     /**
+     *Chequea que exista un viaje iniciado  de un cliente especifico.<br>
+	 * <b>POST:</b> Se devuelve true si existe, false caso contrario.<br>
+     * @return  existencia de un viaje iniciado de un cliente especifico
+     */
     public boolean viajeIniciado(Cliente cliente)
     {
        return viajesSubSistema.viajeIniciado(cliente);
                   
     }
-    
-    public boolean viajePago(Chofer chofer){
+   
+     /**
+     *Devuelve un cliente cuyo nombre y contrasena coincidan con los parametros, lanza excepcion en caso contrario.<br>
+	 * <b>POST:</b> Se devuelve cliente si existe, false caso contrario.<br>
+     * @return  cliente
+     */
+    public boolean viajePago(Chofer chofer) {
         return viajesSubSistema.viajePago(chofer);
+    }
+
+    public boolean asignarVehiculo(IViaje viaje) {
+        return viajesSubSistema.asignarVehiculo(viaje);
+    }
+
+    public void asignarChofer(Chofer chofer) {
+        viajesSubSistema.asignarChofer(chofer);
     }
     
 // FIN funcionalidades subsistema de viajes
@@ -752,14 +780,5 @@ public class Empresa {
     }
         
         
-        
- // SIMULACION AGREGADOS
-        
- public boolean asignarVehiculo(IViaje viaje){
-     return viajesSubSistema.asignarVehiculo(viaje);
- }
- 
- public void asignarChofer(Chofer chofer){
-     viajesSubSistema.asignarChofer(chofer);
- }
+
 }

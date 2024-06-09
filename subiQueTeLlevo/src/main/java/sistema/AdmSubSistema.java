@@ -27,7 +27,12 @@ import viajes.IViaje;
  * el calculo de salarios y otros metodos auxiliares.
  */
 public class AdmSubSistema {
-    private Empresa empresa = Empresa.getInstance();
+    private Empresa empresa;
+    
+    public AdmSubSistema(Empresa empresa)
+    {
+        this.empresa = empresa;
+    }
     /**
      * Coleccion de Usuarios de la empresa, se utiliza HashMap cuyas claves son
      * los nombre de usuario debido a que estos no pueden repetirse

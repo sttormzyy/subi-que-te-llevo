@@ -44,9 +44,7 @@ public class ClienteThread extends Thread{
                 rc.pagarViaje(cliente);
                 this.cantViajes--;
                 
-          }catch(Exception e){
-              System.out.println(e.getClass().getName());
-            }
+          }catch(Exception e){}
         }
        rc.subCliente(cliente);
    }

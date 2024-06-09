@@ -147,7 +147,7 @@ public class Simulacion {
                 empresa.addCliente(nuevoCliente);
                 robotsCliente.add(new ClienteThread(nuevoCliente, rc, Util.rand(cantMaxViajeCliente)));
             } catch (ExceptionUsuario ex) {
-                // no entra nunca
+                // no entra nunca porque los datos son validos siempre
             }
         }
     }
@@ -164,29 +164,33 @@ public class Simulacion {
        String nombresCh[] = { "Vin Diesel","Schumacher","Fangio", "Chano"}; 
        
        for (int i = 0; i < cantChoferTemporario; i++) {
-            ChoferTemporario nuevoChoferT = new ChoferTemporario(i * 2 + "777" + 3 * i, nombresCh[Util.rand(3)]+i);
+            ChoferTemporario nuevoChoferT = new ChoferTemporario(i * 2 + "777" + 3 * i, nombresCh[Util.rand(4)]+i);
             try {
                 empresa.addChofer(nuevoChoferT);
                 robotsChofer.add(new ChoferThread((Chofer) nuevoChoferT, rc, Util.rand(cantMaxViajeChofer)));
-            } catch (ExceptionChofer ex) {}
+            } catch (ExceptionChofer ex) {
+              // no entra nunca porque los datos son validos siempre
+            }
      
         }
         for (int i = 0; i < cantChoferContratado; i++) {
-            ChoferContratado nuevoChoferC = new ChoferContratado(i * 2 + "777" + 3 * i, nombresCh[Util.rand(3)]+i);
+            ChoferContratado nuevoChoferC = new ChoferContratado(i * 2 + "777" + 3 * i, nombresCh[Util.rand(4)]+i);
             try {
                 empresa.addChofer(nuevoChoferC);
                 robotsChofer.add(new ChoferThread((Chofer) nuevoChoferC, rc, Util.rand(cantMaxViajeChofer)));
             } catch (ExceptionChofer ex) {
-
+              // no entra nunca porque los datos son validos siempre
             }
 
         }
         for (int i = 0; i < cantChoferPermanente; i++) {
-            ChoferPermanente nuevoChoferP = new ChoferPermanente(i * 2 + "777" + 3 * i, nombresCh[Util.rand(3)]+i, Util.rand(5), LocalDateTime.now());
+            ChoferPermanente nuevoChoferP = new ChoferPermanente(i * 2 + "777" + 3 * i, nombresCh[Util.rand(4)]+i, Util.rand(5), LocalDateTime.now());
             try {
                 empresa.addChofer(nuevoChoferP);
                 robotsChofer.add(new ChoferThread((Chofer) nuevoChoferP, rc, Util.rand(cantMaxViajeChofer)));
-            } catch (ExceptionChofer ex) { }
+            } catch (ExceptionChofer ex) { 
+             // no entra nunca porque los datos son validos siempre
+            }
         }
     }
 

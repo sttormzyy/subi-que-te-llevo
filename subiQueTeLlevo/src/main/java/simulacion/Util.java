@@ -7,9 +7,8 @@ package simulacion;
 import java.util.Random;
 
 /**
- *
- * @author Usuario
- */
+ *Clase utilizada para generar numeros random donde sea necesario
+ **/
 public class Util {
 
     public static final Random r = new Random();
@@ -29,7 +28,7 @@ public class Util {
 
     public static void espera()
     {
-	Util.espera(1000+r.nextInt(6000));
+	Util.espera(1000+rand(2000,7000));
     }
  
     public static int rand(int limite)
