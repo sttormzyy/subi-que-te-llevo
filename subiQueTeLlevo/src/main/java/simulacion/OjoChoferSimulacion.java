@@ -9,8 +9,6 @@ import java.util.Observable;
 import static simulacion.EventoSimulacion.TipoEvento.CHOFER;
 import static simulacion.EventoSimulacion.TipoEvento.CLIENTE;
 import static simulacion.EventoSimulacion.TipoEvento.SISTEMA;
-import usuarios.Cliente;
-import vista.VentanaCliente;
 import vista.VentanaGeneral;
 
 /**

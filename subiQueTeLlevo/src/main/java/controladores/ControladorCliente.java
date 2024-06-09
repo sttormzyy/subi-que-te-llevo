@@ -139,7 +139,6 @@ public class ControladorCliente implements ActionListener {
 
         try {
             recursoCompartido.pedirViaje(cliente, zona, mascota, "transporte", equipaje, cantPax, distancia, fecha);
-            vista.disablePedirViaje();
         } catch (ExceptionPedido ex) {
             vista.setDialog(ex.getMessage(),"Error");
 

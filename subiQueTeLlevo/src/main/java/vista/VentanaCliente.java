@@ -80,6 +80,7 @@ public class VentanaCliente extends javax.swing.JFrame {
    
     /**
      * Setea el controlador correspondiente a los objetos interactivos de la ventana
+     * @param c action listener
      */
    public void setActionListener(ActionListener c)
    {
@@ -89,13 +90,14 @@ public class VentanaCliente extends javax.swing.JFrame {
        panelRegistro.getButtonRegistro().addActionListener(c);
        panelLogin.getButtonSesion().addActionListener(c);
        panelLogin.getButtonRegistro().addActionListener(c);
-       panelApp.getButtonPagar().addActionListener(c);
-       panelApp.getButtonPedirViaje().addActionListener(c);
+       panelApp.addActionListener(c);
        dialogFinViaje.getButtonAbandonar().addActionListener(c);
    }
    
    /**
      * Muestra por pantalla una ventana emergente comunicando un error al usuario
+     * @param mensaje mensaje a mostrar
+     * @param tipo tipo de mensaje
      */
    public void setDialog(String mensaje, String tipo)
     {

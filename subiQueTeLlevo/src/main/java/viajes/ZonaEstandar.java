@@ -18,6 +18,7 @@ public class ZonaEstandar extends ViajeAbstracto {
      * Calcula el incremento en el costo por kilometro para un Viaje en zona estandar.<br>
      * @return El incremento en el costo por kilometro.
      */
+    @Override
     public double getIncrKm() {
         return 0.1 * this.getDistancia();
     }
@@ -26,6 +27,7 @@ public class ZonaEstandar extends ViajeAbstracto {
      * Calcula el incremento en el costo por pasajero para un viaje en zona estandar.<br>
      * @return El incremento en el costo por pasajero.
      */
+    @Override
     public double getIncrPax() {
         return 0.1 * this.getCantPax();
     }

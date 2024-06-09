@@ -91,8 +91,8 @@ public class ChoferPermanente extends Asalariado
 		
         //Calcula el plus por antigüedad
 		double antiguedad = ChronoUnit.YEARS.between(fechaIngreso, fecha);
-        double plusAntiguedad = sueldoBasico * ( ChoferPermanente.plusAntiguedad / 100 ) * antiguedad;
-        sueldoBruto += plusAntiguedad;
+        double plusxAntiguedad = sueldoBasico * ( ChoferPermanente.plusAntiguedad / 100 ) * antiguedad;
+        sueldoBruto += plusxAntiguedad;
         
         //Calcula el plus por cantidad de hijos
         double plusHijos = sueldoBasico * ( ChoferPermanente.plusXHijos / 100 ) * cantidadHijos;

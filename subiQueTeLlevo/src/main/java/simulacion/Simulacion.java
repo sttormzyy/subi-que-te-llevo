@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sistema.Empresa;
-import usuarios.Administrador;
 import usuarios.Cliente;
 import usuarios.Usuario;
 import vehiculos.Auto;
@@ -42,12 +41,12 @@ public class Simulacion {
   * Gestiona el inicio de una nueva simulacion. Crea el recurso compartido y la cantidad de clientes y choferes indicadas por el usuario.<br>
   * Por cada uno de ellos, crea un hilo del tipo correspondiente.<br>
   * Por ultimo, da inicio a la simulacion
-  * @param Parametros parametros de la nueva simulacion
+  * @param p parametros de la nueva simulacion
   */
    public void iniciarSimulacionNueva(ParametrosSimulacion p)
    {
         Empresa empresa = Empresa.getInstance();
-        rc =  new RecursoCompartido(empresa,p.getCantClientes(),p.CantChoferes());
+        rc =  new RecursoCompartido(empresa,p.CantChoferes(),p.getCantClientes());
         initClientes(empresa,p.getCantClientes(), p.getCantMaxViajeCliente());
         initChoferes(empresa,p.getCantChoferTemporario(), p.getCantChoferContratado(), p.getCantChoferPermanente(), p.getCantMaxViajeChofer());
         initVehiculos(empresa,p.getCantAutos(), p.getCantMotos(), p.getCantCombis());
@@ -57,6 +56,7 @@ public class Simulacion {
    /**
     * gestiona el inicio de una simulacion con datos persistidos.<br>
     * Obtiene de archivos la empresa, a partir de sus listas de choferes y clientes inicializa los hilos necesarios.<br>
+     * @param parametros parametros de la nueva simulacion
     */
    public void iniciarSimulacionConDatosViejos(ParametrosSimulacion parametros)
    {
@@ -68,8 +68,8 @@ public class Simulacion {
     	   Empresa empresa = UTILEmpresa.empresaFromEmpresaDTO(empresaDTO);
     	   leeEmpresa.cerrarInput();
 
-           
-    	   rc = new RecursoCompartido(empresa,empresa.getUsuarioLista().size(), empresa.getChoferLista().size());
+         
+    	   rc = new RecursoCompartido(empresa, empresa.getChoferLista().size(), empresa.getUsuarioLista().size()-1);
     	   initThreads(empresa,parametros.getCantMaxViajeChofer(),parametros.getCantMaxViajeCliente());
     	   simular(empresa,null);
            
@@ -83,8 +83,8 @@ public class Simulacion {
     /**
      * Ejecuta la simulacion.Crea las ventanas generales y de cliente unico.<br>
      * Ademas, ejecuta metodo start() de cada uno de los hilos y persiste los datos de la empresa y la simulacion
-     * @param empresa
-     * @param parametros
+     * @param empresa empresa
+     * @param parametros parametros simulacion
      **/
     public void simular(Empresa empresa, ParametrosSimulacion parametros)
     {
@@ -94,7 +94,7 @@ public class Simulacion {
        VentanaCliente vistaCliente = new VentanaCliente();
        
        OjoGeneral ojoGeneral = new OjoGeneral(vistaGeneral, rc);
-       OjoClienteSimulacion ojoClienteSimulacion = new OjoClienteSimulacion(vistaGeneral, rc, (Cliente) empresa.getUsuarioLista().get(Util.rand(5)));
+       OjoClienteSimulacion ojoClienteSimulacion = new OjoClienteSimulacion(vistaGeneral, rc, (Cliente) empresa.getUsuarioLista().get(1));
        OjoChoferSimulacion ojoChoferSimulacion = new OjoChoferSimulacion(vistaGeneral, rc, empresa.getChoferLista().get(0));
        OjoCliente ojoClienteApp = new OjoCliente(vistaCliente,rc);
        
@@ -129,27 +129,41 @@ public class Simulacion {
    
    /**
     * Crea la cantidad indicada de clientes e hilos cliente
-    * @param empresa
+    * @param empresa empresa
     * @param cantClientes cantidad de hilos cliente nueva simulacion
     * @param cantMaxViajeCliente cantidad maxima de viajes por hilo cliente
     */
    private void initClientes(Empresa empresa,int cantClientes, int cantMaxViajeCliente) {
-       String nombresC[] = { "Moria Casan","Mirtha","Jennifer Anniston", "Mafalda"};
-
-        for (int i = 0; i < cantClientes; i++) {
+       String nombresC[] = { "Moria Casan","Mirtha","Juana Azurduy", "Mafalda"};
+        Cliente nuevoCliente;
+        int i=0;
+        
+       
+        while(i<cantClientes)
+        {
             try {
-                Cliente nuevoCliente = new Cliente(nombresC[Util.rand(3)] + i, "Cliente" + i, i * 2 + "77" + 3 * i);
+                nuevoCliente = new Cliente(nombresC[Util.rand(3)] + i, "Cliente" + i, i * 2 + "77" + 3 * i);
                 empresa.addCliente(nuevoCliente);
-                robotsCliente.add(new ClienteThread(nuevoCliente, rc, Util.rand(cantMaxViajeCliente)));
+                robotsCliente.add(new ClienteThread(nuevoCliente, rc, Util.rand(1,cantMaxViajeCliente)));
+                i++;
             } catch (ExceptionUsuario ex) {
                 // no entra nunca porque los datos son validos siempre
             }
         }
+        
+        //hardcode de un cliente que no sea hilo para poder iniciar sesion
+       try {
+           nuevoCliente = new Cliente("Liskov","Liskov","1234");
+           nuevoCliente.setUsandoApp(true);
+           empresa.addCliente(nuevoCliente);
+       } catch (ExceptionUsuario ex) {
+           Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
     
    /**
     * Crea la cantidad indicada de chofer e hilos chofer, segun su tipo
-    * @param empresa
+    * @param empresa empresa
     * @param cantChoferTemporario cantidad de hilos chofer temporario nueva simulacion
     * @param cantChoferContratado cantidad de hilos chofer contratado nueva simulacion
     * @param cantChoferPermanente cantidad de hilos chofer permanente nueva simulacion
@@ -157,32 +171,34 @@ public class Simulacion {
     */
    private void initChoferes(Empresa empresa, int cantChoferTemporario, int cantChoferContratado, int cantChoferPermanente, int cantMaxViajeChofer) {
        String nombresCh[] = { "Vin Diesel","Schumacher","Fangio", "Chano"}; 
+    
        
-       for (int i = 0; i < cantChoferTemporario; i++) {
-            ChoferTemporario nuevoChoferT = new ChoferTemporario(i * 2 + "777" + 3 * i, nombresCh[Util.rand(4)]+i);
+       for (int i=0; i < cantChoferTemporario; i++) {
+            ChoferTemporario nuevoChoferT = new ChoferTemporario(i * 2 + "777" + i * 3, nombresCh[Util.rand(4)]+i);
             try {
                 empresa.addChofer(nuevoChoferT);
-                robotsChofer.add(new ChoferThread((Chofer) nuevoChoferT, rc, Util.rand(cantMaxViajeChofer)));
+                robotsChofer.add(new ChoferThread((Chofer) nuevoChoferT, rc, Util.rand(1,cantMaxViajeChofer)));
             } catch (ExceptionChofer ex) {
               // no entra nunca porque los datos son validos siempre
             }
      
         }
-        for (int i = 0; i < cantChoferContratado; i++) {
-            ChoferContratado nuevoChoferC = new ChoferContratado(i * 2 + "777" + 3 * i, nombresCh[Util.rand(4)]+i);
+        for (int k=0; k < cantChoferContratado; k++) {
+            ChoferContratado nuevoChoferC = new ChoferContratado(k * 2 + "666" + 3 * k, nombresCh[Util.rand(4)]+k+3);
             try {
                 empresa.addChofer(nuevoChoferC);
-                robotsChofer.add(new ChoferThread((Chofer) nuevoChoferC, rc, Util.rand(cantMaxViajeChofer)));
+                robotsChofer.add(new ChoferThread((Chofer) nuevoChoferC, rc, Util.rand(1,cantMaxViajeChofer)));
             } catch (ExceptionChofer ex) {
               // no entra nunca porque los datos son validos siempre
             }
 
         }
-        for (int i = 0; i < cantChoferPermanente; i++) {
-            ChoferPermanente nuevoChoferP = new ChoferPermanente(i * 2 + "777" + 3 * i, nombresCh[Util.rand(4)]+i, Util.rand(5), LocalDateTime.now());
+       
+        for (int j=0; j < cantChoferPermanente; j++) {
+            ChoferPermanente nuevoChoferP = new ChoferPermanente(j * 2 + "555" + 3 * j, nombresCh[Util.rand(4)]+j+4, Util.rand(5), LocalDateTime.now());
             try {
                 empresa.addChofer(nuevoChoferP);
-                robotsChofer.add(new ChoferThread((Chofer) nuevoChoferP, rc, Util.rand(cantMaxViajeChofer)));
+                robotsChofer.add(new ChoferThread((Chofer) nuevoChoferP, rc, Util.rand(1,cantMaxViajeChofer)));
             } catch (ExceptionChofer ex) { 
              // no entra nunca porque los datos son validos siempre
             }
@@ -191,7 +207,7 @@ public class Simulacion {
 
    /**
     * Crea la cantidad indicada de vehiculos para la empresa, segun su tipo
-    * @param empresa
+    * @param empresa empresa 
     * @param cantAutos  cantidad de autos de la empresa
     * @param cantMotos  cantidad de motos de la empresa
     * @param cantCombis  cantidad de combis de la empresa
@@ -227,22 +243,23 @@ public class Simulacion {
 
    /**
     * En caso de simulacion a partir de datos persistidos, inicializa los hilos chofer y clientes necesarios de acuerdo a la informacion almacenada en la empresa persistida
-    * @param empresa
+    * @param empresa empresa
     * @param cantAutos  cantidad de autos de la empresa
     * @param cantMotos  cantidad de motos de la empresa
     * @param cantCombis  cantidad de combis de la empresa
     */
    private void initThreads(Empresa empresa, int cantMaxViajeCliente, int cantMaxViajeChofer) {
        Cliente cliente;
+     
         for (Usuario c : empresa.getUsuarioLista()) {
             cliente = (Cliente) c;
             if(!cliente.isUsandoApp())
-              robotsCliente.add(new ClienteThread((Cliente) c, rc, Util.rand(cantMaxViajeCliente)));
+              robotsCliente.add(new ClienteThread((Cliente) c, rc, Util.rand(1,cantMaxViajeCliente)));
         }
         for (Chofer c : empresa.getChoferLista()) {
-            robotsChofer.add(new ChoferThread(c, rc, Util.rand(cantMaxViajeChofer)));
+            robotsChofer.add(new ChoferThread(c, rc, Util.rand(1,cantMaxViajeChofer)));
         }
-        rc.setCantClientes(empresa.getUsuarioLista().size());
+        rc.setCantClientes(empresa.getUsuarioLista().size()-1);
         rc.setCantChoferes(empresa.getChoferLista().size());
     }
 

@@ -30,6 +30,7 @@ public class ChoferTemporario  extends Asalariado
 // Metodos
     /**
      * Obtiene el sueldo del Chofer Temporario para el mes actual.<br>
+     * @param cantidadViajesTemp cantidad de viajes del chofer
      * @return El sueldo del Chofer para el mes actual.
      */
     public double getSueldo(int cantidadViajesTemp) {
@@ -41,6 +42,7 @@ public class ChoferTemporario  extends Asalariado
      * Obtiene el sueldo del Chofer Temporario para un mes especifico.<br>
      * <b>PRE:</b> El parametro fecha no puede ser nulo.<br>
      * @param fecha La fecha para la cual se calcula el sueldo.
+     * @param cantidadViajesTemp cantidad de viajes del chofer
      * @return El sueldo del chofer para la fecha dada.
      */
     public double getSueldo(LocalDateTime fecha, int cantidadViajesTemp) {
@@ -51,6 +53,7 @@ public class ChoferTemporario  extends Asalariado
      * Calcula el sueldo neto del Chofer Temporario para un mes especifico.
      * <b>PRE:</b> El parametro fecha no puede ser nulo.
      * @param fecha La fecha para la cual se calcula el sueldo.
+     * @param cantidadViajesTemp cantidad de viajes del chofer
      * @return El sueldo neto del Chofer para la fecha dada.
      */
     public double getSueldoNeto(LocalDateTime fecha, int cantidadViajesTemp) {
@@ -64,6 +67,7 @@ public class ChoferTemporario  extends Asalariado
      * Obtiene el sueldo bruto del Chofer Temporario para un mes especifico.<br>
      * <b>PRE:</b> El parametro fecha no puede ser nulo.<br>
      * @param fecha La fecha para la cual se calcula el sueldo.
+     * @param cantidadViajesTemp cantidad de viajes del chofer
      * @return El sueldo bruto del chofer para la fecha dada.
      */
     public double getSueldoBruto(LocalDateTime fecha, int cantidadViajesTemp) {
@@ -98,6 +102,7 @@ public class ChoferTemporario  extends Asalariado
 	/**
      * Obtiene el porcentaje de plus ganado por cantidad de viajes realizados mensualmente para los Choferes Temporarios.<br>
      * <b>POST:</b> Se devuelve el porcentaje de plus por la cantidad de viajes realizados por los Choferes Temporarios.<br>
+     * @return plus por cantidad de viajes
      */
 	public double getPlusXCantidadViajes() {
 		return ChoferTemporario.plusXCantidadViajes;

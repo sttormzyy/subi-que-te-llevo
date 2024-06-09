@@ -17,7 +17,6 @@ import excepciones.usuario.ExceptionUsuarioInexistente;
 import excepciones.usuario.ExceptionUsuarioNull;
 import excepciones.vehiculo.ExceptionVehiculo;
 import excepciones.vehiculo.ExceptionVehiculoNull;
-import excepciones.viaje.ExceptionChoferDisp;
 import excepciones.viaje.ExceptionChoferSinViajesPagos;
 import excepciones.viaje.ExceptionClienteSinViajesPagos;
 import excepciones.viaje.ExceptionSinViajeaPagar;
@@ -562,7 +561,6 @@ public class Empresa {
      * @param fecha          La fecha del viaje.
      * @throws ExceptionPedido        Si ocurre un error al realizar el Pedido del viaje.
      * @throws ExceptionVehiculoDisp  Si no hay vehiculos disponibles para el viaje.
-     * @throws ExceptionChoferDisp    Si no hay Choferes disponibles para el viaje.
      * @throws ExceptionUsuario       Si el cliente que solicita el viaje no existe.
      */
 	public void pedirViaje(String nombreUsuario,String zona, int mascota, String tipoServicio, int equipaje, int cantPax, double distancia, LocalDateTime fecha)
@@ -591,7 +589,7 @@ public class Empresa {
 	/**
      * Realiza el pago de un viaje en el Subsistema de Viajes.<br>
      * <b>POST: </b> Si el cliente tenia un viaje iniciado, este cambia su estado a pago<br>
-     * @param cliente
+     * @param cliente cliente que desea pagar un viaje
      * @throws ExceptionSinViajeaPagar Si no hay ningun viaje pendiente de pago para el cliente.
      * @throws ExceptionUsuario        Si el cliente que realiza el pago no existe.
      */
@@ -621,7 +619,7 @@ public class Empresa {
 	/**
      * Finaliza los viajes de un chofer en el Subsistema de Viajes.<br>
      * <b>POST: </b> Si el chofer tenia un viaje pago, este cambia su estado a finalizado y se liberan el chofer y el vehiculo asociados a ese viaje<br>
-     * @param chofer  una referencia al chofer.
+     * @param chofer  una referencia al chofer que desea finalizar viaje
      * @throws ExceptionChofer               Si el chofer no existe.
      * @throws ExceptionChoferSinViajesPagos Si el chofer no tiene viajes pagados para finalizar.
      */
@@ -658,6 +656,8 @@ public class Empresa {
      /**
      * Devuelve un viaje asociado al chofer pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
 	 * <b>POST:</b> Se devuelve  viaje asociado al chofer pasado como parametro si existe, null caso contrario.<br>
+     * @param chofer chofer del cual se busca viaje
+     * @param estado estado del viaje
      * @return  viaje asociado al chofer pasado como parametro 
      */
     public IViaje getViaje(Chofer chofer, IViaje.EstadosViajes estado)
@@ -668,6 +668,8 @@ public class Empresa {
     /**
      * Devuelve un viaje asociado al cliente pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
 	 * <b>POST:</b> Se devuelve  viaje asociado al cliente pasado como parametro si existe, null caso contrario.<br>
+     * @param cliente cliente del cual se busca viaje
+     * @param estado estado del viaje
      * @return  viaje asociado al cliente pasado como parametro 
      */
      public IViaje getViaje(Cliente cliente, IViaje.EstadosViajes estado)
@@ -678,6 +680,7 @@ public class Empresa {
      /**
      *Chequea que exista un viaje iniciado  de un cliente especifico.<br>
 	 * <b>POST:</b> Se devuelve true si existe, false caso contrario.<br>
+     * @param cliente cliente que busca saber si tiene viaje iniciado
      * @return  existencia de un viaje iniciado de un cliente especifico
      */
     public boolean viajeIniciado(Cliente cliente)
@@ -687,18 +690,31 @@ public class Empresa {
     }
    
      /**
-     *Devuelve un cliente cuyo nombre y contrasena coincidan con los parametros, lanza excepcion en caso contrario.<br>
+     *Recorre la lista de viajes en busca de un viaje que tenga al chofer y su estado sea pago.<br>
 	 * <b>POST:</b> Se devuelve cliente si existe, false caso contrario.<br>
-     * @return  cliente
+     * @param chofer chofer que busca saber si tiene viaje pago
+     * @return  true si hay viaje pago, false caso contrario
      */
     public boolean viajePago(Chofer chofer) {
         return viajesSubSistema.viajePago(chofer);
     }
 
+    /**
+     * Asigna vehiculo al viaje pasado por parametro
+     * @param viaje viaje al que se le quiere asignar vehiculo
+     * @return devueleve true si pudo, false caso contrario
+     */
     public boolean asignarVehiculo(IViaje viaje) {
-        return viajesSubSistema.asignarVehiculo(viaje);
+        if(viaje!=null)
+            return viajesSubSistema.asignarVehiculo(viaje);
+        else
+            return false;
     }
 
+    /**
+     * Asigna chofer a un viaje
+     * @param chofer chofer que quiere tomar un viaje
+     */
     public void asignarChofer(Chofer chofer) {
         viajesSubSistema.asignarChofer(chofer);
     }

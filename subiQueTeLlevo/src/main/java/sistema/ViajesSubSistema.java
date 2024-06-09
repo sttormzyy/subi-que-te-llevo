@@ -10,7 +10,6 @@ import excepciones.pedido.ExceptionPedido;
 import excepciones.pedido.ExceptionTipodeServicio;
 import excepciones.pedido.ExceptionVehiculoDisp;
 import excepciones.pedido.ExceptionZona;
-import excepciones.viaje.ExceptionChoferDisp;
 import excepciones.viaje.ExceptionChoferSinViajesPagos;
 import excepciones.viaje.ExceptionClienteSinViajesPagos;
 import excepciones.viaje.ExceptionSinViajeaPagar;
@@ -194,7 +193,7 @@ public class ViajesSubSistema {
     
     /**
      * Realiza un pedido de viaje para un cliente con los parametros especificados.<br>
-     * <b>PRE:</b> cliente y fecha != null, zona y tipoServicio != null y != "", cantPax >= 0, distancia > 0.
+     * <b>PRE:</b> cliente y fecha != null, zona y tipoServicio != null y != "", cantPax mayor o igual 0, distancia mayor a 0.
      * <b>POST:</b> Se programa un viaje para el cliente con los parámetros especificados.
      * @param cliente      El cliente que realiza el pedido.
      * @param zona         La zona de destino del viaje.
@@ -226,9 +225,10 @@ public class ViajesSubSistema {
     }
    
      
-    /**
-     * Busca el vehículo con mayor prioridad para el pedido especificado, cuyos atributos estan todos validados.<br>
-     * <b>PRE: </b> El viaje es distinto de null<br>
+   /**
+     * Asigna vehiculo al viaje pasado por parametro
+     * @param viaje viaje al que se le quiere asignar vehiculo
+     * @return devueleve true si pudo, false caso contrario
      */
 	public boolean asignarVehiculo(IViaje viaje) 
 	{
@@ -263,9 +263,9 @@ public class ViajesSubSistema {
              
 	}
 
-    /**
-     * Busca un Chofer disponible para conducir un viaje que ya tiene vehiculo
-     * @param chofer vehiculo asignado.<br>
+   /**
+     * Asigna chofer a un viaje
+     * @param chofer chofer que quiere tomar un viaje
      */
 	public void asignarChofer(Chofer chofer)
 	{
@@ -408,21 +408,26 @@ public class ViajesSubSistema {
     /**
      * Devuelve un viaje asociado al chofer pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
 	 * <b>POST:</b> Se devuelve  viaje asociado al chofer pasado como parametro si existe, null caso contrario.<br>
+     * @param chofer chofer del cual se busca viaje
+     * @param estado estado del viaje
      * @return  viaje asociado al chofer pasado como parametro 
      */
     public IViaje getViaje(Chofer chofer, EstadosViajes estado)
     {
-        int i=0;
+        int i=viajeLista.size()-1;
         
         while(viajeLista.get(i).getChofer() != chofer || viajeLista.get(i).getEstado() != estado){
-            i++;
+            i--;
         }        
+
         return viajeLista.get(i);   
     }
     
     /**
      * Devuelve un viaje asociado al cliente pasado como parametro cuyo estado coincida con el pasado como parametro.<br>
 	 * <b>POST:</b> Se devuelve  viaje asociado al cliente pasado como parametro si existe, null caso contrario.<br>
+     * @param cliente cliente del cual se busca viaje
+     * @param estado estado del viaje
      * @return  viaje asociado al cliente pasado como parametro 
      */
     public IViaje getViaje(Cliente cliente, EstadosViajes estado)
@@ -438,6 +443,7 @@ public class ViajesSubSistema {
     /**
      *Chequea que exista un viaje iniciado  de un cliente especifico.<br>
 	 * <b>POST:</b> Se devuelve true si existe, false caso contrario.<br>
+     * @param cliente cliente que busca saber si tiene viaje iniciado
      * @return  existencia de un viaje iniciado de un cliente especifico
      */
     public boolean viajeIniciado(Cliente cliente)
@@ -453,15 +459,15 @@ public class ViajesSubSistema {
     }
     
      /**
-     *Devuelve un cliente cuyo nombre y contrasena coincidan con los parametros, lanza excepcion en caso contrario.<br>
+     *Recorre la lista de viajes en busca de un viaje que tenga al chofer y su estado sea pago.<br>
 	 * <b>POST:</b> Se devuelve cliente si existe, false caso contrario.<br>
-     * @return  cliente
+     * @param chofer chofer que busca saber si tiene viaje pago
+     * @return  true si hay viaje pago, false caso contrario
      */
     public boolean viajePago(Chofer chofer){
         int i = viajeLista.size()-1;
         
         while((i>=0) && !(viajeLista.get(i).getChofer() == chofer && viajeLista.get(i).getEstado() == EstadosViajes.PAGO)){
-            System.out.println("Estado "+viajeLista.get(i).getEstado());
             i--;
         }
   

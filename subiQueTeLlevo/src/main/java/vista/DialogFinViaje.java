@@ -14,6 +14,9 @@ public class DialogFinViaje extends javax.swing.JDialog {
    VentanaCliente vista;
     /**
      * Creates new form DialogFinViaje
+     * @param parent padre
+     * @param titulo titulo
+     * @param modal modo
      */
     public DialogFinViaje(java.awt.Frame parent,String titulo, boolean modal) {
         super(parent, titulo, modal);
@@ -109,7 +112,7 @@ public class DialogFinViaje extends javax.swing.JDialog {
 
     /**
      * Esconde el dialog una vez el cliente tomo una decision de continuar pidiendo viajes
-     * @param evt 
+     * @param evt evento boton apretado
      */
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         this.setVisible(false);

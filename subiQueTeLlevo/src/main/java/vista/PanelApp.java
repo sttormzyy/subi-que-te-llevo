@@ -5,7 +5,7 @@
 package vista;
 
 
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.util.Date;
 import java.time.LocalDate;
@@ -16,7 +16,14 @@ import java.time.ZoneId;
  *Clase encargada de representar la vista que permite al usuario rellenar formulario de viajes y ver el avance del mismo
  **/
 public class PanelApp extends VentanaClienteAbstract{
-
+    private ActionListener actionListener;
+    
+    
+    public void addActionListener(ActionListener c)
+    {
+        this.botonPagar.addActionListener(c);
+        this.actionListener = c;
+    }
     /**
      * Crea nueva PanelApp
      */
@@ -336,13 +343,41 @@ public class PanelApp extends VentanaClienteAbstract{
         botonPedirViaje.addMouseListener(this);
         botonPedirViaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonPedirViaje.setText("PEDIR VIAJE");
-        botonPedirViaje.setEnabled(false);
+        botonPedirViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPedirViajeActionPerformed(evt);
+            }
+        });
         jPanel9.add(botonPedirViaje);
 
         jPanel3.add(jPanel9);
 
         add(jPanel3);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    /**
+     * Valida que la fecha y distancia ingresadas por el usuario para el nuevo viaje sean valida <br>
+     * Si lo son deriva el evento al controlador, caso contrario informa al cliente la situacion
+     * @param evt 
+     */
+    private void botonPedirViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedirViajeActionPerformed
+     DialogCliente dialog = null;
+     double distancia = getDistancia();
+     LocalDateTime fecha = getFecha();
+
+    if (distancia > 0 && fecha != null &&  (LocalDateTime.now().isEqual(fecha) || LocalDateTime.now().isBefore(fecha)))
+        this.actionListener.actionPerformed(evt);
+    else 
+    {
+        if (distancia <= 0) 
+            dialog = new DialogCliente(null, true, "Advertencia", "La distancia debe ser mayor a 0");
+         else 
+            dialog = new DialogCliente(null, true, "Advertencia", "Seleccione una fecha válida");
+        
+        dialog.setVisible(true);  
+    }
+    }//GEN-LAST:event_botonPedirViajeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -541,31 +576,6 @@ public class PanelApp extends VentanaClienteAbstract{
         botonPedirViaje.setEnabled(false);
     };
 
-    /**
-     * Controla la habilitacion del boton de pedir viaje<br>
-     * Si la distancia y la fecha son validas, lo habilita<br>
-     * Caso contrario avisa al usuario el error
-     * @param e 
-     */
-    @Override
-    public void mouseEntered(MouseEvent e) 
-    {
-    DialogCliente dialog = null;
-    double distancia = getDistancia();
-    LocalDateTime fecha = getFecha();
-
-    if (distancia > 0 && fecha != null &&  (LocalDateTime.now().isEqual(fecha) || LocalDateTime.now().isBefore(fecha)))
-        botonPedirViaje.setEnabled(true);
-    else 
-    {
-        if (distancia <= 0) 
-            dialog = new DialogCliente(null, true, "Advertencia", "La distancia debe ser mayor a 0");
-         else 
-            dialog = new DialogCliente(null, true, "Advertencia", "Seleccione una fecha válida");
-        
-        dialog.setVisible(true);  
-    }
-    }
 }
  
 

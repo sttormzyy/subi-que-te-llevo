@@ -50,7 +50,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
      */
     public int getCantMaxViajeCliente()
     {
-        return Integer.parseInt(textCantMaxViajesXCliente.getText());
+        return Integer.parseInt(textCantClientes.getText());
     }
      
     /**
@@ -134,6 +134,8 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
     
     /**
      * Muestra por pantalla una ventana emergente comunicando un error al usuario
+     * @param mensaje mensaje a mostrar
+     * @param tipo tipo mensaje
      */
    public void setDialog(String mensaje, String tipo)
     {
@@ -152,8 +154,8 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         jLabel1 = new javax.swing.JLabel();
         PanelClientes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        textCantClientes = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        textCantClientes = new javax.swing.JTextField();
         textCantMaxViajesXCliente = new javax.swing.JTextField();
         PanelChoferes2 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -204,14 +206,6 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         PanelClientes.add(jLabel6, gridBagConstraints);
 
-        textCantClientes.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        textCantClientes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textCantClientes.setText("6");
-        textCantClientes.setMaximumSize(new java.awt.Dimension(40, 20));
-        textCantClientes.setMinimumSize(new java.awt.Dimension(40, 20));
-        textCantClientes.setPreferredSize(new java.awt.Dimension(40, 20));
-        PanelClientes.add(textCantClientes, new java.awt.GridBagConstraints());
-
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Cantidad viajes:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -222,9 +216,20 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         PanelClientes.add(jLabel12, gridBagConstraints);
 
+        textCantClientes.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        textCantClientes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textCantClientes.setText("3");
+        textCantClientes.setMinimumSize(new java.awt.Dimension(40, 20));
+        textCantClientes.setPreferredSize(new java.awt.Dimension(40, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weighty = 0.1;
+        PanelClientes.add(textCantClientes, gridBagConstraints);
+
         textCantMaxViajesXCliente.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantMaxViajesXCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textCantMaxViajesXCliente.setText("5");
+        textCantMaxViajesXCliente.setText("2");
         textCantMaxViajesXCliente.setMinimumSize(new java.awt.Dimension(40, 20));
         textCantMaxViajesXCliente.setPreferredSize(new java.awt.Dimension(40, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -283,7 +288,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
 
         textCantMaxViajesxChofer.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantMaxViajesxChofer.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textCantMaxViajesxChofer.setText("3");
+        textCantMaxViajesxChofer.setText("2");
         textCantMaxViajesxChofer.setMinimumSize(new java.awt.Dimension(45, 20));
         textCantMaxViajesxChofer.setPreferredSize(new java.awt.Dimension(45, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -302,7 +307,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
 
         textCantContratado.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantContratado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textCantContratado.setText("3");
+        textCantContratado.setText("2");
         textCantContratado.setMinimumSize(new java.awt.Dimension(45, 20));
         textCantContratado.setPreferredSize(new java.awt.Dimension(45, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -313,7 +318,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
 
         textCantPermanente.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         textCantPermanente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textCantPermanente.setText("3");
+        textCantPermanente.setText("1");
         textCantPermanente.setMinimumSize(new java.awt.Dimension(45, 20));
         textCantPermanente.setPreferredSize(new java.awt.Dimension(45, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -558,7 +563,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
     /**
      * Habilita el boton de comenzar simulacion nueva si todos los campos con parametros requeridos estan completos <br>
      * Caso contrario advierte al usuario que complete por medio de ventana emergente
-     * @param e 
+     * @param e evento mouse
      */
     @Override
     public void mouseEntered(MouseEvent e) 

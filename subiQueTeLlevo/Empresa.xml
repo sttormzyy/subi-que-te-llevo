@@ -20,66 +20,83 @@
         <string>27773</string>
        </void>
        <void property="nombre">
-        <string>Fangio1</string>
+        <string>Vin Diesel1</string>
        </void>
       </object>
      </void>
      <void method="add">
       <object class="Persistencia.choferDTO.ChoferContratadoDTO">
        <void property="dni">
-        <string>47776</string>
+        <string>06660</string>
        </void>
        <void property="nombre">
-        <string>Vin Diesel2</string>
+        <string>Fangio03</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
+       <void property="dni">
+        <string>26663</string>
+       </void>
+       <void property="nombre">
+        <string>Schumacher13</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
+       <void property="dni">
+        <string>05550</string>
+       </void>
+       <void property="fechaIngresoDTO">
+        <object class="Persistencia.LocalDateTimeDTO">
+         <void property="anio">
+          <int>2024</int>
+         </void>
+         <void property="dia">
+          <int>9</int>
+         </void>
+         <void property="hora">
+          <int>20</int>
+         </void>
+         <void property="mes">
+          <int>6</int>
+         </void>
+         <void property="minuto">
+          <int>6</int>
+         </void>
+         <void property="segundo">
+          <int>5</int>
+         </void>
+        </object>
+       </void>
+       <void property="nombre">
+        <string>Schumacher04</string>
        </void>
       </object>
      </void>
     </void>
     <void property="usuarioMapDTO">
      <void method="put">
-      <string>Moria Casan3</string>
+      <string>Liskov</string>
       <object class="Persistencia.usuarioDTO.ClienteDTO">
        <void property="contrasena">
-        <string>6779</string>
+        <string>1234</string>
        </void>
        <void property="nombreReal">
-        <string>Cliente3</string>
+        <string>Liskov</string>
        </void>
        <void property="nombreUsuario">
-        <string>Moria Casan3</string>
+        <string>Liskov</string>
+       </void>
+       <void property="usandoApp">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
      <void method="put">
-      <string>Moria Casan5</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>107715</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente5</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Moria Casan5</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Mirtha4</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>87712</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente4</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Mirtha4</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Jennifer Anniston2</string>
+      <string>Juana Azurduy2</string>
       <object class="Persistencia.usuarioDTO.ClienteDTO">
        <void property="contrasena">
         <string>4776</string>
@@ -88,7 +105,7 @@
         <string>Cliente2</string>
        </void>
        <void property="nombreUsuario">
-        <string>Jennifer Anniston2</string>
+        <string>Juana Azurduy2</string>
        </void>
       </object>
      </void>
@@ -134,7 +151,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>91629</string>
+        <string>104602</string>
        </void>
       </object>
      </void>
@@ -150,7 +167,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>42275</string>
+        <string>354427</string>
        </void>
       </object>
      </void>
@@ -166,7 +183,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>122532</string>
+        <string>270313</string>
        </void>
       </object>
      </void>
@@ -182,7 +199,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>102342</string>
+        <string>392418</string>
        </void>
       </object>
      </void>
@@ -198,7 +215,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>297212</string>
+        <string>109027</string>
        </void>
       </object>
      </void>
@@ -208,7 +225,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>282617</string>
+        <string>87028</string>
        </void>
       </object>
      </void>
@@ -218,7 +235,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>76743</string>
+        <string>111753</string>
        </void>
       </object>
      </void>
@@ -228,7 +245,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>7779</string>
+        <string>2775</string>
        </void>
       </object>
      </void>
@@ -238,7 +255,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>56921</string>
+        <string>379894</string>
        </void>
       </object>
      </void>
@@ -248,7 +265,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>290699</string>
+        <string>205204</string>
        </void>
       </object>
      </void>
@@ -261,7 +278,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>349678</string>
+        <string>34534</string>
        </void>
       </object>
      </void>
@@ -274,7 +291,7 @@
         <int>1</int>
        </void>
        <void property="patente">
-        <string>356168</string>
+        <string>8787</string>
        </void>
       </object>
      </void>

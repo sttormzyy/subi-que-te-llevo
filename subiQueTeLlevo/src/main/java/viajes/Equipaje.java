@@ -20,6 +20,7 @@ public class Equipaje extends ViajeDecorator {
      * Calcula el costo del viaje con el incremento por el uso del baul.<br>
      * @return El costo total del viaje con el incremento por el uso del baul.
      */
+    @Override
     public double getCosto() {
         return ViajeAbstracto.getCostoBase() * (1 + this.getIncrKm() + this.getIncrPax());
     }
@@ -28,6 +29,7 @@ public class Equipaje extends ViajeDecorator {
      * Obtiene el incremento por pasajero asociado al equipaje.<br>
      * @return El incremento por pasajero.
      */
+    @Override
     public double getIncrPax() {
         return this.getEncapsulado().getIncrPax() + 0.1 * this.getEncapsulado().getCantPax();
     }
@@ -36,6 +38,7 @@ public class Equipaje extends ViajeDecorator {
      * Obtiene el incremento por kilometro asociado al equipaje.<br>
      * @return El incremento por kilometro.
      */
+    @Override
     public double getIncrKm() {
         return this.getEncapsulado().getIncrKm() + 0.05 * this.getEncapsulado().getDistancia();
     }

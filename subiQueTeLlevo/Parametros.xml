@@ -5,25 +5,25 @@
    <int>5</int>
   </void>
   <void property="cantChoferContratado">
-   <int>3</int>
+   <int>2</int>
   </void>
   <void property="cantChoferPermanente">
-   <int>3</int>
+   <int>1</int>
   </void>
   <void property="cantChoferTemporario">
    <int>2</int>
   </void>
   <void property="cantClientes">
-   <int>6</int>
+   <int>3</int>
   </void>
   <void property="cantCombis">
    <int>2</int>
   </void>
   <void property="cantMaxViajeChofer">
-   <int>3</int>
+   <int>2</int>
   </void>
   <void property="cantMaxViajeCliente">
-   <int>5</int>
+   <int>3</int>
   </void>
   <void property="cantMotos">
    <int>5</int>

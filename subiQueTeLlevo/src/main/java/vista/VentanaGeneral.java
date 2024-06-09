@@ -51,7 +51,6 @@ public class VentanaGeneral extends javax.swing.JFrame {
      */
      public void appendCliente(String mensaje)
     {
-        System.out.println("\n mensaje cliente\n");
         this.textCliente.append(mensaje);
     }
     

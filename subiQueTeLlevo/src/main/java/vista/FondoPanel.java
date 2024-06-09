@@ -23,7 +23,7 @@ public  class FondoPanel extends JPanel {
 
      /**
       * Metodo que permite tener una imagen como fondo de JPanel la cual sea capaz de adaptarse al tamano del mismo
-      * @param g 
+      * @param g graficos
       */
      public void paint(Graphics g){
          imagen = new ImageIcon(getClass().getResource(ruta)).getImage();

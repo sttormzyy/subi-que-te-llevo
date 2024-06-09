@@ -71,6 +71,7 @@ excepciones\pedido\ExceptionZona.class
 Persistencia\sistemaDTO\AdmSubSistemaDTO.class
 vista\FondoPanel.class
 excepciones\chofer\ExceptionDNIrepetido.class
+vista\PanelApp$1.class
 choferes\ChoferTemporario.class
 Persistencia\choferDTO\ChoferPermanenteDTO.class
 Persistencia\vehiculoDTO\MotoDTO.class

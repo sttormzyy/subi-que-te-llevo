@@ -49,16 +49,19 @@ public abstract class ViajeAbstracto implements IViaje {
       * <b>POST: </b> Se establece el vehiculo del viaje con el parametro proporcionado.
       * @param vehiculo El vehiculo del Viaje.
       */
+     @Override
      public void setVehiculo(Vehiculo vehiculo) {
     	 assert vehiculo != null: "Fallo pre: vehiculo no debe ser nulo.";
          this.vehiculo = vehiculo;
      }
 	
+     @Override
      public Pedido getPedido(){return this.pedido;}
      /**
       * Obtiene el costo del Viaje.
       * @return El costo del Viaje.
       */
+     @Override
      public double getCosto() {
          return costoBase * (1 + this.getIncrKm() + this.getIncrPax());
      }
@@ -67,6 +70,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene el cliente asociado al Viaje.<br>
       * @return El cliente asociado al Viaje.
       */
+     @Override
      public Cliente getCliente() 
      {
          return this.pedido.getCliente();
@@ -76,6 +80,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene el Chofer asignado al Viaje.<br>
       * @return El Chofer asignado al Viaje.
       */
+     @Override
      public Chofer getChofer() 
      {
          return chofer;
@@ -85,6 +90,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene el vehiculo asociado al Viaje.<br>
       * @return El vehiculo asociado al Viaje.
       */
+     @Override
      public Vehiculo getVehiculo() 
      {
          return vehiculo;
@@ -94,6 +100,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene la distancia del Viaje.<br>
       * @return La distancia del Viaje.
       */
+     @Override
      public double getDistancia()
      {
          return distancia;
@@ -103,6 +110,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene la zona del Viaje.<br>
       * @return La zona del Viaje.
       */
+     @Override
      public String getZona()
      {
          return this.pedido.getZona();
@@ -113,6 +121,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene la cantidad de pasajeros del Viaje.<br>
       * @return La cantidad de pasajeros del Viaje.
       */
+     @Override
      public int getCantPax()
      {
          return this.pedido.getCantPax();
@@ -122,6 +131,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene si hay presencia de mascotas en el Viaje.<br>
       * @return 1 si hay mascotas, cualquier otro en caso contrario.
       */
+     @Override
      public int getMascota()
 {
          return this.pedido.getMascota();
@@ -131,6 +141,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene la cantidad de equipaje del Viaje.<br>
       * @return La cantidad de equipaje del Viaje.
       */
+     @Override
      public int getEquipaje() 
      {
          return this.pedido.getEquipaje();
@@ -140,6 +151,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene la fecha del Viaje.<br>
       * @return La fecha del Viaje.
       */
+     @Override
      public LocalDateTime getFecha() 
      {
          return this.pedido.getFecha();
@@ -149,6 +161,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * Obtiene la calificacion del Chofer asignado al Viaje.<br>
       * @return La calificacion del Chofer asignado al Viaje.
       */
+     @Override
      public int getCalificacionChofer()
      {
          return calificacionChofer;
@@ -160,6 +173,7 @@ public abstract class ViajeAbstracto implements IViaje {
       * <b>POST: </b>calificacionChofer se establece con el valor proporcionado.
       * @param calificacion La calificacion del Chofer asignado al Viaje.
       */
+     @Override
      public void setCalificacionChofer(int calificacion) {
     	 assert calificacion >= 0: "Fallo pre: calificacion no debe ser un valor negativo.";
          this.calificacionChofer = calificacion;
@@ -170,12 +184,14 @@ public abstract class ViajeAbstracto implements IViaje {
       * Devuelve el incremento en el costo por kilometro adicional para este tipo de viaje.<br>
       * @return El incremento en el costo por kilometro adicional.
       */
+     @Override
 	public abstract double getIncrKm();
 	
 	/**
      * Devuelve el incremento en el costo por Pasajero para este tipo de viaje.<br>
      * @return El incremento en el costo por Pasajero.
      */
+     @Override
 	public abstract double getIncrPax();
 
 
@@ -183,6 +199,7 @@ public abstract class ViajeAbstracto implements IViaje {
 	 * Obtiene el estado del Viaje.<br>
 	 * @return El estado del Viaje.
 	 */
+     @Override
 	public EstadosViajes getEstado() 
 	{
 	    return this.estado;
@@ -193,6 +210,7 @@ public abstract class ViajeAbstracto implements IViaje {
 	 * <b>POST:</b> El estado del Viaje se establece con el valor proporcionado.
 	 * @param estado El estado del Viaje.
 	 */
+     @Override
 	public void setEstado(EstadosViajes estado)
 	{
 	    this.estado = estado;
@@ -223,6 +241,7 @@ public abstract class ViajeAbstracto implements IViaje {
 	 * @param viaje El otro Viaje con el que se compara.
 	 * @return El resultado de la comparacion.
 	 */
+     @Override
 	public int compareTo(IViaje viaje) {
 		assert viaje != null: "Fallo pre: viaje no puede ser nulo.";
 	    return Double.compare(viaje.getCosto(), this.getCosto());
@@ -232,6 +251,7 @@ public abstract class ViajeAbstracto implements IViaje {
 	 * Clona profundamente de forma forzada segun lo especificado<br>
 	 * @return Una copia de este objeto.
 	 */
+     @Override
 	public Object clone()
     {
     	ViajeAbstracto clonado = null;
@@ -249,9 +269,9 @@ public abstract class ViajeAbstracto implements IViaje {
     
     /**
      * Devuelve una representacion en formato de cadena de este Viaje para listado general.<br>
-     * @param costo El costo del Viaje.
      * @return Una cadena formateada que representa este Viaje para listado general.
      */
+     @Override
     public String toStringListado()
     {
 
@@ -265,9 +285,9 @@ public abstract class ViajeAbstracto implements IViaje {
     
     /**
      * Devuelve una representacion en formato de cadena de este Viaje para el reporte del Chofer.<br>
-     * @param costo El costo del Viaje.
      * @return Una cadena formateada que representa este Viaje para el reporte del Chofer.
      */
+     @Override
     public String toStringReporteChofer()
     {
 
@@ -282,9 +302,9 @@ public abstract class ViajeAbstracto implements IViaje {
     
     /**
      * Devuelve una representacion en formato de cadena de este Viaje para el reporte del cliente.<br>
-     * @param costo El costo del Viaje.
      * @return Una cadena formateada que representa este Viaje para el reporte del cliente.
      */
+     @Override
     public String toStringReporteCliente()
     {
 

@@ -38,6 +38,9 @@ public class Util {
     
     public static int rand(int limiteInf,int limiteSup)
     {
-        return limiteInf + r.nextInt(limiteSup - limiteInf);
+        if(limiteSup>1)
+         return limiteInf + r.nextInt(limiteSup - limiteInf);
+        else
+         return 1;
     }
 }

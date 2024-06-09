@@ -30,7 +30,7 @@ public class ChoferThread extends Thread{
 @Override
 public void run()
 {
-    while(rc.simulacionIsActiva() || cantViajes>0)
+    while(rc.hayClientes() || cantViajes>0)
     {
         Util.espera();
         rc.tomarViaje(chofer);

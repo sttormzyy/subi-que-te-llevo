@@ -29,6 +29,7 @@ public class Mascota extends ViajeDecorator {
      * Obtiene el incremento por pasajero asociado a la opcion Pet Friendly.<br>
      * @return El incremento por pasajero.
      */
+    @Override
     public double getIncrPax() {
         return this.getEncapsulado().getIncrPax() + 0.1 * this.getEncapsulado().getCantPax();
     }
@@ -37,6 +38,7 @@ public class Mascota extends ViajeDecorator {
      * Obtiene el incremento por kilometro asociado a la opcion Pet Friendly.<br>
      * @return El incremento por kilometro.
      */
+    @Override
     public double getIncrKm() {
         return this.getEncapsulado().getIncrKm() + 0.2 * this.getEncapsulado().getDistancia();
     }

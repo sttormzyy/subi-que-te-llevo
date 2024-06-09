@@ -18,7 +18,7 @@ public abstract class Vehiculo implements Cloneable{
 	/**
      * Crea una nueva instancia de Vehiculo con la patente, la cantidad maxima de pasajeros, 
      * la capacidad para mascotas y la capacidad para equipaje especificadas.<br>
-     * <b>PRE: </b> Patente != null y !="" y cantMaxPas>0<br> 
+     * <b>PRE: </b> Patente != null y !="" y cantMaxPas mayor a 0<br> 
      * @param patente La patente del Vehiculo.
      * @param cantMaxPas La cantidad maxima de pasajeros que puede transportar el Vehiculo.
      * @param pf La capacidad para mascotas del Vehiculo.
@@ -64,8 +64,8 @@ public abstract class Vehiculo implements Cloneable{
      * <b>POST: </b> Se cambia la patente del vehiculo<br>
      * @param patente La nueva patente del Vehiculo.
      */
-	public String setPatente(String patente) {
-		return this.patente = patente;
+	public void setPatente(String patente) {
+		 this.patente = patente;
 	}
 	
 	/**

@@ -33,11 +33,11 @@ public class ChoferContratado extends Chofer{
     /**
      * Obtiene el sueldo del chofer contratado para el mes especificado.<br>
 	 * <b>POST:</b> Se devuelve el sueldo del chofer contratado para el mes especificado.<br>
+     * @param totalRecaudado total recaudado por el chofer
      * @return El sueldo del chofer para el mes especificado.
      */
 	public double getSueldo(double totalRecaudado) 
 	{
-		LocalDateTime fechaActual = LocalDateTime.now();
         return totalRecaudado * (gananciaViaje / 100);
     }
 	
@@ -46,6 +46,7 @@ public class ChoferContratado extends Chofer{
 	 * <b>PRE:</b> La fecha no puede ser nula.<br>
 	 * <b>POST:</b> Se devuelve el sueldo del chofer contratado para el mes especificado.<br>
      * @param fecha La fecha para la cual se calcula el sueldo.
+     * @param totalRecaudado total recaudado por el chofer
      * @return El sueldo del chofer para el mes especificado.
      */
 	public double getSueldo(LocalDateTime fecha, double totalRecaudado)

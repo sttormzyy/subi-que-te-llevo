@@ -31,7 +31,7 @@ public class ControladorMenuSimulacion implements ActionListener{
 
     /**
      * Setea la vista para la cual el controlador funciona de ActionListener
-     * @param vista 
+     * @param vista vista asociada al controlador
      */
     public void setVista(MenuSimulacion vista)
     {

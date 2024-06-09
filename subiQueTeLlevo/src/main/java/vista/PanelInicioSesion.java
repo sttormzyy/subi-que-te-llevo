@@ -168,7 +168,7 @@ public class PanelInicioSesion extends VentanaClienteAbstract implements KeyList
 
     /**
      * Habilita el boton de iniciar sesion siempre y cuando los campos nombre y contrasena esten completos
-     * @param e 
+     * @param e evento key
      */
     @Override
     public void keyReleased(KeyEvent e) {

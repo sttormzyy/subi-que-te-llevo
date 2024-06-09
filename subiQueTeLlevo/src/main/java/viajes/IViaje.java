@@ -132,7 +132,6 @@ public interface IViaje extends Comparable<IViaje>, Cloneable{
     /**
      * Obtiene una representacion en forma de cadena del Viaje listarlo<br>.
      * <b>PRE: el costo es mayor que 0</b><br>
-     * @param costo El costo del Viaje.
      * @return Una cadena que representa el Viaje para listarlo.
      */
     String toStringListado();
@@ -140,7 +139,6 @@ public interface IViaje extends Comparable<IViaje>, Cloneable{
     /**
      * Obtiene una representacion en forma de cadena del Viaje para el reporte del Chofer<br>
      * <b>PRE: el costo es mayor que 0</b><br>.
-     * @param costo El costo del Viaje.
      * @return Una cadena que representa el Viaje para el reporte del Chofer.
      */
     String toStringReporteChofer();
@@ -148,7 +146,6 @@ public interface IViaje extends Comparable<IViaje>, Cloneable{
     /**
      * Obtiene una representación en forma de cadena del Viaje para el reporte del cliente.
      * <b>PRE: el costo es mayor que 0</b><br>
-     * @param costo El costo del Viaje.
      * @return Una cadena que representa el Viaje para el reporte del cliente.
      */
     String toStringReporteCliente();

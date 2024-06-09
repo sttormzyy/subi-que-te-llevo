@@ -292,7 +292,6 @@ public class AdmSubSistema {
          * Alternativa al inicio de sesion con contrasena, tiene usos internos<br>
 	 * <b>PRE: </b> El nombre de usuario es distinto de Null.<br>
 	 * @param nombreUsuario. El nombre de usuario del cliente a obtener.
-         * @param contrasena. Contrasena del cliente
 	 * @return Referencia al cliente correspondiente al nombre de usuario especificado.
 	 * @throws ExceptionUsuarioInexistente si el cliente con el nombre de usuario especificado no existe en el sistema.
 	 */
@@ -363,7 +362,7 @@ public class AdmSubSistema {
 	 * <b>PRE: </b> La patente es distinta de Null.<br>
 	 * @param patente: La patente del vehiculo a consultar.
 	 * @return  Una representacion String de los datos del vehiculo
-	 * @throws ExceptionPatenteInexistente
+	 * @throws ExceptionPatenteInexistente excepcion patente inexistente
 	 */
 	public String consultarVehiculo(String patente) throws  ExceptionPatenteInexistente
 	{
@@ -502,6 +501,7 @@ public class AdmSubSistema {
      * Genera un reporte de los salarios mensuales de todos los Choferes registrados en el sistema.<br>
      * <b>PRE: </b> La fecha es distinta de Null.<br>
      * @param fecha: La fecha para la cual se calculan los salarios.
+     * @param viajeLista lista de viajes
      * @return Una cadena que representa el listado de salarios de los Choferes, incluyendo el nombre, DNI y salario.
      */
     public String reporteSalariosChoferes(LocalDateTime fecha, ArrayList<IViaje> viajeLista)
@@ -729,8 +729,9 @@ public class AdmSubSistema {
 	/**
 	 * Acumula la plata de todos los viajes de un determinado Chofer contratado para luego calcular su sueldo.<br>
 	 * <b>PRE: </b>Tanto el chofer como la fecha son distintos de Null.<br>
-	 * @param chofer: El Chofer del cual se desea calcular el recaudo.
-	 * @param fecha. La fecha para la cual se calcula el recaudo.
+	 * @param chofer El Chofer del cual se desea calcular el recaudo.
+	 * @param fecha La fecha para la cual se calcula el recaudo.
+         * @param viajeLista Lista de viajes
 	 * @return El total facturado por el Chofer en el mes y año especificados.
 	 */
     public double getRecaudoContratado(Chofer chofer, LocalDateTime fecha, ArrayList<IViaje> viajeLista) 
@@ -769,8 +770,8 @@ public class AdmSubSistema {
     /**
      * Devuelve la cantidad de viajes realizados por un Chofer Temporario, dato usado luego para calcular su sueldo.<br>
      * <b>PRE: </b> Tanto el chofer como la fecha son distintos de Null.<br>
-     * @param chofer: El Chofer del cual se desea obtener la cantidad de viajes.
-     * @param fecha: La fecha para la cual se desea calcular la cantidad de viajes.
+     * @param chofer El Chofer del cual se desea obtener la cantidad de viajes.
+     * @param fecha La fecha para la cual se desea calcular la cantidad de viajes.
      * @param viajeLista   ArrayList donde se guarda el historico de viajes.
      * @return La cantidad de viajes realizados por el Chofer en el mes y año especificados.
      */

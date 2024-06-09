@@ -16,7 +16,7 @@ public class Pedido implements Cloneable {
 
     /**
      * Constructor de la clase Pedido.<br>
-     * <b>PRE: </b> cliente != null, fecha != null, zona != null, zona != "", cantPax > 0
+     * <b>PRE: </b> cliente != null, fecha != null, zona != null, zona != "", cantPax mayor a 0
      * @param cliente El cliente que realiza el Pedido.
      * @param fecha La fecha en la que se realiza el Pedido.
      * @param zona La zona del Pedido.
@@ -29,7 +29,7 @@ public class Pedido implements Cloneable {
         assert cliente != null : "Fallo pre: El cliente no puede ser nulo";
         assert fecha != null : "Fallo pre: La fecha no puede ser nula";
         assert zona != null && !zona.isEmpty() : "Fallo pre: La zona no puede ser nula o vacía";
-        assert cantPax > 0 : "Fallo pre: La cantidad de pasajeros debe ser un valor entero mayor que cero";
+        assert 0<cantPax : "Fallo pre: La cantidad de pasajeros debe ser un valor entero mayor que cero";
 
         this.fecha = fecha;
         this.zona = zona;
@@ -91,6 +91,7 @@ public class Pedido implements Cloneable {
      * Realiza una copia superficial del objeto Pedido.<br>
      * @return Una copia superficial del objeto Pedido.
      */
+    @Override
     public Object clone() throws CloneNotSupportedException 
     {
         Pedido clonado = null;

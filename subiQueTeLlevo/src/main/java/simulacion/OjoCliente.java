@@ -38,14 +38,15 @@ public class OjoCliente extends OjoAbstracto{
         EventoSimulacion evento = (EventoSimulacion)e;
         
         clienteEvento = evento.getCliente();
-        if(clienteEvento != null && clienteEvento.isUsandoApp())
+        if(clienteEvento != null && clienteEvento.isUsandoApp()==true)
         {
             switch(evento.getTipo())
             {
                case CLIENTE:  vista.appendDisplay(evento.getCliente().getNombreUsuario()+" "+evento.getMensaje()+"\n");
                break;
                case CHOFER:  vista.appendDisplay(evento.getChofer().getNombre()+" "+evento.getMensaje()+"\n");
-                             vista.enablePagar();
+                             if(evento.getMensaje().contains("tomo el viaje del cliente "))
+                                vista.enablePagar();
                break;
                case SISTEMA: vista.appendDisplay(evento.getMensaje()+"\n");
             }

@@ -13,7 +13,11 @@ import javax.swing.JDialog;
 public class DialogCliente extends javax.swing.JDialog {
     /**
      * Creates new form DialogCliente
-     */
+      * @param parent padre
+     * @param modal modo
+     * @param tipo tipo
+     * @param texto texto
+     **/
     public DialogCliente(java.awt.Frame parent, boolean modal, String tipo, String texto) {
         super(parent, tipo, modal);
         initComponents();
@@ -82,16 +86,13 @@ public class DialogCliente extends javax.swing.JDialog {
 
     /**
      * Esconde el dialog una vez fue aceptado su mensaje por medio de la interaccion con el boton
-     * @param evt 
+     * @param evt evento boton apretado
      */
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         dispose();
     }//GEN-LAST:event_botonOKActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonOK;

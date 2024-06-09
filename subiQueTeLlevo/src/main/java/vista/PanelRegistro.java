@@ -77,7 +77,7 @@ public class PanelRegistro extends VentanaClienteAbstract{
 
     /**
      * Habilita el boton de registro siempre y cuando los campos nombre, nombre de usuario y contrasena esten completos
-     * @param e 
+     * @param e evento key
      */
     @Override
     public void keyReleased(KeyEvent e) {
