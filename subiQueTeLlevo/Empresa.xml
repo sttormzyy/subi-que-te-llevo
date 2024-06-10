@@ -1,525 +1,309 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="17.0.11" class="java.beans.XMLDecoder">
+<java version="17.0.10" class="java.beans.XMLDecoder">
  <object class="Persistencia.sistemaDTO.EmpresaDTO">
   <void property="admSubSistemaDTO">
-   <object class="Persistencia.sistemaDTO.AdmSubSistemaDTO" id="AdmSubSistemaDTO0">
+   <object class="Persistencia.sistemaDTO.AdmSubSistemaDTO">
     <void property="choferListaDTO">
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
-       <void property="dni">
-        <string>07770</string>
-       </void>
-       <void property="nombre">
-        <string>Chano0</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
-       <void property="dni">
-        <string>27773</string>
-       </void>
-       <void property="nombre">
-        <string>Fangio1</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
-       <void property="dni">
-        <string>47776</string>
-       </void>
-       <void property="nombre">
-        <string>Chano2</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
-       <void property="dni">
-        <string>67779</string>
-       </void>
-       <void property="nombre">
-        <string>Schumacher3</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
-       <void property="dni">
-        <string>877712</string>
-       </void>
-       <void property="nombre">
-        <string>Vin Diesel4</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
-       <void property="dni">
-        <string>06660</string>
-       </void>
-       <void property="nombre">
-        <string>Fangio03</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
-       <void property="dni">
-        <string>26663</string>
-       </void>
-       <void property="nombre">
-        <string>Fangio13</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
-       <void property="dni">
-        <string>46666</string>
-       </void>
-       <void property="nombre">
-        <string>Schumacher23</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
-       <void property="dni">
-        <string>66669</string>
-       </void>
-       <void property="nombre">
-        <string>Schumacher33</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferContratadoDTO">
-       <void property="dni">
-        <string>866612</string>
-       </void>
-       <void property="nombre">
-        <string>Schumacher43</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
-       <void property="cantidadHijos">
-        <int>3</int>
-       </void>
-       <void property="dni">
-        <string>05550</string>
-       </void>
-       <void property="fechaIngresoDTO">
-        <object class="Persistencia.LocalDateTimeDTO">
-         <void property="anio">
-          <int>2024</int>
-         </void>
-         <void property="dia">
-          <int>9</int>
-         </void>
-         <void property="hora">
-          <int>22</int>
-         </void>
-         <void property="mes">
-          <int>6</int>
-         </void>
-         <void property="minuto">
-          <int>27</int>
-         </void>
-         <void property="segundo">
-          <int>10</int>
-         </void>
-        </object>
-       </void>
-       <void property="nombre">
-        <string>Vin Diesel04</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
-       <void property="dni">
-        <string>25553</string>
-       </void>
-       <void property="fechaIngresoDTO">
-        <object class="Persistencia.LocalDateTimeDTO">
-         <void property="anio">
-          <int>2024</int>
-         </void>
-         <void property="dia">
-          <int>9</int>
-         </void>
-         <void property="hora">
-          <int>22</int>
-         </void>
-         <void property="mes">
-          <int>6</int>
-         </void>
-         <void property="minuto">
-          <int>27</int>
-         </void>
-         <void property="segundo">
-          <int>10</int>
-         </void>
-        </object>
-       </void>
-       <void property="nombre">
-        <string>Schumacher14</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
-       <void property="dni">
-        <string>45556</string>
-       </void>
-       <void property="fechaIngresoDTO">
-        <object class="Persistencia.LocalDateTimeDTO">
-         <void property="anio">
-          <int>2024</int>
-         </void>
-         <void property="dia">
-          <int>9</int>
-         </void>
-         <void property="hora">
-          <int>22</int>
-         </void>
-         <void property="mes">
-          <int>6</int>
-         </void>
-         <void property="minuto">
-          <int>27</int>
-         </void>
-         <void property="segundo">
-          <int>10</int>
-         </void>
-        </object>
-       </void>
-       <void property="nombre">
-        <string>Chano24</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
-       <void property="cantidadHijos">
-        <int>1</int>
-       </void>
-       <void property="dni">
-        <string>65559</string>
-       </void>
-       <void property="fechaIngresoDTO">
-        <object class="Persistencia.LocalDateTimeDTO">
-         <void property="anio">
-          <int>2024</int>
-         </void>
-         <void property="dia">
-          <int>9</int>
-         </void>
-         <void property="hora">
-          <int>22</int>
-         </void>
-         <void property="mes">
-          <int>6</int>
-         </void>
-         <void property="minuto">
-          <int>27</int>
-         </void>
-         <void property="segundo">
-          <int>10</int>
-         </void>
-        </object>
-       </void>
-       <void property="nombre">
-        <string>Chano34</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
-       <void property="cantidadHijos">
-        <int>3</int>
-       </void>
-       <void property="dni">
-        <string>855512</string>
-       </void>
-       <void property="fechaIngresoDTO">
-        <object class="Persistencia.LocalDateTimeDTO">
-         <void property="anio">
-          <int>2024</int>
-         </void>
-         <void property="dia">
-          <int>9</int>
-         </void>
-         <void property="hora">
-          <int>22</int>
-         </void>
-         <void property="mes">
-          <int>6</int>
-         </void>
-         <void property="minuto">
-          <int>27</int>
-         </void>
-         <void property="segundo">
-          <int>10</int>
-         </void>
-        </object>
-       </void>
-       <void property="nombre">
-        <string>Schumacher44</string>
-       </void>
-      </object>
-     </void>
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
+        <void property="dni">
+         <string>07770</string>
+        </void>
+        <void property="nombre">
+         <string>Fangio0</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.choferDTO.ChoferTemporarioDTO">
+        <void property="dni">
+         <string>27773</string>
+        </void>
+        <void property="nombre">
+         <string>Vin Diesel1</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.choferDTO.ChoferContratadoDTO">
+        <void property="dni">
+         <string>06660</string>
+        </void>
+        <void property="nombre">
+         <string>Vin Diesel03</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.choferDTO.ChoferContratadoDTO">
+        <void property="dni">
+         <string>26663</string>
+        </void>
+        <void property="nombre">
+         <string>Vin Diesel13</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
+        <void property="cantidadHijos">
+         <int>1</int>
+        </void>
+        <void property="dni">
+         <string>05550</string>
+        </void>
+        <void property="fechaIngresoDTO">
+         <object class="Persistencia.LocalDateTimeDTO">
+          <void property="anio">
+           <int>2024</int>
+          </void>
+          <void property="dia">
+           <int>9</int>
+          </void>
+          <void property="hora">
+           <int>21</int>
+          </void>
+          <void property="mes">
+           <int>6</int>
+          </void>
+          <void property="minuto">
+           <int>36</int>
+          </void>
+          <void property="segundo">
+           <int>17</int>
+          </void>
+         </object>
+        </void>
+        <void property="nombre">
+         <string>Chano04</string>
+        </void>
+       </object>
+      </void>
+     </object>
     </void>
     <void property="usuarioMapDTO">
-     <void method="put">
-      <string>Liskov</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>1234</string>
-       </void>
-       <void property="nombreReal">
-        <string>Liskov</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Liskov</string>
-       </void>
-       <void property="usandoApp">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Mirtha2</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>4776</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente2</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Mirtha2</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Juana Azurduy1</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>2773</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente1</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Juana Azurduy1</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Mirtha4</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>87712</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente4</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Mirtha4</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Mirtha3</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>6779</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente3</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Mirtha3</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>Moria Casan0</string>
-      <object class="Persistencia.usuarioDTO.ClienteDTO">
-       <void property="contrasena">
-        <string>0770</string>
-       </void>
-       <void property="nombreReal">
-        <string>Cliente0</string>
-       </void>
-       <void property="nombreUsuario">
-        <string>Moria Casan0</string>
-       </void>
-      </object>
-     </void>
+     <object class="java.util.HashMap">
+      <void method="put">
+       <string>Liskov</string>
+       <object class="Persistencia.usuarioDTO.ClienteDTO">
+        <void property="contrasena">
+         <string>1234</string>
+        </void>
+        <void property="nombreReal">
+         <string>Liskov</string>
+        </void>
+        <void property="nombreUsuario">
+         <string>Liskov</string>
+        </void>
+        <void property="usandoApp">
+         <boolean>true</boolean>
+        </void>
+       </object>
+      </void>
+      <void method="put">
+       <string>Juana Azurduy2</string>
+       <object class="Persistencia.usuarioDTO.ClienteDTO">
+        <void property="contrasena">
+         <string>4776</string>
+        </void>
+        <void property="nombreReal">
+         <string>Cliente2</string>
+        </void>
+        <void property="nombreUsuario">
+         <string>Juana Azurduy2</string>
+        </void>
+       </object>
+      </void>
+      <void method="put">
+       <string>Juana Azurduy1</string>
+       <object class="Persistencia.usuarioDTO.ClienteDTO">
+        <void property="contrasena">
+         <string>2773</string>
+        </void>
+        <void property="nombreReal">
+         <string>Cliente1</string>
+        </void>
+        <void property="nombreUsuario">
+         <string>Juana Azurduy1</string>
+        </void>
+       </object>
+      </void>
+      <void method="put">
+       <string>Moria Casan0</string>
+       <object class="Persistencia.usuarioDTO.ClienteDTO">
+        <void property="contrasena">
+         <string>0770</string>
+        </void>
+        <void property="nombreReal">
+         <string>Cliente0</string>
+        </void>
+        <void property="nombreUsuario">
+         <string>Moria Casan0</string>
+        </void>
+       </object>
+      </void>
+     </object>
     </void>
     <void property="vehiculoListaDTO">
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.AutoDTO">
-       <void property="cantMaxPas">
-        <int>4</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="mascota">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>199993</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.AutoDTO">
-       <void property="cantMaxPas">
-        <int>4</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="mascota">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>255646</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.AutoDTO">
-       <void property="cantMaxPas">
-        <int>4</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="mascota">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>369487</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.AutoDTO">
-       <void property="cantMaxPas">
-        <int>4</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="mascota">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>115064</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.AutoDTO">
-       <void property="cantMaxPas">
-        <int>4</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="mascota">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>358081</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.MotoDTO">
-       <void property="cantMaxPas">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>78725</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.MotoDTO">
-       <void property="cantMaxPas">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>341202</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.MotoDTO">
-       <void property="cantMaxPas">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>33025</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.MotoDTO">
-       <void property="cantMaxPas">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>82687</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.MotoDTO">
-       <void property="cantMaxPas">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>133004</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.CombiDTO">
-       <void property="cantMaxPas">
-        <int>10</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>366694</string>
-       </void>
-      </object>
-     </void>
-     <void method="add">
-      <object class="Persistencia.vehiculoDTO.CombiDTO">
-       <void property="cantMaxPas">
-        <int>10</int>
-       </void>
-       <void property="equipaje">
-        <int>1</int>
-       </void>
-       <void property="patente">
-        <string>122214</string>
-       </void>
-      </object>
-     </void>
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.AutoDTO">
+        <void property="cantMaxPas">
+         <int>4</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="mascota">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>96868</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.AutoDTO">
+        <void property="cantMaxPas">
+         <int>4</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="mascota">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>303682</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.AutoDTO">
+        <void property="cantMaxPas">
+         <int>4</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="mascota">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>316809</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.AutoDTO">
+        <void property="cantMaxPas">
+         <int>4</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="mascota">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>65591</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.AutoDTO">
+        <void property="cantMaxPas">
+         <int>4</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="mascota">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>119689</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.MotoDTO">
+        <void property="cantMaxPas">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>264267</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.MotoDTO">
+        <void property="cantMaxPas">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>158999</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.MotoDTO">
+        <void property="cantMaxPas">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>280500</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.MotoDTO">
+        <void property="cantMaxPas">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>25113</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.MotoDTO">
+        <void property="cantMaxPas">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>17287</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.CombiDTO">
+        <void property="cantMaxPas">
+         <int>10</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>16681</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="Persistencia.vehiculoDTO.CombiDTO">
+        <void property="cantMaxPas">
+         <int>10</int>
+        </void>
+        <void property="equipaje">
+         <int>1</int>
+        </void>
+        <void property="patente">
+         <string>24723</string>
+        </void>
+       </object>
+      </void>
+     </object>
     </void>
    </object>
   </void>
