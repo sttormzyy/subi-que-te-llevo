@@ -87,6 +87,7 @@ public class RecursoCompartido extends Observable{
      * @param equipaje     La cantidad de equipaje.
      * @param cantPax      La cantidad de pasajeros.
      * @param fecha        La fecha del viaje.
+     * @param distancia    La distancia del viaje.
      * @throws excepciones.pedido.ExceptionPedido excepcion pedido
      * @throws excepciones.pedido.ExceptionVehiculoDisp excepcion vehiculo disponible
      */
@@ -177,7 +178,7 @@ public class RecursoCompartido extends Observable{
      * Deriva en la empresa la solicitud de tomar un viaje con vehiculo por parte de un hilo chofer.<br>
      * Ademas, informa a los observers lo ocurrido en caso de exito o fracaso 
      * @param chofer chofer que desea tomar un viaje
-     * @param cantViajesPendientes cantidad de viajes pendientes del chofer
+     * @param cantViajesPedientes cantidad de viajes pendientes del chofer
      */
     public synchronized void tomarViaje(Chofer chofer, int cantViajesPedientes)
     {

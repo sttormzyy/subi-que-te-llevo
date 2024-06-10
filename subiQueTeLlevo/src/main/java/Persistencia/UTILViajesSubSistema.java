@@ -126,7 +126,7 @@ public class UTILViajesSubSistema {
     /**
      * Convierte un objeto de tipo LocalDateTime en un objeto de tipo LocalDateTimeDTO.
      * 
-     * @param ldt Objeto de tipo LocalDateTime a convertir.
+     * @param ldtDTO fecha 
      * @return Objeto de tipo LocalDateTimeDTO resultante de la conversion.
      */
     public static LocalDateTime localDateTimeFromLocalDateTimeDTO(LocalDateTimeDTO ldtDTO) {
@@ -143,7 +143,7 @@ public class UTILViajesSubSistema {
     /**
      * Convierte un objeto de tipo LocalDateTimeDTO en un objeto de tipo LocalDateTime.
      * 
-     * @param ldtDTO Objeto de tipo LocalDateTimeDTO a convertir.
+     * @param ldt fecha
      * @return Objeto de tipo LocalDateTime resultante de la conversion.
      */
     public static LocalDateTimeDTO localDateTimeDTOFromLocalDateTime(LocalDateTime ldt) {

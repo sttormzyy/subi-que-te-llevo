@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="17.0.10" class="java.beans.XMLDecoder">
+<java version="1.8.0_411" class="java.beans.XMLDecoder">
  <object class="Persistencia.sistemaDTO.EmpresaDTO">
   <void property="admSubSistemaDTO">
    <object class="Persistencia.sistemaDTO.AdmSubSistemaDTO">
@@ -11,7 +11,7 @@
          <string>07770</string>
         </void>
         <void property="nombre">
-         <string>Fangio0</string>
+         <string>Schumacher0</string>
         </void>
        </object>
       </void>
@@ -31,7 +31,7 @@
          <string>06660</string>
         </void>
         <void property="nombre">
-         <string>Vin Diesel03</string>
+         <string>Schumacher03</string>
         </void>
        </object>
       </void>
@@ -41,14 +41,14 @@
          <string>26663</string>
         </void>
         <void property="nombre">
-         <string>Vin Diesel13</string>
+         <string>Schumacher13</string>
         </void>
        </object>
       </void>
       <void method="add">
        <object class="Persistencia.choferDTO.ChoferPermanenteDTO">
         <void property="cantidadHijos">
-         <int>1</int>
+         <int>2</int>
         </void>
         <void property="dni">
          <string>05550</string>
@@ -62,21 +62,21 @@
            <int>9</int>
           </void>
           <void property="hora">
-           <int>21</int>
+           <int>22</int>
           </void>
           <void property="mes">
            <int>6</int>
           </void>
           <void property="minuto">
-           <int>36</int>
+           <int>49</int>
           </void>
           <void property="segundo">
-           <int>17</int>
+           <int>14</int>
           </void>
          </object>
         </void>
         <void property="nombre">
-         <string>Chano04</string>
+         <string>Fangio04</string>
         </void>
        </object>
       </void>
@@ -84,6 +84,34 @@
     </void>
     <void property="usuarioMapDTO">
      <object class="java.util.HashMap">
+      <void method="put">
+       <string>Mirtha0</string>
+       <object class="Persistencia.usuarioDTO.ClienteDTO">
+        <void property="contrasena">
+         <string>0770</string>
+        </void>
+        <void property="nombreReal">
+         <string>Cliente0</string>
+        </void>
+        <void property="nombreUsuario">
+         <string>Mirtha0</string>
+        </void>
+       </object>
+      </void>
+      <void method="put">
+       <string>Moria Casan2</string>
+       <object class="Persistencia.usuarioDTO.ClienteDTO">
+        <void property="contrasena">
+         <string>4776</string>
+        </void>
+        <void property="nombreReal">
+         <string>Cliente2</string>
+        </void>
+        <void property="nombreUsuario">
+         <string>Moria Casan2</string>
+        </void>
+       </object>
+      </void>
       <void method="put">
        <string>Liskov</string>
        <object class="Persistencia.usuarioDTO.ClienteDTO">
@@ -102,21 +130,7 @@
        </object>
       </void>
       <void method="put">
-       <string>Juana Azurduy2</string>
-       <object class="Persistencia.usuarioDTO.ClienteDTO">
-        <void property="contrasena">
-         <string>4776</string>
-        </void>
-        <void property="nombreReal">
-         <string>Cliente2</string>
-        </void>
-        <void property="nombreUsuario">
-         <string>Juana Azurduy2</string>
-        </void>
-       </object>
-      </void>
-      <void method="put">
-       <string>Juana Azurduy1</string>
+       <string>Moria Casan1</string>
        <object class="Persistencia.usuarioDTO.ClienteDTO">
         <void property="contrasena">
          <string>2773</string>
@@ -125,21 +139,7 @@
          <string>Cliente1</string>
         </void>
         <void property="nombreUsuario">
-         <string>Juana Azurduy1</string>
-        </void>
-       </object>
-      </void>
-      <void method="put">
-       <string>Moria Casan0</string>
-       <object class="Persistencia.usuarioDTO.ClienteDTO">
-        <void property="contrasena">
-         <string>0770</string>
-        </void>
-        <void property="nombreReal">
-         <string>Cliente0</string>
-        </void>
-        <void property="nombreUsuario">
-         <string>Moria Casan0</string>
+         <string>Moria Casan1</string>
         </void>
        </object>
       </void>
@@ -159,7 +159,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>96868</string>
+         <string>215176</string>
         </void>
        </object>
       </void>
@@ -175,7 +175,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>303682</string>
+         <string>280110</string>
         </void>
        </object>
       </void>
@@ -191,7 +191,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>316809</string>
+         <string>222730</string>
         </void>
        </object>
       </void>
@@ -207,7 +207,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>65591</string>
+         <string>261265</string>
         </void>
        </object>
       </void>
@@ -223,7 +223,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>119689</string>
+         <string>82342</string>
         </void>
        </object>
       </void>
@@ -233,7 +233,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>264267</string>
+         <string>202893</string>
         </void>
        </object>
       </void>
@@ -243,7 +243,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>158999</string>
+         <string>40755</string>
         </void>
        </object>
       </void>
@@ -253,7 +253,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>280500</string>
+         <string>346184</string>
         </void>
        </object>
       </void>
@@ -263,7 +263,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>25113</string>
+         <string>104166</string>
         </void>
        </object>
       </void>
@@ -273,7 +273,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>17287</string>
+         <string>45716</string>
         </void>
        </object>
       </void>
@@ -286,7 +286,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>16681</string>
+         <string>67915</string>
         </void>
        </object>
       </void>
@@ -299,7 +299,7 @@
          <int>1</int>
         </void>
         <void property="patente">
-         <string>24723</string>
+         <string>356464</string>
         </void>
        </object>
       </void>
