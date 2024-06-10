@@ -94,7 +94,7 @@ public class Simulacion {
        VentanaCliente vistaCliente = new VentanaCliente();
        
        OjoGeneral ojoGeneral = new OjoGeneral(vistaGeneral, rc);
-       OjoClienteSimulacion ojoClienteSimulacion = new OjoClienteSimulacion(vistaGeneral, rc, (Cliente) empresa.getUsuarioLista().get(1));
+       OjoClienteSimulacion ojoClienteSimulacion = new OjoClienteSimulacion(vistaGeneral, rc, this.robotsCliente.get(0).getCliente());
        OjoChoferSimulacion ojoChoferSimulacion = new OjoChoferSimulacion(vistaGeneral, rc, empresa.getChoferLista().get(0));
        OjoCliente ojoClienteApp = new OjoCliente(vistaCliente,rc);
        
@@ -143,7 +143,7 @@ public class Simulacion {
         {
             try {
                 nuevoCliente = new Cliente(nombresC[Util.rand(3)] + i, "Cliente" + i, i * 2 + "77" + 3 * i);
-                empresa.addCliente(nuevoCliente);
+                empresa.addCliente(nuevoCliente);                
                 robotsCliente.add(new ClienteThread(nuevoCliente, rc, Util.rand(1,cantMaxViajeCliente)));
                 i++;
             } catch (ExceptionUsuario ex) {

@@ -34,7 +34,6 @@ public class ClienteThread extends Thread{
    {
        while(cantViajes>0 && rc.getCantChoferes()>0)
        {
-     
           try{
                 Util.espera();
                 rc.pedirViaje(cliente, zonas[Util.rand(4)], Util.rand(0,1), "Transporte", 
@@ -48,5 +47,8 @@ public class ClienteThread extends Thread{
         }
        rc.subCliente(cliente);
    }
-    
+   
+   public Cliente getCliente() {
+	   return this.cliente;
+   }
 }

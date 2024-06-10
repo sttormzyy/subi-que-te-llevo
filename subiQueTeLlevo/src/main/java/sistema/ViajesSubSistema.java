@@ -416,11 +416,12 @@ public class ViajesSubSistema {
     {
         int i=viajeLista.size()-1;
         
-        while(viajeLista.get(i).getChofer() != chofer || viajeLista.get(i).getEstado() != estado){
+        while(i >= 0 && (viajeLista.get(i).getChofer() != chofer || viajeLista.get(i).getEstado() != estado)){
             i--;
         }        
-
-        return viajeLista.get(i);   
+        if (i >= 0)
+        	return viajeLista.get(i);
+        return null;
     }
     
     /**
@@ -434,10 +435,12 @@ public class ViajesSubSistema {
     {
         int i=0;
         
-        while(viajeLista.get(i).getCliente() != cliente || viajeLista.get(i).getEstado() != estado){
+        while(i < viajeLista.size() && (viajeLista.get(i).getCliente() != cliente || viajeLista.get(i).getEstado() != estado)){
             i++;
         }        
-        return viajeLista.get(i);   
+        if (i < viajeLista.size())
+        	return viajeLista.get(i);   
+        return null;
     }
     
     /**

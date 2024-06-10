@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_411" class="java.beans.XMLDecoder">
+<java version="17.0.11" class="java.beans.XMLDecoder">
  <object class="simulacion.ParametrosSimulacion">
   <void property="cantAutos">
    <int>5</int>
   </void>
   <void property="cantChoferContratado">
-   <int>2</int>
+   <int>5</int>
   </void>
   <void property="cantChoferPermanente">
-   <int>1</int>
+   <int>5</int>
   </void>
   <void property="cantChoferTemporario">
-   <int>2</int>
+   <int>5</int>
   </void>
   <void property="cantClientes">
-   <int>3</int>
+   <int>5</int>
   </void>
   <void property="cantCombis">
    <int>2</int>
   </void>
   <void property="cantMaxViajeChofer">
-   <int>2</int>
+   <int>5</int>
   </void>
   <void property="cantMaxViajeCliente">
-   <int>3</int>
+   <int>5</int>
   </void>
   <void property="cantMotos">
    <int>5</int>

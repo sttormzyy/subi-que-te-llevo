@@ -177,32 +177,37 @@ public class RecursoCompartido extends Observable{
      * Deriva en la empresa la solicitud de tomar un viaje con vehiculo por parte de un hilo chofer.<br>
      * Ademas, informa a los observers lo ocurrido en caso de exito o fracaso 
      * @param chofer chofer que desea tomar un viaje
+     * @param cantViajesPendientes cantidad de viajes pendientes del chofer
      */
-    public synchronized void tomarViaje(Chofer chofer)
+    public synchronized void tomarViaje(Chofer chofer, int cantViajesPedientes)
     {
         IViaje viaje;
         
-        while(hayClientes() && !hayViajeConVehiculo())
+        while(hayClientes() && !hayViajeConVehiculo() && (cantViajesPedientes > 0 || usuarioActivo))
         {
             try {
                 wait();
             } catch (InterruptedException ex) {}
         }
         
-        if(hayClientes())
-        {
-            empresa.asignarChofer(chofer);
-            viaje = getViaje(chofer,EstadosViajes.INICIADO);
-            if(viaje!=null)
-                 evento =  new EventoSimulacion("tomo el viaje del cliente "+viaje.getCliente().getNombreUsuario(),viaje.getCliente(),chofer,null,TipoEvento.CHOFER);
+        if (cantViajesPedientes > 0 || usuarioActivo) {
+            if(hayClientes())
+            {
+                empresa.asignarChofer(chofer);
+                viaje = getViaje(chofer,EstadosViajes.INICIADO);
+                if(viaje!=null)
+                     evento =  new EventoSimulacion("tomo el viaje del cliente "+
+                    		 viaje.getCliente().getNombreUsuario(),viaje.getCliente(),chofer,null,TipoEvento.CHOFER);
+                else
+                    evento =  new EventoSimulacion("intento tomar viaje pero no habia ninguno con vehiculo asignado",null,chofer,null,TipoEvento.CHOFER); 
+            }
             else
-                evento =  new EventoSimulacion("intento tomar viaje pero no habia ninguno con vehiculo asignado",null,chofer,null,TipoEvento.CHOFER); 
+                evento =  new EventoSimulacion("descubre que no hay mas clientes se retira de la empresa",null,chofer,null,TipoEvento.CHOFER); 
+            
+            setChanged();
+            notifyObservers(evento);
         }
-        else
-            evento =  new EventoSimulacion("descubre que no hay mas clientes se retira de la empresa",null,chofer,null,TipoEvento.CHOFER); 
-        
-        setChanged();
-        notifyObservers(evento);
+
         notifyAll();
     }
     
@@ -231,19 +236,20 @@ public class RecursoCompartido extends Observable{
         {
             try {
                  empresa.pagarViaje(cliente);
-                 evento = new EventoSimulacion("pago el viaje y se retiro del vehiculo",cliente,getViaje(cliente,EstadosViajes.PAGO).getChofer(),null,TipoEvento.CLIENTE);
+                 evento = new EventoSimulacion("pago el viaje y se retiro del vehiculo",
+                		 cliente,getViaje(cliente,EstadosViajes.PAGO).getChofer(),null,TipoEvento.CLIENTE);
             } catch (ExceptionSinViajeaPagar ex) {
                 //no entramos nunca porque validamos q tenga viaje iniciado
             } catch (ExceptionUsuario ex) {
                     
              }
         }else
-               evento = new EventoSimulacion("cancela el viaje porque no hay choferes disponibles",cliente,null,null,TipoEvento.CLIENTE);
+               evento = new EventoSimulacion("cancela el viaje porque no hay choferes disponibles",
+            		   cliente,null,null,TipoEvento.CLIENTE);
              
-      
-        setChanged();
-        notifyObservers(evento);
-    }
+	        setChanged();
+	        notifyObservers(evento);
+	    }
         notifyAll();
     }
    
@@ -252,21 +258,23 @@ public class RecursoCompartido extends Observable{
      * Deriva en la empresa la solicitud de finalizar un viaje pago por parte de un hilo chofer.<br>
      * Ademas, informa a los observers lo ocurrido en caso de exito o fracaso 
      * @param chofer chofer que desea finalizar un viaje
+     * @param cantViajesPendientes cantidad de viajes pendientes del chofer
      */
-    public synchronized void finalizarViaje(Chofer chofer)
+    public synchronized void finalizarViaje(Chofer chofer, int cantViajesPendientes)
     {
 
-        while (simulacionIsActiva() && !viajePago(chofer))
+        while (simulacionIsActiva() && !viajePago(chofer) && (cantViajesPendientes > 0 || usuarioActivo))
             try {
                 wait();
-            } catch (InterruptedException ex) {
-                    }
+            } catch (InterruptedException ex) {}
+        
 
         if (viajePago(chofer)) 
         {
             try {
                 empresa.finalizarViaje(chofer);
-                evento = new EventoSimulacion("finalizo el viaje y devolvio el vehiculo", getViaje(chofer, EstadosViajes.FINALIZADO).getCliente(), chofer, null, TipoEvento.CHOFER);
+                evento = new EventoSimulacion("finalizo el viaje y devolvio el vehiculo", 
+                		getViaje(chofer, EstadosViajes.FINALIZADO).getCliente(), chofer, null, TipoEvento.CHOFER);
                 setChanged();
                 notifyObservers(evento);
             } 
@@ -419,6 +427,10 @@ public class RecursoCompartido extends Observable{
     public boolean hayClientes()
     {
         return cantClientes>0 || usuarioActivo==true;
+    }
+    
+    public boolean getUsuarioActivo() {
+    	return usuarioActivo;
     }
     
 }

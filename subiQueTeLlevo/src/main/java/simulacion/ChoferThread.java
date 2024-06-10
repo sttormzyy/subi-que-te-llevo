@@ -30,13 +30,13 @@ public class ChoferThread extends Thread{
 @Override
 public void run()
 {
-    while(rc.hayClientes() || cantViajes>0)
+    while(rc.getUsuarioActivo() || (cantViajes>0 && rc.hayClientes()))
     {
         Util.espera();
-        rc.tomarViaje(chofer);
+        rc.tomarViaje(chofer, cantViajes);
     
         Util.espera();
-        rc.finalizarViaje(chofer);
+        rc.finalizarViaje(chofer, cantViajes);
         cantViajes--;
     }
     rc.subChofer(chofer);

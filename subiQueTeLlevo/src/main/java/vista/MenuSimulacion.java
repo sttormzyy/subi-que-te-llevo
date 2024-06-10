@@ -50,7 +50,7 @@ public class MenuSimulacion extends javax.swing.JFrame implements MouseListener{
      */
     public int getCantMaxViajeCliente()
     {
-        return Integer.parseInt(textCantClientes.getText());
+        return Integer.parseInt(textCantMaxViajesXCliente.getText());
     }
      
     /**
