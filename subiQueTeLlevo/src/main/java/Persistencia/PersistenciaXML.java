@@ -8,47 +8,77 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 
-public class PersistenciaXML implements IPersistencia
-{
+/**
+ * Esta clase proporciona metodos para la persistencia de datos en formato XML.
+ */
+public class PersistenciaXML implements IPersistencia {
     private XMLEncoder xmlEncoder;
     private XMLDecoder xmlDecoder;
     private FileOutputStream fileoutput;
     private FileInputStream fileinput;
 
-    public void abrirInput(String nombre) throws IOException
-    {
+    /**
+     * Abre un archivo XML para lectura.
+     * 
+     * @param nombre El nombre del archivo XML.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
+    public void abrirInput(String nombre) throws IOException {
         fileinput = new FileInputStream(nombre);
         xmlDecoder = new XMLDecoder(fileinput);
-
     }
 
-    public void abrirOutput(String nombre) throws IOException
-    {
+    /**
+     * Abre un archivo XML para escritura.
+     * 
+     * @param nombre El nombre del archivo XML.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
+    public void abrirOutput(String nombre) throws IOException {
         fileoutput = new FileOutputStream(nombre);
         xmlEncoder = new XMLEncoder(fileoutput);
     }
 
-    public void cerrarOutput() throws IOException
-    {
+    /**
+     * Cierra el flujo de salida XML.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
+    public void cerrarOutput() throws IOException {
         this.xmlEncoder.close();
     }
 
-    public void cerrarInput() throws IOException
-    {
+    /**
+     * Cierra el flujo de entrada XML.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
+    public void cerrarInput() throws IOException {
         this.xmlDecoder.close();
     }
 
-    public void escribir(Object objeto) throws IOException
-    {
+    /**
+     * Escribe un objeto en el archivo XML.
+     * 
+     * @param objeto El objeto a escribir en el archivo XML.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
+    public void escribir(Object objeto) throws IOException {
         xmlEncoder.writeObject(objeto);
-
     }
 
-    public Object leer() throws IOException, ClassNotFoundException
-    {
-        Object objecto = null;
+    /**
+     * Lee un objeto desde el archivo XML.
+     * 
+     * @return El objeto leido desde el archivo XML.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * @throws ClassNotFoundException Si no se puede encontrar la clase del objeto.
+     */
+    public Object leer() throws IOException, ClassNotFoundException {
+        Object objeto = null;
         if (xmlDecoder != null)
-            objecto = (Serializable) xmlDecoder.readObject();
-        return objecto;
+            objeto = (Serializable) xmlDecoder.readObject();
+        return objeto;
     }
 }
+
